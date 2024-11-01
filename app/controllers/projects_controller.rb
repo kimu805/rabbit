@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    project_attributes = @project.attributes
+    @project_tag = ProjectTag.new(project_attributes)
   end
 
   def update
@@ -40,6 +42,6 @@ class ProjectsController < ApplicationController
   end
 
   def set_project
-    @project_tag = ProjectTag.find(params[:id])
+    @project = Project.find(params[:id])
   end
 end
