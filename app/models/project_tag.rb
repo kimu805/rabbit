@@ -8,5 +8,9 @@ class ProjectTag
     validates :display, inclusion: { in: [0,1,2], message: "は0、1、2、のいずれかである必要があります。"}
   end
   validates :description, length: { maximum: 500 }
-  
+
+  # method
+  def save
+    Project.create(title: title, description: description, display: display, user_id: user_id )
+  end
 end
