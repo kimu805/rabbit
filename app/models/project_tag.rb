@@ -1,6 +1,6 @@
 class ProjectTag
   include ActiveModel::Model
-  attr_accessor :title, :description, :display, :user_id
+  attr_accessor :id, :title, :description, :display, :user_id, :created_at, :updated_at
 
   # validation
   with_options presence: true do 
@@ -11,5 +11,9 @@ class ProjectTag
   # method
   def save
     Project.create(title: title, description: description, display: display, user_id: user_id )
+  end
+
+  def update(params, project)
+    project.update(params)
   end
 end
