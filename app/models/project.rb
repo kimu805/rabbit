@@ -1,4 +1,7 @@
 class Project < ApplicationRecord
+  # association
+  has_many :project_tag_relations
+  has_many :tags, through: :project_tag_relations
   
   # enum
   enum display: {
