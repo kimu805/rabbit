@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     @project_tag = ProjectTag.new(project_tag_params)
     if @project_tag.valid?
       @project_tag.save
-      redirect_to project_path(@project_tag.project.id)
+      redirect_to @project_tag
     else
       render :new, status: :unprocessable_entity
     end
@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   def edit
     project_attributes = @project.attributes
     @project_tag = ProjectTag.new(project_attributes)
+    @project_tag.tag_name = @project.tags.first&.tag_name
   end
 
   def update
@@ -39,7 +40,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_tag_params
-    params.require(:project_tag).permit(:title, :description, :display).merge(user_id: current_user.id)
+    params.require(:project_tag).permit(:title, :description, :display, :tag_name).merge(user_id: current_user.id)
   end
 
   def set_project
