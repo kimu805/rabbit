@@ -1,0 +1,24 @@
+<%= form_with model: @project, local: true do |f| %>
+  <div class= "field">
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocut: true %>
+  </div>
+
+  <div class= "field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class= "field">
+    <%= f.label :none_display %>
+    <%= f.radio_button :display, :none_display %>
+    <%= f.label :follower_only %>
+    <%= f.radio_button :display, :follower_only %>
+    <%= f.label :all_display %>
+    <%= f.radio_button :display, :all_display %>
+  </div>
+
+  <div class= "action">
+    <%= f.submit "commit" %>
+  </div>
+<% end %>
