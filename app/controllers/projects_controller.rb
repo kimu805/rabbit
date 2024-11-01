@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project_tag = ProjectTag.new(project_tag_params)
-    binding.pry
     if @project_tag.valid?
       @project_tag.save
       redirect_to project_path(@project_tag.project.id)
@@ -25,7 +24,8 @@ class ProjectsController < ApplicationController
     @project_tag = ProjectTag.new(project_tag_params)
     if @project_tag.valid?
       @project_tag.update(project_tag_params, @project)
-      redirect_to project_path(@project_tag)
+      binding.pry
+      redirect_to project_path(@project)
     else
       render :edit, status: :unprocessable_entity
     end
