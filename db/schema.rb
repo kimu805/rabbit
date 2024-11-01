@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_01_071526) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_01_101751) do
+  create_table "project_tag_relations", charset: "utf8", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_tag_relations_on_project_id"
+    t.index ["tag_id"], name: "index_project_tag_relations_on_tag_id"
+  end
+
   create_table "projects", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
@@ -19,6 +28,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_01_071526) do
     t.datetime "updated_at", null: false
     t.integer "display"
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "tags", charset: "utf8", force: :cascade do |t|
+    t.string "tag_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_name"], name: "index_tags_on_tag_name", unique: true
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -35,5 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_01_071526) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "project_tag_relations", "projects"
+  add_foreign_key "project_tag_relations", "tags"
   add_foreign_key "projects", "users"
 end
