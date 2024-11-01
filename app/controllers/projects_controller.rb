@@ -24,7 +24,6 @@ class ProjectsController < ApplicationController
     @project_tag = ProjectTag.new(project_tag_params)
     if @project_tag.valid?
       @project_tag.update(project_tag_params, @project)
-      binding.pry
       redirect_to project_path(@project)
     else
       render :edit, status: :unprocessable_entity
