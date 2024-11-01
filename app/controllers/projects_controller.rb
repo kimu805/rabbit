@@ -2,13 +2,14 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show, :destroy]
 
   def new
-    @project = Project.new
+    @project_tag = ProjectTag.new
   end
 
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      redirect_to project_path(@project)
+    @project_tag = ProjectTag.new(project_tag_params)
+    if @project_tag.valid?
+      @project_tag.save
+      redirect_to project_path(@project_tag)
     else
       render :new, status: :unprocessable_entity
     end
@@ -18,8 +19,8 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(project_params)
-      redirect_to project_path
+    if @project_tag.update(project_params)
+      redirect_to project_path(@project_tag)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,15 +30,15 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
+    @project_tag.destroy
   end
 
   private
-  def project_params
+  def project_tag_params
     params.require(:project).permit(:title, :description, :display).merge(user_id: current_user.id)
   end
 
   def set_project
-    @project = Project.find(params[:id])
+    @project_tag = ProjectTag.find(params[:id])
   end
 end
