@@ -31,4 +31,9 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
   end
+
+  private
+  def project_params
+    params.require(:project).permit(:title, :description, :display).merge(user_id: current_user.id)
+  end
 end
