@@ -10,6 +10,11 @@
   </div>
 
   <div class= "field">
+    <%= f.label :tag_name %>
+    <%= f.text_field :tag_name, placeholder: "add tags" %>
+  </div>
+
+  <div class= "field">
     <%= f.label :none_display %>
     <%= f.radio_button :display, :none_display %>
     <%= f.label :follower_only %>
