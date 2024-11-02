@@ -12,4 +12,7 @@ class Habit < ApplicationRecord
     every_6_days: 6,    # 6日に1回
     weekly: 7           # 7日に1回（毎週）
   }
+
+  # validation
+  
 end
