@@ -10,4 +10,8 @@ class Project < ApplicationRecord
     none_display: 0, # 非公開
     all_display: 1 # 公開
   }
+
+  # validation
+  validates :title, presence: true, length: { maximum: 50 }
+  validates :description, length: { maximum: 500 }
 end
