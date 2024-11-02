@@ -32,6 +32,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @habits = @project.habits
   end
 
   def destroy
