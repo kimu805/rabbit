@@ -4,5 +4,5 @@ class Tag < ApplicationRecord
   has_many :projects, through: :project_tag_relations
 
   # validation
-  validates :tag_name, uniqueness: true
+  validates :tag_name, presence: true, uniqueness: true, length: { maximum: 20 }
 end
