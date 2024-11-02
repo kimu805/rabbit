@@ -2,8 +2,10 @@
 
 <% @projects.each do |project| %>
   <div>
-    <%= project.title %>
-    <%= project.description %>
-    <%= project.user.nickname %>
+    <%= link_to(project_path(project)) do %>
+      <%= project.title %>
+      <%= project.description %>
+      <%= project.user.nickname %>
+    <% end %>
   </div>
 <% end %>
