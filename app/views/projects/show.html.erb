@@ -5,6 +5,9 @@
 <%= @project.tags.first&.tag_name %><br>
 <%= @project.display %><br>
 
+<%= link_to "プロジェクトを編集", edit_project_path(@project) %>
+<%= link_to "プロジェクトを削除", project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete} %>
+
 <h2>習慣内容</h2>
 <table>
   <tr>
@@ -20,3 +23,4 @@
     </tr>
   <% end %>
 </table>
+
