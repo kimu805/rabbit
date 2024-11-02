@@ -1,3 +1,4 @@
+/* flash_message **************************************************************************************************************/
 .flash-message {
   position: fixed;
   top: 20px;
@@ -47,3 +48,15 @@
 .flash-message.alert {
   background-color: #dc3545; /* エラーのレッド */
 }
+/* header *********************************************************************************************************/
+.header_box{}
+.header_left_box{}
+.header_left_appTitle{}
+.header_right_box{}
+.header_navigation_box{}
+.header_navigation_toggle{}
+.bar{}
+.header_navigation_menuList{}
+.link{}
+.header_navigation_heading1{}
+.header_navigation_heading2{}
