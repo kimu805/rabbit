@@ -1,2 +1,11 @@
-<h1>Tags#index</h1>
-<p>Find me in app/views/tags/index.html.erb</p>
+<h1>タグ一覧</h1>
+
+<% @tags.each do |tag| %>
+  <div>
+    <%= link_to tag.tag_name, tag_path(tag) %>
+    <% tag.projects.limit(3).each do |project| %>
+      <%= project.title %>
+      <%= project.description %>
+    <% end %>
+  </div><br><br>
+<% end %>
