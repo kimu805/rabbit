@@ -1,0 +1,21 @@
+<%= form_with model: @habit, url: project_habits_path, local: true do |f| %>
+  <div class= "field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class= "field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class= "field">
+    <%= f.label :frequency %>
+    <%= f.select :frequency, Habit.frequencies.keys.map { |key| [t("frequency.#{key}"), key] }, {}, class: "#" %>
+  </div>
+
+  <div class= "action">
+    <%= f.submit "commit" %>
+  </div>
+
+<% end %>
