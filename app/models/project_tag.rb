@@ -5,6 +5,7 @@ class ProjectTag
   # validation
   with_options presence: true do 
     validates :title, length: { maximum: 50 }
+    validates :display
   end
   validates :description, length: { maximum: 500 }
 
@@ -19,6 +20,15 @@ class ProjectTag
   end
 
   def update(params, project)
+    project.project_tag_relations.destroy_all
+    tag_name = params.delete(:tag_name)
+
+    if tag_name.present?
+      tag = Tag.where(tag_name: tag_name).first_or_initialize
+      tag.save
+      ProjectTagRelation.create(project_id: project.id, tag_id: tag.id)
+    end
+
     project.update(params)
   end
 end
