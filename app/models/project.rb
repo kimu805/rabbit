@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   has_many :project_tag_relations
   has_many :tags, through: :project_tag_relations
   belongs_to :user
+  has_many :habits, dependent: :destroy
   
   # enum
   enum display: {
