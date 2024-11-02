@@ -88,7 +88,7 @@
   right: 10px;
   background-color: #333;
   width: 100%;
-  height: 60vh;
+  /* height: 60vh; */
   border-radius: 8px;
   padding: 10px;
 }
@@ -97,18 +97,17 @@
 }
 .header_navigation_menuItem{
   display: block;
+  padding: 10px 0;
 }
 .header_navigation_heading1{
   font-size: 14px;
   font-weight: bold;
   color: white;
-  margin-top: 10px;
-  padding: 5px;
+  padding: 10px 0;
   border-bottom: 1px solid gray;
 }
 .header_navigation_heading2{
   font-size: 12px;
   font-weight: bold;
   color: gray;
-  padding: 10px 0 ;
 }
