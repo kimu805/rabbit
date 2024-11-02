@@ -18,23 +18,35 @@
   </div>
   <div class= "header_right_box">
     <nav class= "header_navigation_box">
-      <div class= "header_navigation_toggle">
+      <div class= "header_navigation_toggle" id= "toggle">
         <div class= "bar"></div>
         <div class= "bar"></div>
         <div class= "bar"></div>
       </div>
-      <ul class= "header_navigation_menuList">
-        <li class= "header_navigation_heading1">ユーザー</li>
+      <ul class= "header_navigation_menuList" id= "menu_list">
+        <li class= "header_navigation_menuItem header_navigation_heading1">ユーザー</li>
         <% if user_signed_in? %>
-          <li><%= link_to "マイページ", user_path(current_user), class: "link header_navigation_heading2" %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "link header_navigation_heading2" %></li>
+          <li class= "header_navigation_menuItem">
+            <%= link_to "マイページ", user_path(current_user), class: "link header_navigation_heading2" %>
+          </li>
+          <li class= "header_navigation_menuItem">
+            <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "link header_navigation_heading2" %>
+          </li>
         <% else %>
-          <li><%= link_to "新規登録", new_user_registration_path, class: "link header_navigation_heading2" %></li>
-          <li><%= link_to "ログイン", new_user_session_path, class: "link header_navigation_heading2" %></li>
+          <li class= "header_navigation_menuItem">
+            <%= link_to "新規登録", new_user_registration_path, class: "link header_navigation_heading2" %>
+          </li>
+          <li class= "header_navigation_menuItem">
+            <%= link_to "ログイン", new_user_session_path, class: "link header_navigation_heading2" %>
+          </li>
         <% end %>
-        <li><%= link_to "タグ", tags_path, class: "link header_navigation_heading1" %></li>
+        <li class= "header_navigation_menuItem">
+          <%= link_to "タグ", tags_path, class: "link header_navigation_heading1" %>
+        </li>
         <% Tag.all.each do |tag| %>
-          <li><%= link_to tag.tag_name, tag_path(tag), class: "link header_navigation_heading2" %></li>
+          <li class= "header_navigation_menuItem">
+            <%= link_to tag.tag_name, tag_path(tag), class: "link header_navigation_heading2" %>
+          </li>
         <% end %>
       </ul>
     </nav>
