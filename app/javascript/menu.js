@@ -3,7 +3,8 @@ document.addEventListener("turbo:load", () => {
   const menuList = document.getElementById("menu_list")
 
   toggle.addEventListener("click", () => {
-      menuList.style.display = "block"
-    
+    menuList.classList.toggle("active")
   })
+
+  window
 })
