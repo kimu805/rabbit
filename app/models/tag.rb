@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
   # association
-  has_many :project_tag_relations
+  has_many :project_tag_relations, dependent: :destroy
   has_many :projects, through: :project_tag_relations
 
   # validation
