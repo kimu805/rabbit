@@ -14,5 +14,9 @@ class Habit < ApplicationRecord
   }
 
   # validation
-  
+  with_options presence: true do
+    validates :name, length: { maximum: 20 }
+    validates :frequency
+  end
+  validates :content, length: { maximum: 500 }
 end
