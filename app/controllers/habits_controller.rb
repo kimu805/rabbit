@@ -7,6 +7,11 @@ class HabitsController < ApplicationController
 
   def create
     @habit = @project.habits.build(habit_params)
+    if @habit.save
+      redirect_to @project
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
