@@ -7,7 +7,7 @@ class Project < ApplicationRecord
   
   # enum
   enum display: {
-    none_display: 1, # 非公開
-    all_display: 2 # 公開
+    none_display: 0, # 非公開
+    all_display: 1 # 公開
   }
 end
