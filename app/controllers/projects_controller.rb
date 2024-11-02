@@ -2,24 +2,30 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show, :destroy]
 
   def new
-    @project = Project.new
+    @project_tag = ProjectTag.new
   end
 
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      redirect_to project_path(@project)
+    @project_tag = ProjectTag.new(project_tag_params)
+    if @project_tag.valid?
+      @project_tag.save
+      redirect_to @project_tag
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    project_attributes = @project.attributes
+    @project_tag = ProjectTag.new(project_attributes)
+    @project_tag.tag_name = @project.tags.first&.tag_name
   end
 
   def update
-    if @project.update(project_params)
-      redirect_to project_path
+    @project_tag = ProjectTag.new(project_tag_params)
+    if @project_tag.valid?
+      @project_tag.update(project_tag_params, @project)
+      redirect_to project_path(@project)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,12 +35,18 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
+    @project_tag.destroy
+  end
+
+  def search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(["tag_name LIKE ?", "%#{params[:keyword]}%"])
+    render json: { keyword: tag }
   end
 
   private
-  def project_params
-    params.require(:project).permit(:title, :description, :display).merge(user_id: current_user.id)
+  def project_tag_params
+    params.require(:project_tag).permit(:title, :description, :display, :tag_name).merge(user_id: current_user.id)
   end
 
   def set_project

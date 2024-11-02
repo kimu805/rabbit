@@ -1,0 +1,11 @@
+<h1>プロジェクト一覧</h1>
+
+<% @tags.each do |tag| %>
+  <div>
+    <%= link_to tag.tag_name, tag_path(tag) %>
+    <% tag.projects.limit(3).each do |project| %>
+      <%= project.title %>
+      <%= project.description %>
+    <% end %>
+  </div><br><br>
+<% end %>

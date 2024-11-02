@@ -1,4 +1,4 @@
-<%= form_with model: @project, local: true do |f| %>
+<%= form_with model: @project_tag, url: url, method: method, local: true do |f| %>
   <div class= "field">
     <%= f.label :title %>
     <%= f.text_field :title, autofocut: true %>
@@ -10,10 +10,14 @@
   </div>
 
   <div class= "field">
+    <%= f.label :tag_name %>
+    <%= f.text_field :tag_name, placeholder: "add tags" %>
+    <div id= "search_result"></div>
+  </div>
+
+  <div class= "field">
     <%= f.label :none_display %>
     <%= f.radio_button :display, :none_display %>
-    <%= f.label :follower_only %>
-    <%= f.radio_button :display, :follower_only %>
     <%= f.label :all_display %>
     <%= f.radio_button :display, :all_display %>
   </div>

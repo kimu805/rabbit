@@ -1,0 +1,11 @@
+<h1><%= @tag.tag_name %></h1>
+
+<% @projects.each do |project| %>
+  <div>
+    <%= link_to(project_path(project)) do %>
+      <%= project.title %>
+      <%= project.description %>
+      <%= project.user.nickname %>
+    <% end %>
+  </div>
+<% end %>
