@@ -24,7 +24,7 @@
         <div class= "bar"></div>
       </div>
       <ul class= "header_navigation_menuList" id= "menu_list">
-        <li class= "header_navigation_menuItem header_navigation_heading1">ユーザー</li>
+        <li class= "header_navigation_heading1">ユーザー</li>
         <% if user_signed_in? %>
           <li class= "header_navigation_menuItem">
             <%= link_to "マイページ", user_path(current_user), class: "link header_navigation_heading2" %>
@@ -40,8 +40,8 @@
             <%= link_to "ログイン", new_user_session_path, class: "link header_navigation_heading2" %>
           </li>
         <% end %>
-        <li class= "header_navigation_menuItem header_navigation_heading1">
-          <%= link_to "タグ", tags_path, class: "link header_navigation_heading1" %>
+        <li class= "header_navigation_heading1">
+          タグ
         </li>
         <% Tag.all.each do |tag| %>
           <li class= "header_navigation_menuItem">
