@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   # association
-  has_many :project_tag_relations
+  has_many :project_tag_relations, dependent: :destroy
   has_many :tags, through: :project_tag_relations
   belongs_to :user
   has_many :habits, dependent: :destroy
