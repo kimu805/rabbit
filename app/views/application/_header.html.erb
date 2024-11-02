@@ -40,7 +40,7 @@
             <%= link_to "ログイン", new_user_session_path, class: "link header_navigation_heading2" %>
           </li>
         <% end %>
-        <li class= "header_navigation_menuItem">
+        <li class= "header_navigation_menuItem header_navigation_heading1">
           <%= link_to "タグ", tags_path, class: "link header_navigation_heading1" %>
         </li>
         <% Tag.all.each do |tag| %>
