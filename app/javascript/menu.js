@@ -6,5 +6,9 @@ document.addEventListener("turbo:load", () => {
     menuList.classList.toggle("active")
   })
 
-  window
+  window.addEventListener("click", (event) => {
+    if (event.target != toggle && event.target != menuList ) {
+      menuList.classList.remove("active")
+    }
+  })
 })
