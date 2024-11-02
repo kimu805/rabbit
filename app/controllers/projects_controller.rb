@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     @project_tag = ProjectTag.new(project_tag_params)
     if @project_tag.valid?
       @project_tag.save
-      redirect_to @project_tag
+      redirect_to @project_tag # 本当はユーザーのマイページに行きたい。あとで実装。
     else
       render :new, status: :unprocessable_entity
     end
