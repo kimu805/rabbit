@@ -90,6 +90,9 @@
   width: 100%;
   height: 100vh;
 }
+.header_navigation_menuList.active{
+  display: block;
+}
 .header_navigation_menuItem{
   display: block;
 }
