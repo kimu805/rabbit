@@ -6,3 +6,17 @@
 <%= @project.display %><br>
 
 <h2>習慣内容</h2>
+<table border= 1>
+  <tr>
+    <th>No</th>
+    <th>内容</th>
+    <th>頻度</th>
+  </tr>
+  <% @habits.each_with_index do |habit, index| %>
+    <tr>
+      <td>（<%= "#{index + 1}" %>）</td>
+      <td><%= habit.content %></td>
+      <td><%= habit.frequency %></td>
+    </tr>
+  <% end %>
+</table>
