@@ -38,6 +38,12 @@ class ProjectsController < ApplicationController
     @project_tag.destroy
   end
 
+  def search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(["tag_name LIKE ?", "%#{params[:keyword]}%"])
+    render json: { keyword: tag }
+  end
+
   private
   def project_tag_params
     params.require(:project_tag).permit(:title, :description, :display, :tag_name).merge(user_id: current_user.id)
