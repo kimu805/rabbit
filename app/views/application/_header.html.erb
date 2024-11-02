@@ -34,7 +34,7 @@
         <% end %>
         <li><%= link_to "タグ", tags_path, class: "link header_navigation_heading1" %></li>
         <% Tag.all.each do |tag| %>
-          <li><%= link_to tag.name, tag_path(tag), class: "link header_navigation_heading2" %></li>
+          <li><%= link_to tag.tag_name, tag_path(tag), class: "link header_navigation_heading2" %></li>
         <% end %>
       </ul>
     </nav>
