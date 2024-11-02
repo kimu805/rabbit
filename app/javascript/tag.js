@@ -21,7 +21,7 @@ document.addEventListener("turbo:load", () => {
             childElement.setAttribute("id", tag.id)
             childElement.innerHTML = tag.tag_name
             searchResult.appendChild(childElement)
-  
+
             const clickElement = document.getElementById(tag.id)
             clickElement.addEventListener("click", () => {
               tagNameInput.value = clickElement.textContent
