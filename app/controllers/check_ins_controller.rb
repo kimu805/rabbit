@@ -5,7 +5,7 @@ class CheckInsController < ApplicationController
       check_in.status = params[:check_in][:status] == "1"
       check_in.save
       # redirect_to project_path(params[:project_id])
-      head :ok
+      render json: { check_in: check_in }
     end
   end
 end
