@@ -39,6 +39,37 @@
   </tbody>
 </table>
 
+<h2>１か月分の表示</h2>
+<table>
+  <thead>
+    <tr>
+      <th>日付</th>
+      <% @habits.each do |habit| %>
+        <th><%= habit.name %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @month_range.each do |date| %>
+      <tr>
+        <td>
+          <%= date.strftime("%m-%d") %>
+        </td>
+        <% @habits.each do |habit| %>
+          <% check_in = habit.check_ins.find_or_create_by(date: date, habit_id: habit.id) %>
+          <td>
+            <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
+              <%= f.check_box :status, checked: check_in&.status %>
+              <%= f.hidden_field :habit_id, value: habit.id %>
+              <%= f.hidden_field :date, value: date %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <h2>習慣内容</h2>
 <%= link_to "習慣を作成する", new_project_habit_path(@project) %>
 <table>
