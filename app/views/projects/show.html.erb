@@ -8,20 +8,55 @@
 <%= link_to "プロジェクトを編集", edit_project_path(@project) %>
 <%= link_to "プロジェクトを削除", project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete} %>
 
+<h2>前後３日分の表示</h2>
+<table>
+  <thead>
+    <tr>
+      <th>日付</th>
+      <% @habits.each do |habit| %>
+        <th><%= habit.name %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @three_day_range.each do |date| %>
+      <tr>
+        <td>
+          <%= date.strftime("%m-%d") %>
+        </td>
+        <% @habits.each do |habit| %>
+          <% check_in = habit.check_ins.find_by(date: date) %>
+          <td>
+            <%= form_with model: check_in, method: :patch do |f| %>
+              <%= f.check_box :status, checked: checkin&.status, onchange: "this.form.submit()" %>
+              <%= f.hidden_field :habit_id, value: habit.id %>
+              <%= f.hidden_field :date, value: date %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <h2>習慣内容</h2>
 <%= link_to "習慣を作成する", new_project_habit_path(@project) %>
 <table>
-  <tr>
-    <th>No</th>
-    <th>内容</th>
-    <th>頻度</th>
-  </tr>
-  <% @habits.each_with_index do |habit, index| %>
-    <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id) %>'" style= "cursor: pointer;">
-      <td>（<%= "#{index + 1}" %>）</td>
-      <td><%= habit.content %></td>
-      <td><%= habit.frequency %></td>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>内容</th>
+      <th>頻度</th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @habits.each_with_index do |habit, index| %>
+      <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id) %>'" style= "cursor: pointer;">
+        <td>（<%= "#{index + 1}" %>）</td>
+        <td><%= habit.content %></td>
+        <td><%= habit.frequency %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
