@@ -17,7 +17,7 @@
     <th>頻度</th>
   </tr>
   <% @habits.each_with_index do |habit, index| %>
-    <tr>
+    <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id) %>'" style= "cursor: pointer;">
       <td>（<%= "#{index + 1}" %>）</td>
       <td><%= habit.content %></td>
       <td><%= habit.frequency %></td>
