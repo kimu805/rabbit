@@ -4,3 +4,7 @@ ja:
       user:
         nickname: 名前
         profile: プロフィール
+      project:
+        title: タイトル
+        description: 概要
+        display: "公開/非公開"
