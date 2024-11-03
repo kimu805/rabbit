@@ -18,6 +18,22 @@ class HabitsController < ApplicationController
   def edit
   end
 
+  def update
+    if @habit.update(habit_params)
+      redirect_to project_habit_path(project_id: @project.id, id: @habit.id), notice: "「#{@habit.name}」を編集しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def show
+  end
+
+  def destroy
+    @habit.destroy
+    redirect_to @project, notice: "「#{@habit.name}」を削除しました"
+  end
+
   private
   def habit_params
     params.require(:habit).permit(:name, :content, :frequency)
