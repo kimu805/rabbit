@@ -17,13 +17,19 @@ RSpec.describe User, type: :model do
     end
     context "上手くいかないとき" do
       it "nicknameが空では登録できない" do
-
+        @user.nickname = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("名前を入力してください")
       end
       it "nicknameは21文字以上では登録できない" do
-
+        @user.nickname = Faker::Lorem.characters(number: 21)
+        @user.valid?
+        expect(@user.errors.full_messages).to include("名前は20文字以内で入力してください")
       end
       it "profileは501文字以上では登録できない" do
-
+        @user.profile = Faker::Lorem.characters(number: 501)
+        @user.valid?
+        expect(@user.errors.full_messages).to include("プロフィールは500文字以内で入力してください")
       end
       it "emailが空だと登録できない" do
         @user.email = ""
