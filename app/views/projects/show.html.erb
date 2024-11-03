@@ -86,7 +86,7 @@
   </thead>
   <tbody>
     <% @habits.each_with_index do |habit, index| %>
-      <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id) %>'" style= "cursor: pointer;">
+      <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days') %>'" style= "cursor: pointer;">
         <td>（<%= "#{index + 1}" %>）</td>
         <td><%= habit.content %></td>
         <td><%= habit.frequency %></td>
