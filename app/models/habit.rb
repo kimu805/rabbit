@@ -1,6 +1,7 @@
 class Habit < ApplicationRecord
   # association
   belongs_to :project
+  has_many :check_ins
 
   # enum
   enum frequency: {
