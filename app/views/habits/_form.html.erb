@@ -1,4 +1,4 @@
-<%= form_with model: @habit, url: project_habits_path, local: true do |f| %>
+<%= form_with model: @habit, url: url, local: true do |f| %>
   <div class= "field">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true %>
