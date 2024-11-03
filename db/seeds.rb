@@ -4,7 +4,7 @@
   10.times do |n|
     habit = Habit.create!(name: "habit#{n+1}", content: "content of habit#{n+1}", frequency: 1, project_id: project.id)
     (Date.today..(Date.today + 30)).each do |date| 
-      habit.check_ins.create(date: date, status: false)
+      habit.check_ins.create!(date: date, status: false)
     end
   end
 end
