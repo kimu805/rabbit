@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
-    nickname {"test1"}
+    nickname {"user"}
     profile {Faker::Lorem.characters(number: rand(1..500))}
-    email {"test1@test.com"}
+    email {"user@user.com"}
     password {"111111"}
     password_confirmation {password}
   end
