@@ -27,8 +27,8 @@
         <% @habits.each do |habit| %>
           <% check_in = habit.check_ins.find_or_create_by(date: date, habit_id: habit.id) %>
           <td>
-            <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch do |f| %>
-              <%= f.check_box :status, checked: check_in&.status, onchange: "this.form.submit()" %>
+            <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, id: "check_in_form" do |f| %>
+              <%= f.check_box :status, checked: check_in&.status %>
               <%= f.hidden_field :habit_id, value: habit.id %>
               <%= f.hidden_field :date, value: date %>
             <% end %>
