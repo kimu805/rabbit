@@ -27,6 +27,10 @@ class HabitsController < ApplicationController
   end
 
   def show
+    # 今日を基準に前後３日分
+    @three_day_range = (Date.today - 3)..(Date.today + 3)
+    # 今月分
+    @month_range = Date.today.beginning_of_month..Date.today.end_of_month
   end
 
   def destroy
