@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_02_044230) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_03_053125) do
+  create_table "check_ins", charset: "utf8", force: :cascade do |t|
+    t.date "date", null: false
+    t.boolean "status", default: false, null: false
+    t.bigint "habit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["habit_id"], name: "index_check_ins_on_habit_id"
+  end
+
   create_table "habits", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "content"
@@ -61,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_02_044230) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "check_ins", "habits"
   add_foreign_key "habits", "projects"
   add_foreign_key "project_tag_relations", "projects"
   add_foreign_key "project_tag_relations", "tags"
