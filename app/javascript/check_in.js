@@ -1,9 +1,23 @@
 function check_in() {
-  const checkIn = document.getElementById("check_in")
+  const checkIns = document.querySelectorAll(".check_in")
 
-  checkIn.addEventListener("submit", (e) => {
-    e.preventDefault()
-    console.log("更新検知")
+  checkIns.forEach((checkIn) => {
+    checkIn.addEventListener("change", (e) => {
+      e.preventDefault()
+      const formData = new FormData(checkIn)
+      const projectId = checkIn.getAttribute("data-project-id")
+      const habitId = checkIn.getAttribute("data-habit-id")
+      const checkInId = checkIn.getAttribute("data-id")
+      
+      const XHR = new XMLHttpRequest()
+      XHR.open("PATCH", `/projects/${projectId}/habits/${habitId}/check_ins/${checkInId}`, true)
+      XHR.responseType = "json"
+      XHR.send(formData)
+
+      XHR.onload = () => {
+
+      }
+    })
   })
 }
 
