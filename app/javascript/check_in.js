@@ -1,7 +1,7 @@
 function check_in() {
-  const checkInForm = document.getElementById("check_in_form")
+  const checkIn = document.getElementById("check_in")
 
-  checkInForm.addEventListener("submit" (e) => {
+  checkIn.addEventListener("submit", (e) => {
     e.preventDefault()
     console.log("更新検知")
   })
