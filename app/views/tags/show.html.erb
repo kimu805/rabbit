@@ -2,7 +2,7 @@
 
 <% @projects.each do |project| %>
   <div>
-    <%= link_to(project_path(project)) do %>
+    <%= link_to(project_path(project, range: "three_days")) do %>
       <%= project.title %>
       <%= project.description %>
       <%= project.user.nickname %>
