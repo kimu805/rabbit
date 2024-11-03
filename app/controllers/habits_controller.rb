@@ -9,7 +9,7 @@ class HabitsController < ApplicationController
   def create
     @habit = @project.habits.build(habit_params)
     if @habit.save
-      redirect_to @project
+      redirect_to @project, notice: "「#{@habit.name}」を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
