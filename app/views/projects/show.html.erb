@@ -4,3 +4,24 @@
 <%= @project.description %><br>
 <%= @project.tags.first&.tag_name %><br>
 <%= @project.display %><br>
+
+<%= link_to "プロジェクトを編集", edit_project_path(@project) %>
+<%= link_to "プロジェクトを削除", project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete} %>
+
+<h2>習慣内容</h2>
+<%= link_to "習慣を作成する", new_project_habit_path(@project) %>
+<table>
+  <tr>
+    <th>No</th>
+    <th>内容</th>
+    <th>頻度</th>
+  </tr>
+  <% @habits.each_with_index do |habit, index| %>
+    <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id) %>'" style= "cursor: pointer;">
+      <td>（<%= "#{index + 1}" %>）</td>
+      <td><%= habit.content %></td>
+      <td><%= habit.frequency %></td>
+    </tr>
+  <% end %>
+</table>
+

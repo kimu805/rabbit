@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     @project_tag = ProjectTag.new(project_tag_params)
     if @project_tag.valid?
       @project_tag.save
-      redirect_to @project_tag
+      redirect_to user_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,10 +32,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @habits = @project.habits
   end
 
   def destroy
-    @project_tag.destroy
+    binding.pry
+    @project.destroy
+    redirect_to user_path(current_user)
   end
 
   def search

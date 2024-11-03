@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # association
-  has_many :projects
+  has_many :projects, dependent: :destroy
 
   # validation
   validates :nickname, presence: true, length: { maximum: 20 }
-  validates :profile, length: { maximum: 1000 }
+  validates :profile, length: { maximum: 500 }
 
 end

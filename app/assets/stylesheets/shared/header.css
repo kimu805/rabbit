@@ -1,0 +1,113 @@
+/* flash_message **************************************************************************************************************/
+.flash-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* 中央に配置するために左に半分ずらす */
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* 初期状態で非表示 */
+  transform: translate(-50%, -20px); /* 初期状態で上に移動し、中央揃え */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1000;
+}
+
+/* 表示するためのスタイル */
+.flash-message.show {
+  opacity: 1;
+  transform: translate(-50%, 0); /* 上部に固定し、中央に配置 */
+}
+
+/* 非表示にするためのスタイル */
+.flash-message.hide {
+  animation: fadeOut 0.6s forwards;
+}
+
+/* フェードアウトアニメーション */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+/* 成功メッセージ */
+.flash-message.notice {
+  background-color: #28a745; /* 成功のグリーン */
+}
+
+/* エラーメッセージ */
+.flash-message.alert {
+  background-color: #dc3545; /* エラーのレッド */
+}
+/* header *********************************************************************************************************/
+.header_box{
+  display: flex;
+  justify-content: space-between;
+}
+/* .header_left_box{
+
+} */
+.header_left_appTitle{
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+}
+.header_left_appTitle_text{
+  padding: 10px;
+  color: black;
+  font-style: italic;
+}
+.header_right_box{
+  position: relative;
+}
+.header_navigation_toggle{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: flex-end;
+}
+.bar{
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  margin: 2px 0;
+}
+.header_navigation_menuList{
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  background-color: #333;
+  width: 150px;
+  border-radius: 8px;
+  padding: 10px;
+}
+.header_navigation_menuList.active{
+  display: block;
+}
+.header_navigation_menuItem{
+  display: block;
+  padding: 10px 0;
+}
+.header_navigation_heading1{
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  padding: 10px 0;
+  border-bottom: 1px solid gray;
+}
+.header_navigation_heading2{
+  font-size: 12px;
+  font-weight: bold;
+  color: gray;
+}

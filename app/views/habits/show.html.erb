@@ -1,0 +1,9 @@
+<h1><%= @habit.name %></h1>
+
+<%= @habit.content %>
+<%= @habit.frequency %>
+
+<div>
+  <%= link_to "編集する", edit_project_habit_path(project_id: @project.id, id: @habit.id) %>
+  <%= link_to "削除する", project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "#{@habit.name}を削除します", turbo_method: :delete} %>
+</div>
