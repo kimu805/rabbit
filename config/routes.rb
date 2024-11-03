@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:edit, :update, :show]
   resources :projects, except: :index do
-    resources :habits, except: :index
+    resources :habits, except: :index do
+      resources :check_ins, only: :update
+    end
     collection do
       get "search"
     end
