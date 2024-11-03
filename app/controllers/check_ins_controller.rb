@@ -4,7 +4,8 @@ class CheckInsController < ApplicationController
     if check_in
       check_in.status = params[:check_in][:status] == "1"
       check_in.save
-      redirect_to project_path(params[:project_id])
+      # redirect_to project_path(params[:project_id])
+      head :ok
     end
   end
 end
