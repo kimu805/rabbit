@@ -10,3 +10,7 @@ ja:
         display: "公開/非公開"
       tag:
         tag_name: タグ
+      habit:
+        name: 習慣名
+        content: 内容
+        frequency: 実行頻度
