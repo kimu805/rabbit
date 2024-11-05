@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   # association
   has_many :project_tag_relations, dependent: :destroy
   has_many :tags, through: :project_tag_relations
-  belongs_to :user
+  belongs_to :owner, class_name: "User", foreign_key: "user_id"
   has_many :habits, dependent: :destroy
   
   # enum
