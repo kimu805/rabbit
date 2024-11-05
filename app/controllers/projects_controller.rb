@@ -37,6 +37,7 @@ class ProjectsController < ApplicationController
     @three_day_range = (Date.today - 3)..(Date.today + 3)
     # 今月分
     @month_range = Date.today.beginning_of_month..Date.today.end_of_month
+    add_breadcrumb @project.title, project_path(@project)
   end
 
   def destroy
