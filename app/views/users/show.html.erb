@@ -3,6 +3,10 @@
 <%= @user.email %>
 <%= @user.profile %>
 
+<% if current_user && current_user == @user %>
+  <%= link_to "編集する"
+<% else %>
+
 <h1><%= @user.nickname %>のプロジェクト</h1>
 
 <% @user.projects.each do |project| %>
