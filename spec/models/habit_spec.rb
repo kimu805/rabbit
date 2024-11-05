@@ -36,6 +36,11 @@ RSpec.describe Habit, type: :model do
         @habit.valid?
         expect(@habit.errors.full_messages).to include("実行頻度を入力してください")
       end
+      it "projectが紐づいていなければ作成できない" do
+        @habit.project = nil
+        @habit.valid?
+        expect(@habit.errors.full_messages).to include("Projectを入力してください")
+      end
     end
   end
 end
