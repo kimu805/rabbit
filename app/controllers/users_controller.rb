@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    add_breadcrumb @user.nickname, user_path(@user)
   end
 
   def destroy
@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   end
 
   def follow_list
-
   end
 
   private
