@@ -3,11 +3,17 @@
 <%= @user.email %>
 <%= @user.profile %>
 
-<% if current_user && current_user == @user %>
-  <%= link_to "編集する", edit_user_path(@user) %>
-  <%= link_To "削除する", user_path(@user), data: {turbo_confirm: "「#{@user.nickname}」を削除します。"}
-<% else %>
-
+<% if user_signed_in? %>
+  <% if current_user == @user %>
+    <%= link_to "編集する", edit_user_path(@user) %>
+    <%= link_To "削除する", user_path(@user), data: {turbo_confirm: "プロジェクトや習慣情報も全て削除されます", turbo_method: :delete} %>
+  <% elsif @user.followed_by?(current_user) %>
+    <p>あなたは「<%= @user.nickname %>」をフォロー中です。</p>
+    <%= link_to "フォローを解除する", user_relationships_path(user_id: @user.id), data: { turbo_method: :delete } %>
+  <% else %>
+    <%= link_to "フォローする", user_relationships_path(user_id: @user.id), data: { turbo_method: :post } %>
+  <% end %>
+<% end %>
 <h1><%= @user.nickname %>のプロジェクト</h1>
 
 <% @user.projects.each do |project| %>
