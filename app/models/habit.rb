@@ -1,7 +1,7 @@
 class Habit < ApplicationRecord
   # association
   belongs_to :project
-  has_many :check_ins
+  has_many :check_ins, dependent: :destroy
 
   # enum
   enum frequency: {
