@@ -1,5 +1,25 @@
 crumb :root do
-  link "Home", root_path
+  link "タグ一覧", root_path
+end
+
+crumb :tag do |tag|
+  link tag.tag_name, tag_path(tag)
+  parent :root
+end
+
+crumb :project do |project|
+  link project.title, project_path(project)
+  parent :tag
+end
+
+crumb :user do |user|
+  link user.nickname, user_path(user)
+  parent :project
+end
+
+crumb :habit do |project, habit|
+  link habit.name, project_habit_path(project, habit)
+  parent :project
 end
 
 # crumb :projects do
