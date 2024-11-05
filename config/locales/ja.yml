@@ -14,3 +14,7 @@ ja:
         name: 習慣名
         content: 内容
         frequency: 実行頻度
+      check_in:
+        date: 日付
+        status: 実行状況
+        
