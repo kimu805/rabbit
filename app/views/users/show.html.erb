@@ -1,7 +1,31 @@
 <h1><%= @user.nickname %></h1>
 
+<div>
+  <%= link_to(follow_list_user_path(@user, target: "following")) do %>
+    <p>フォロー中：<%= @user.active_relationships.count %></p>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to(follow_list_user_path(@user, target: "follower")) do %>
+    <p>フォロワー：<%= @user.passive_relationships.count %></p>
+  <% end %>
+</div>
+
 <%= @user.email %>
 <%= @user.profile %>
+
+<% if user_signed_in? %>
+  <% if current_user == @user %>
+    <%= link_to "編集する", edit_user_path(@user) %>
+    <%= link_to "削除する", user_path(@user), data: {turbo_confirm: "プロジェクトや習慣情報も全て削除されます", turbo_method: :delete} %>
+  <% elsif @user.followed_by?(current_user) %>
+    <p>あなたは「<%= @user.nickname %>」をフォロー中です。</p>
+    <%= link_to "フォローを解除する", user_relationships_path(user_id: @user.id), data: { turbo_method: :delete } %>
+  <% else %>
+    <%= link_to "フォローする", user_relationships_path(user_id: @user.id), data: { turbo_method: :post } %>
+  <% end %>
+<% end %>
 
 <h1><%= @user.nickname %>のプロジェクト</h1>
 

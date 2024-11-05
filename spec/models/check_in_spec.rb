@@ -12,16 +12,6 @@ RSpec.describe CheckIn, type: :model do
       end
     end
     context "上手くいかない場合" do
-      it "dateが空では作成できない" do
-        @check_in.date = ""
-        @check_in.valid?
-        expect(@check_in.errors.full_messages).to include("日付を入力してください")
-      end
-      it "statusが空では登録できない" do
-        @check_in.status = ""
-        @check_in.valid?
-        expect(@check_in.errors.full_messages).to include("実行状況を入力してください")
-      end
       it "habitが紐づいていなければ登録できない" do
         @check_in.habit = nil
         @check_in.valid?

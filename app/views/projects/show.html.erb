@@ -4,6 +4,9 @@
 <%= @project.description %><br>
 <%= @project.tags.first&.tag_name %><br>
 <%= @project.display %><br>
+<%= link_to(user_path(@project.owner.id)) do %>
+  <p>投稿者：<%= @project.owner.nickname %></p><br><br>
+<% end %>
 
 <%= link_to "プロジェクトを編集", edit_project_path(@project) %>
 <%= link_to "プロジェクトを削除", project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete} %>
@@ -27,7 +30,7 @@
             <%= date.strftime("%m-%d") %>
           </td>
           <% @habits.each do |habit| %>
-            <% check_in = habit.check_ins.find_or_create_by(date: date, habit_id: habit.id) %>
+            <% check_in = habit.check_ins.find_or_create_by!(date: date) %>
             <td>
               <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
                 <%= f.check_box :status, checked: check_in&.status %>

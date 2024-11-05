@@ -1,0 +1,11 @@
+<% if params[:target] == "following" %>
+  <h1>フォロー中</h1>
+  <% @user.followings.each do |user| %>
+    <%= user.nickname %><br><br>
+  <% end %>
+<% elsif params[:target] == "follower" %>
+  <h1>フォロワー</h1>
+  <% @user.followers.each do |user| %>
+    <%= user.nickname %><br><br>
+  <% end %>
+<% end %>
