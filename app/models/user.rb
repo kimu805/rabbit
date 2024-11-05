@@ -16,4 +16,10 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :profile, length: { maximum: 500 }
 
+  # method
+  def followed_by?(following_user)
+    follower = passive_relationships.find_by(following_id: following_user.id)
+    return follower.present?
+  end
+
 end
