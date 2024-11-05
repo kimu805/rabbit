@@ -21,7 +21,6 @@ crumb :habit do |project, habit|
   link habit.name, project_habit_path(project, habit)
   parent :project, project
 end
-# end
 
 # crumb :project_issues do |project|
 #   link "Issues", project_issues_path(project)
