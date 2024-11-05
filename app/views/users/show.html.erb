@@ -1,5 +1,17 @@
 <h1><%= @user.nickname %></h1>
 
+<div>
+  <%= link_to(follow_list_user_path(@user, target: "following")) do %>
+    <p>フォロー中：<%= @user.active_relationships.count %></p>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to(follow_list_user_path(@user, target: "follower")) do %>
+    <p>フォロワー：<%= @user.passive_relationships.count %></p>
+  <% end %>
+</div>
+
 <%= @user.email %>
 <%= @user.profile %>
 
