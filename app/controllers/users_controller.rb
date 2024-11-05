@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    add_breadcrumb @user.nickname, user_path(@user)
+    @project = @user.projects.find(params[:project])
+    @tag = @project.tags.find(params[:tag]) 
   end
 
   def destroy
