@@ -7,19 +7,19 @@ crumb :tag do |tag|
   parent :root
 end
 
-crumb :project do |project|
+crumb :project do |tag, project|
   link project.title, project_path(project)
-  parent :tag
+  parent :tag, tag
 end
 
-crumb :user do |user|
+crumb :user do |user, project, tag|
   link user.nickname, user_path(user)
-  parent :project
+  parent :project, [tag, project]
 end
 
 crumb :habit do |project, habit|
   link habit.name, project_habit_path(project, habit)
-  parent :project
+  parent :project, project
 end
 
 # crumb :projects do
