@@ -4,7 +4,8 @@
 <%= @user.profile %>
 
 <% if current_user && current_user == @user %>
-  <%= link_to "編集する"
+  <%= link_to "編集する", edit_user_path(@user) %>
+  <%= link_To "削除する", user_path(@user), data: {turbo_confirm: "「#{@user.nickname}」を削除します。"}
 <% else %>
 
 <h1><%= @user.nickname %>のプロジェクト</h1>
