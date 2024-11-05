@@ -5,7 +5,7 @@
     <%= link_to(project_path(project, range: "three_days")) do %>
       <%= project.title %>
       <%= project.description %>
-      <%= project.user.nickname %>
+      <%= project.owner.nickname %>
     <% end %>
   </div>
 <% end %>
