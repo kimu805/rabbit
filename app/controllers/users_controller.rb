@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      
+      redirect_to current_user, notice: "「#{current_user.nickname}」を編集しました"
     else
       render :edit, status: :unprocessable_entity
     end
