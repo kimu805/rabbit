@@ -12,7 +12,7 @@ crumb :project do |tag, project|
   parent :tag, tag
 end
 
-crumb :user do |user, project, tag|
+crumb :user do |tag, project, user|
   link user.nickname, user_path(user)
   parent :project, [tag, project]
 end
