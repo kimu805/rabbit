@@ -19,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    current_user.destroy
     redirect_to root_path, notice: "「#{current_user.nickname}」を削除しました"
   end
 
