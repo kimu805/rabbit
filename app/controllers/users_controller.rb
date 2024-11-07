@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def destroy
     user = current_user.destroy
+    redirect_to root_path, notice: "「#{user.nickname}」を削除しました"
   end
 
   def follow_list
