@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
     @three_day_range = (Date.today - 3)..(Date.today + 3)
     # 今月分
     @month_range = Date.today.beginning_of_month..Date.today.end_of_month
-    @tag = @project.tags.first
+    @tag = @project.tags.find_by(params[:tag])
   end
 
   def destroy
