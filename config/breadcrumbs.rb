@@ -17,7 +17,7 @@ crumb :user do |tag, project, user|
   parent :project, [tag, project]
 end
 
-crumb :habit do |project, habit|
+crumb :habit do |tag, project, habit|
   link habit.name, project_habit_path(project, habit)
   parent :project, [tag, project]
 end
