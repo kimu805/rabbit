@@ -54,4 +54,13 @@ class Project < ApplicationRecord
       ((total_completed_count.to_f / total_required_count) * 100).round(2)
     end
   end
+
+  # ransack
+  def self.ransackable_attributes(auth_object = nil)
+    ["title"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["owner"]
+  end
 end

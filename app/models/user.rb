@@ -22,4 +22,10 @@ class User < ApplicationRecord
     return follower.present?
   end
 
+  # ransack
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["nickname"]
+  end
+
 end

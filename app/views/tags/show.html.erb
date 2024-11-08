@@ -1,6 +1,11 @@
 <% breadcrumb :tag, @tag %>
 <h1><%= @tag.tag_name %></h1>
 
+<%= search_form_for @q, url: tag_path(@tag) do |f| %>
+  <%= f.search_field :title_cont, placeholder: "プロジェクト名で検索" %>
+  <%= f.submit "検索" %>
+<% end %>
+
 <% @projects.each do |project| %>
   <div>
     <%= link_to(project_path(project, range: "three_days", tag: @tag)) do %>
