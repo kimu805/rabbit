@@ -5,6 +5,7 @@
 <%= @project.description %><br>
 <%= @project.tags.first&.tag_name %><br>
 <%= @project.display %><br>
+達成率：<%= @project.overall_achievement_rate %>%
 <%= link_to(user_path(@project.owner, project: @project, tag: @tag)) do %>
   <p>投稿者：<%= @project.owner.nickname %></p><br><br>
 <% end %>
