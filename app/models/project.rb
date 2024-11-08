@@ -52,5 +52,6 @@ class Project < ApplicationRecord
       return 0
     else
       ((total_completed_count / total_required_count) * 100).round(2)
+    end
   end
 end
