@@ -14,4 +14,43 @@ class Project < ApplicationRecord
   # validation
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, length: { maximum: 500 }
+
+  # method
+  def overall_achievement_rate
+    total_completed_count = 0
+    total_required_count = 0
+
+    self.habits.each do |habit|
+      start_date = habit.start_date || habit.created_at.to_date
+      end_date = habit.end_date || Date.today
+
+      completed_count = habit.check_ins.where(status: true, date: start_date..end_date).count
+      required_count = case habit.frequency
+      when "daily"
+        (end_date - start_date).to_i + 1
+      when "every_2_days"
+        ((end_date - start_date).to_i / 2.0).ceil
+      when "every_3_days"
+        ((end_date - start_date).to_i / 3.0).ceil
+      when "every_4_days"
+        ((end_date - start_date).to_i / 4.0).ceil
+      when "every_5_days"
+        ((end_date - start_date).to_i / 5.0).ceil
+      when 'every_6_days'
+        ((end_date - start_date).to_i / 6.0).ceil
+      when 'weekly'
+        ((end_date - start_date).to_i / 7.0).ceil
+      else
+        0
+      end
+
+      total_completed_count += completed_count
+      total_required_count += required_count
+    end
+    
+    if total_required_count == 0
+      return 0
+    else
+      ((total_completed_count / total_required_count) * 100).round(2)
+  end
 end
