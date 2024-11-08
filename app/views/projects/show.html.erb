@@ -86,14 +86,18 @@
       <th>No</th>
       <th>内容</th>
       <th>頻度</th>
+      <th>達成率</th>
     </tr>
   </thead>
   <tbody>
     <% @habits.each_with_index do |habit, index| %>
+      <% start_date = habit.start_date || habit.created_at.to_date %>
+      <% end_date = habit.end_date || Date.today %>
       <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days', tag: @tag) %>'" style= "cursor: pointer;">
         <td>（<%= "#{index + 1}" %>）</td>
         <td><%= habit.content %></td>
         <td><%= habit.frequency %></td>
+        <td><%= habit.achievement_rate(start_date, end_date) %>%</td>
       </tr>
     <% end %>
   </tbody>
