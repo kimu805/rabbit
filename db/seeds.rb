@@ -10,8 +10,19 @@
 end
 
 3.times do |i|
-  tag = Tag.create!(tag_name: "tag#{i+1}")
-  10.times do |n|
-    ProjectTagRelation.create!(project_id: n+1, tag_id: tag.id)
-  end
+  Tag.create!(tag_name: "tag#{i+1}")
 end
+
+3.times do |i|
+  ProjectTagRelation.create!(project_id: i+1, tag_id: 1)
+end
+
+3.times do |i|
+  ProjectTagRelation.create!(project_id: i+4, tag_id: 2)
+end
+
+3.times do |i|
+  ProjectTagRelation.create!(project_id: i+7, tag_id: 3)
+end
+
+ProjectTagRelation.create!(project_id: 10, tag_id: 1)

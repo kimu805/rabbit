@@ -7,23 +7,23 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      
+      redirect_to current_user, notice: "「#{current_user.nickname}」を編集しました"
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    @project = @user.projects.find(params[:project])
+    @tag = @project.tags.find(params[:tag]) 
   end
 
   def destroy
-    current_user.destroy
-    redirect_to root_path
+    user = current_user.destroy
+    redirect_to root_path, notice: "「#{user.nickname}」を削除しました"
   end
 
   def follow_list
-
   end
 
   private
