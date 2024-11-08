@@ -20,4 +20,33 @@ class Habit < ApplicationRecord
     validates :frequency
   end
   validates :content, length: { maximum: 500 }
+
+  # method
+  def achievement_rate(start_date, end_date)
+    total_days = (end_date - start_date).to_i + 1
+    completed_count = check_ins.where(status: true, date: start_date..end_date).count
+
+    required_count = case frequency
+    when 'daily'
+      total_days
+    when 'every_2_days'
+      (total_days / 2.0).ceil
+    when 'every_3_days'
+      (total_days / 3.0).ceil
+    when 'every_4_days'
+      (total_days / 4.0).ceil
+    when 'every_5_days'
+      (total_days / 5.0).ceil
+    when 'every_6_days'
+      (total_days / 6.0).ceil
+    when 'weekly'
+      (total_days / 7.0).ceil
+    else
+      0
+    end
+
+    return 0 if required_count.zero?
+
+    ((completed_count / total_days) * 100).round(2)
+  end
 end
