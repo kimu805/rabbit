@@ -22,34 +22,12 @@
           </div>
           <div class= "tagsIndex_tag_projects">
             <% tag.projects.limit(3).each do |project| %>
-              <div class= "tagsIndex_tag_project">
-                <div class= "tagsIndex_tag_project_title"></div>
-              </div>
+              <%= render "project/project", { project: project } %>
             <% end %>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
-
-
+  
 </div>
-
-
-
-<h1>タグ一覧</h1>
-
-<%= search_form_for @q, url: root_path do |f| %>
-  <%= f.search_field :tag_name_cont, placeholder: "タグを検索" %>
-  <%= f.submit "検索" %>
-<% end %>
-
-<% @tags.each do |tag| %>
-  <div>
-    <%= link_to tag.tag_name, tag_path(tag) %>
-    <% tag.projects.limit(3).each do |project| %>
-      <%= project.title %>
-      <%= project.description %>
-    <% end %>
-  </div><br><br>
-<% end %>
