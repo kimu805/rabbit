@@ -1,5 +1,10 @@
 <% breadcrumb :root %>
-<h1>プロジェクト一覧</h1>
+<h1>タグ一覧</h1>
+
+<%= search_form_for @q, url: root_path do |f| %>
+  <%= f.search_field :tag_name_cont, placeholder: "タグを検索" %>
+  <%= f.submit "検索" %>
+<% end %>
 
 <% @tags.each do |tag| %>
   <div>

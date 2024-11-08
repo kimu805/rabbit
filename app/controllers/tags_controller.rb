@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   def index
-    @tags = Tag.all
+    @q = Tag.ransack(params[:q])
+    @tags = @q.result(distinct: true)
   end
 
   def show

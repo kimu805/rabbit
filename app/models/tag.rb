@@ -5,4 +5,9 @@ class Tag < ApplicationRecord
 
   # validation
   validates :tag_name, presence: true, uniqueness: true, length: { maximum: 20 }
+
+  # ransack
+  def self.ransackable_attributes(auth_object = nil)
+    ["tag_name"]
+  end
 end
