@@ -14,6 +14,16 @@
     <%= f.select :frequency, Habit.frequencies.keys.map { |key| [t("frequency.#{key}"), key] }, {}, class: "#" %>
   </div>
 
+  <div class= "field">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+
+  <div class= "field">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
+
   <div class= "action">
     <%= f.submit "commit" %>
   </div>
