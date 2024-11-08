@@ -47,6 +47,6 @@ class Habit < ApplicationRecord
 
     return 0 if required_count.zero?
 
-    ((completed_count / total_days) * 100).round(2)
+    ((completed_count.to_f / required_count) * 100).round(2)
   end
 end
