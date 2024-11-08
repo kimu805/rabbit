@@ -12,8 +12,27 @@
     <% end %>
   </div>
 
+  <div class= "tagsIndex_tags">
+    <% @tags.each do |tag| %>
+      <%= link_to(tag_path(tag), class: "link") do %>
+        <div class= "tagsIndex_tag">
+          <div class= "tagsIndex_tag_info_box">
+            <div class= "tagsIndex_tag_tagName"></div>
+            <div class= "tagsIndex_tag_projectCount"></div>
+          </div>
+          <div class= "tagsIndex_tag_projects">
+            <% tag.projects.limit(3).each do |project| %>
+              <div class= "tagsIndex_tag_project">
+                <div class= "tagsIndex_tag_project_title"></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-  
+
 </div>
 
 
