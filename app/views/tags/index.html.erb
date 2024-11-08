@@ -14,11 +14,15 @@
 
   <div class= "tagsIndex_tags">
     <% @tags.each do |tag| %>
-      <%= link_to(tag_path(tag), class: "link") do %>
+      <%= link_to(tag_path(tag), class: "link", style: "color: black;" ) do %>
         <div class= "tagsIndex_tag">
           <div class= "tagsIndex_tag_info_box">
-            <div class= "tagsIndex_tag_tagName"></div>
-            <div class= "tagsIndex_tag_projectCount"></div>
+            <div class= "tagsIndex_tag_tagName">
+              #<%= tag.tag_name %>
+            </div>
+            <div class= "tagsIndex_tag_projectCount">
+              投稿数：<%= tag.projects.count %> 件
+            </div>
           </div>
           <div class= "tagsIndex_tag_projects">
             <% tag.projects.limit(3).each do |project| %>
@@ -29,5 +33,5 @@
       <% end %>
     <% end %>
   </div>
-  
+
 </div>
