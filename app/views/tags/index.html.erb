@@ -1,4 +1,23 @@
 <% breadcrumb :root %>
+
+<div class= "tagsIndex">
+  <div class= "tagsIndex_heading1">
+    <div class= "tagsIndex_heading1_text"></div>
+  </div>
+
+  <div class= "tagsIndex_search_box">
+    <%= search_form_for @q, url: root_path, class: "tagsIndex_search_form" do |f| %>
+      <%= f.search_field :tag_name_cont, placeholder: "タグを検索", class: "tagsIndex_search_searchField" %>
+      <%= f.submit "検索", class: "tagsIndex_search_commit" %>
+    <% end %>
+  </div>
+
+
+  
+</div>
+
+
+
 <h1>タグ一覧</h1>
 
 <%= search_form_for @q, url: root_path do |f| %>
