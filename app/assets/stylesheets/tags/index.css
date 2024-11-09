@@ -2,13 +2,12 @@
   width: 100%;
 }
 .tagsIndex_heading1{
-  margin: 10px 0;
+  margin-bottom: 10px;
   border-bottom: 1px solid #f3f3f3;
 }
 .tagsIndex_heading1_text{
   font-size: 24px;
   font-weight: bold;
-  padding: 10px 0 ;
 }
 .tagsIndex_search_box{
   width: 100%;
@@ -28,9 +27,10 @@
   margin-top: 10px;
 }
 .tagsIndex_tag{
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 10px;
   padding: 20px;
+  margin: 10px 0;
 }
 .tagsIndex_tag_info_box{
   display: flex;
@@ -49,4 +49,8 @@
   margin-top: 5px;
   padding-top: 5px;
   border-top: 1px solid gray;
+}
+.tagsIndex_tag_showLink{
+  margin-top: 15px;
+  text-align: right;
 }
