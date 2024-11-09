@@ -1,17 +1,22 @@
 <% breadcrumb :tag, @tag %>
-<h1><%= @tag.tag_name %></h1>
 
-<%= search_form_for @q, url: tag_path(@tag) do |f| %>
-  <%= f.search_field :title_cont, placeholder: "プロジェクト名で検索" %>
-  <%= f.submit "検索" %>
-<% end %>
+<div class= "tagsShow">
+  <div class= "heading1">
+    <div class= "heading1_text">#<%= @tag.tag_name %></div>
+  </div>
 
-<% @projects.each do |project| %>
-  <div>
-    <%= link_to(project_path(project, range: "three_days", tag: @tag)) do %>
-      <%= project.title %>
-      <%= project.description %>
-      <%= project.owner.nickname %>
+  <div class= "search_box">
+    <%= search_form_for @q, url: tag_path(@tag), class: "search_form" do |f| %>
+      <%= f.search_field :title_cont, placeholder: "プロジェクト名で検索", class: "search_searchField" %>
+      <%= f.submit "検索", class: "search_commit" %>
     <% end %>
   </div>
-<% end %>
+
+  <div class= "tagsShow_projects">
+    <% @projects.each do |project| %>
+      <%= link_to(project_path(project, range: "three_days", tag: @tag), class: "link", style: "color: black;" ) do %>
+        <%= render "projects/project", { project: project } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
