@@ -1,0 +1,34 @@
+.project{
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+}
+.project_left_box{
+  width: 80%;
+}
+.project_title{
+  font-size: 18px;
+  font-weight: bold;
+}
+.project_reaction_box{
+  display: flex;
+  gap: 10px;
+}
+.project_like{}
+.project_read{}
+.project_right_box{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.project_created_at{
+  font-size: 14px;
+  color: gray;
+  font-weight: bold;
+}
+.project_owner{
+  font-size: 14px;
+  color: gray;
+  font-weight: bold;
+}
