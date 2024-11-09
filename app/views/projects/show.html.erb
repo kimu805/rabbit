@@ -1,4 +1,45 @@
 <% breadcrumb :project, [@tag, @project] %>
+
+<div class= "projectShow">
+  <div class= "heading1_box projectShow_heading1_box">
+    <div class= "projectShow_heading1_left">
+      <div class= "heading1"><%= @project.title %></div>
+      <div class= "projectShow_projectTags">
+        <% @project.tags.each do |tag| %>
+          <div class= "projectShow_projectTag">
+            <%= tag.tag_name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class= "projectShow_heading1_right">
+      <div class= "projectShow_overall_achievement">
+        達成率：<span class= "projectShow_overall_achievement_rate"><%= @project.overall_achievement_rate %>%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class= "projectShow_projectInfo">
+    <div class= "projectShow_projectDescription">
+      <div class= "heading2">概要</div>
+      <div class= "projectShow_projectDescription_text">
+        <%= simple_format(h(@project.description), {}, sanitize: false, wrapper_tag: "div") %>
+      </div>
+    </div>
+    <div class= "projectShow_projectOwner">
+      <div class= "heading2">
+    </div>
+    
+  </div>
+
+
+</div>
+
+
+
+
+
+
 <h1><%= @project.title %></h1>
 
 <%= @project.title %><br>
