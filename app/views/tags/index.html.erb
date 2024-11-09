@@ -14,8 +14,8 @@
 
   <div class= "tagsIndex_tags">
     <% @tags.each do |tag| %>
-      <%= link_to(tag_path(tag), class: "link", style: "color: black;" ) do %>
-        <div class= "tagsIndex_tag">
+      <div class= "tagsIndex_tag">
+        <%= link_to(tag_path(tag), class: "link", style: "color: black; ") do %>
           <div class= "tagsIndex_tag_info_box">
             <div class= "tagsIndex_tag_tagName">
               #<%= tag.tag_name %>
@@ -24,13 +24,18 @@
               投稿数：<%= tag.projects.count %> 件
             </div>
           </div>
-          <div class= "tagsIndex_tag_projects">
-            <% tag.projects.limit(3).each do |project| %>
-              <%= render "project/project", { project: project } %>
+        <% end %>
+        <div class= "tagsIndex_tag_projects">
+          <% tag.projects.limit(3).each do |project| %>
+            <%= link_to(project_path(project, tag: tag), class: "link", style: "color: black;") do %>
+              <%= render "projects/project", { project: project } %>
             <% end %>
-          </div>
+          <% end %>
         </div>
-      <% end %>
+        <%= link_to(tag_path(tag), class: "link", style: "color: black; ") do %>
+          <div class= "tagsIndex_tag_showLink">➡ <%= tag.tag_name %>のプロジェクト一覧</div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
