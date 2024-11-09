@@ -26,14 +26,20 @@
         <%= simple_format(h(@project.description), {}, sanitize: false, wrapper_tag: "div") %>
       </div>
     </div>
-    <div class= "projectShow_projectOwner_box">
-      <div class= "heading2">作成者</div>
-      <%= link_to(user_path(@project.owner, project: @project, tag: @tag), class: "link", style: "color: black;") do %>
-        <div class= "projectShow_projectOwner">
-          <div class= "projectShow_projectOwner_text"><%= @project.owner.nickname %></div>
-          <div class= "projectShow_projectOwner_linkMessage">マイページはこちら➡</div>
-        </div>
-      <% end %>
+    <div class= "projectShow_project_info">
+      <div class= "projectShow_projectOwner_box">
+        <div class= "heading2">作成者</div>
+        <%= link_to(user_path(@project.owner, project: @project, tag: @tag), class: "link", style: "color: black;") do %>
+          <div class= "projectShow_projectOwner">
+            <div class= "projectShow_projectOwner_text"><%= @project.owner.nickname %></div>
+            <div class= "projectShow_projectOwner_linkMessage">マイページはこちら➡</div>
+          </div>
+        <% end %>
+      </div>
+      <div class= "projectShow_projectCreated_at_box">
+        <div class= "heading2">作成日</div>
+        <%= l @project.created_at %>
+      </div>
     </div>
     <div class= "projectShow_projectManagement_box">
       <%= link_to(edit_project_path(@project), class: "link", style: "color: black;") do %>
@@ -45,29 +51,46 @@
     </div>
   </div>
 
-  <% if params[:range] == "three_days" %>
-    <h2>前後３日分の表示</h2>
-    <%= link_to "１か月分表示", project_path(@project, range: "month") %>
-    <table>
-      <thead>
-        <tr>
-          <th>日付</th>
+  <div class= "projectShow_checkIns_dateRange">
+    <div class= "heading3">日付の表示範囲を選択</div>
+    <%= form_with url: project_path(@project, tag: @tag), method: :get, local: true, class: "projectShow_checkIns_dateRange_form" do |f| %>
+      <div class= "projectShow_checkIns_dateRange_startDate">
+        <label class= "projectShow_checkIns_dateRange_startDateField_label">開始日：</label>
+        <%= f.date_field :start_date, value: @date_range.first, class: "projectShow_checkIns_dateRange_startDateField" %>
+      </div>
+      <div class= "projectShow_checkIns_dateRange_endDate">
+        <label class= "projectShow_checkIns_dateRange_endDate_label">終了日：</label>
+        <%= f.date_field :end_date, value: @date_range.last, class: "projectShow_checkIns_dateRange_endDateField" %>
+      </div>
+      <%= f.submit "表示", class: "projectShow_checkIns_dateRange_commit" %>
+    <% end %>
+  </div>
+
+  <div class= "projectShow_checkIns_table_box">
+    <div class= "projectShow_checkIns_table_navigation_box">
+      < <%= link_to "戻る", project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "link projectShow_checkIns_table_navigation_back" %> ||
+      <%= link_to "進む", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next" %> >
+    </div>
+    <table class= "projectShow_checkIns_table">
+      <thead class= "projectShow_checkIns_table_head">
+        <tr class= "projectShow_checkIns_table_row">
+          <th class= "projectShow_checkIns_table_header">日付</th>
           <% @habits.each do |habit| %>
-            <th><%= habit.name %></th>
+            <th class= "projectShow_checkIns_table_header"><%= habit.name %></th>
           <% end %>
         </tr>
       </thead>
-      <tbody>
-        <% @three_day_range.each do |date| %>
-          <tr>
-            <td>
+      <tbody class= "projectShow_checkIns_table_body">
+        <% date_range.each do |date| %>
+          <tr class= "projectShow_checkIns_table_row">
+            <td class= "projectShow_checkIns_table_data">
               <%= date.strftime("%m-%d") %>
             </td>
             <% @habits.each do |habit| %>
               <% check_in = @check_ins.find { |ci| ci.habit_id == habit.id && ci.date == date } %>
-              <td>
-                <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
-                  <%= f.check_box :status, checked: check_in&.status %>
+              <td class= "projectShow_checkIns_table_data">
+                <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "projectShow_checkIns_table_checkInForm", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
+                  <%= f.check_box :status, checked: check_in&.status, class: "projectShow_checkIns_table_checkbox" %>
                   <%= f.hidden_field :habit_id, value: habit.id %>
                   <%= f.hidden_field :date, value: date %>
                 <% end %>
@@ -77,61 +100,11 @@
         <% end %>
       </tbody>
     </table>
-  <% elsif params[:range] == "month" %>
-    <h2>１か月分の表示</h2>
-    <%= link_to "前後３日表示", project_path(@project, range: "three_days") %>
-    <table>
-      <thead>
-        <tr>
-          <th>日付</th>
-          <% @habits.each do |habit| %>
-            <th><%= habit.name %></th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <% @month_range.each do |date| %>
-          <tr>
-            <td>
-              <%= date.strftime("%m-%d") %>
-            </td>
-            <% @habits.each do |habit| %>
-              <% check_in = habit.check_ins.find_or_create_by(date: date, habit_id: habit.id) %>
-              <td>
-                <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
-                  <%= f.check_box :status, checked: check_in&.status %>
-                  <%= f.hidden_field :habit_id, value: habit.id %>
-                  <%= f.hidden_field :date, value: date %>
-                <% end %>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+  </div>
+  
+
 
 </div>
-
-
-
-
-
-
-<h1><%= @project.title %></h1>
-
-<%= @project.title %><br>
-<%= @project.description %><br>
-<%= @project.tags.first&.tag_name %><br>
-<%= @project.display %><br>
-達成率：<%= @project.overall_achievement_rate %>%
-<%= link_to(user_path(@project.owner, project: @project, tag: @tag)) do %>
-  <p>投稿者：<%= @project.owner.nickname %></p><br><br>
-<% end %>
-
-<%= link_to "プロジェクトを編集", edit_project_path(@project) %>
-<%= link_to "プロジェクトを削除", project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete} %>
-
 
 
 <h2>習慣内容</h2>
@@ -150,7 +123,7 @@
       <% start_date = habit.start_date || habit.created_at.to_date %>
       <% end_date = habit.end_date || Date.today %>
       <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days', tag: @tag) %>'" style= "cursor: pointer;">
-        <td>（<%= "#{index + 1}" %>）</td>
+        <td>（<%= index + 1 %>）</td>
         <td><%= habit.content %></td>
         <td><%= habit.frequency %></td>
         <td><%= habit.achievement_rate(start_date, end_date) %>%</td>
