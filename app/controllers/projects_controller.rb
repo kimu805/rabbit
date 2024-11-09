@@ -32,16 +32,14 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @habits = @project.habits
+    @habits = @project.habits.includes(:check_ins)
     @tag = @project.tags.find_by(params[:tag])
 
-    if params[:range] == "three_days"
-      @three_day_range = (Date.today - 3)..(Date.today + 3)
-      @check_ins = find_or_create_check_ins(@habits, @three_day_range)
-    elsif params[:range] == "month"
-      @month_range = Date.today.beginning_of_month..Date.today.end_of_month
-      @check_ins = find_or_create_check_ins(@habits, @month_range)
-    end
+    @end_date = params[:end_date].present? ? Date.parse(params[:end_date]) : Date.today
+    @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : [ @end_date - 3].min
+    @date_range = (@start_date..@end_date)
+
+    @check_ins = find_or_create_check_ins(@habits, @date_range)
   end
 
   def destroy
