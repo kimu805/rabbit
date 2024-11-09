@@ -35,12 +35,12 @@ class ProjectsController < ApplicationController
     @habits = @project.habits
     @tag = @project.tags.find_by(params[:tag])
 
-    if parmas[:range] == "three_days"
+    if params[:range] == "three_days"
       @three_day_range = (Date.today - 3)..(Date.today + 3)
-      @check_ins = CheckIn.where(habit_id: @habits.map(&:id), date: @three_day_range).index_by {|ci| [ci.habit_id, ci.date] }
+      @check_ins = find_or_create_check_ins(@habits, @three_day_range)
     elsif params[:range] == "month"
       @month_range = Date.today.beginning_of_month..Date.today.end_of_month
-      @check_ins = CheckIn.where(habit_id: @habits.map(&:id), date: @month_range).index_by {|ci| [ci.habit_id, ci.date] }
+      @check_ins = find_or_create_check_ins(@habits, @month_range)
     end
   end
 
@@ -63,5 +63,15 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def find_or_create_check_ins(habits, date_range)
+    existing_check_ins = CheckIn.where(habit_id: habits.map(&:id), date: date_range).index_by { |ci| [ci.habit_id, ci.date] }
+
+    date_range.flat_map do |date|
+      habits.map do |habit|
+        existing_check_ins[[habit.id, date]] || CheckIn.create(habit_id: habit.id, date: date)
+      end
+    end
   end
 end
