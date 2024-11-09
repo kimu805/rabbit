@@ -1,5 +1,5 @@
 .tagsIndex{
-
+  width: 100%;
 }
 .tagsIndex_heading1{
   margin: 10px 0;
@@ -11,32 +11,42 @@
   padding: 10px 0 ;
 }
 .tagsIndex_search_box{
-  
+  width: 100%;
 }
 .tagsIndex_search_form{
-  
+  display: flex;
 }
 .tagsIndex_search_searchField{
-
+  border-radius: 10px;
+  width: 60%;
 }
 .tagsIndex_search_commit{
-
+  padding: 5px;
+  margin-left: 10px;
 }
 .tagsIndex_tags{
-
+  margin-top: 10px;
 }
 .tagsIndex_tag{
-
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
 }
 .tagsIndex_tag_info_box{
-
+  display: flex;
+  justify-content: space-between;
 }
 .tagsIndex_tag_tagName{
-
+  font-size: 20px;
+  font-weight: bold;
 }
 .tagsIndex_tag_projectCount{
-
+  font-size: 14px;
+  color: gray;
+  font-weight: bold;
 }
 .tagsIndex_tag_projects{
-
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid gray;
 }
