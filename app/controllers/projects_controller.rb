@@ -33,11 +33,15 @@ class ProjectsController < ApplicationController
 
   def show
     @habits = @project.habits
-    # 今日を基準に前後３日分
-    @three_day_range = (Date.today - 3)..(Date.today + 3)
-    # 今月分
-    @month_range = Date.today.beginning_of_month..Date.today.end_of_month
     @tag = @project.tags.find_by(params[:tag])
+
+    if parmas[:range] == "three_days"
+      @three_day_range = (Date.today - 3)..(Date.today + 3)
+      @check_ins = CheckIn.where(habit_id: @habits.map(&:id), date: @three_day_range).index_by {|ci| [ci.habit_id, ci.date] }
+    elsif params[:range] == "month"
+      @month_range = Date.today.beginning_of_month..Date.today.end_of_month
+      @check_ins = CheckIn.where(habit_id: @habits.map(&:id), date: @month_range).index_by {|ci| [ci.habit_id, ci.date] }
+    end
   end
 
   def destroy
