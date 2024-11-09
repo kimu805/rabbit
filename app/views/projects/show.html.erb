@@ -20,18 +20,96 @@
   </div>
 
   <div class= "projectShow_projectInfo">
-    <div class= "projectShow_projectDescription">
+    <div class= "projectShow_projectDescription_box">
       <div class= "heading2">概要</div>
-      <div class= "projectShow_projectDescription_text">
+      <div class= "projectShow_projectDescription">
         <%= simple_format(h(@project.description), {}, sanitize: false, wrapper_tag: "div") %>
       </div>
     </div>
-    <div class= "projectShow_projectOwner">
-      <div class= "heading2">
+    <div class= "projectShow_projectOwner_box">
+      <div class= "heading2">作成者</div>
+      <%= link_to(user_path(@project.owner, project: @project, tag: @tag), class: "link", style: "color: black;") do %>
+        <div class= "projectShow_projectOwner">
+          <div class= "projectShow_projectOwner_text"><%= @project.owner.nickname %></div>
+          <div class= "projectShow_projectOwner_linkMessage">マイページはこちら➡</div>
+        </div>
+      <% end %>
     </div>
-    
+    <div class= "projectShow_projectManagement_box">
+      <%= link_to(edit_project_path(@project), class: "link", style: "color: black;") do %>
+        <div class= "projectShow_projectEdit">編集する</div>
+      <% end %>
+      <%= link_to(project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete}, class: "link", style: "color: black;") do %>
+        <div class= "projectShow_projectDelete">削除する</div>
+      <% end %>
+    </div>
   </div>
 
+  <% if params[:range] == "three_days" %>
+    <h2>前後３日分の表示</h2>
+    <%= link_to "１か月分表示", project_path(@project, range: "month") %>
+    <table>
+      <thead>
+        <tr>
+          <th>日付</th>
+          <% @habits.each do |habit| %>
+            <th><%= habit.name %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @three_day_range.each do |date| %>
+          <tr>
+            <td>
+              <%= date.strftime("%m-%d") %>
+            </td>
+            <% @habits.each do |habit| %>
+              <% check_in = habit.check_ins.find_or_create_by!(date: date) %>
+              <td>
+                <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
+                  <%= f.check_box :status, checked: check_in&.status %>
+                  <%= f.hidden_field :habit_id, value: habit.id %>
+                  <%= f.hidden_field :date, value: date %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% elsif params[:range] == "month" %>
+    <h2>１か月分の表示</h2>
+    <%= link_to "前後３日表示", project_path(@project, range: "three_days") %>
+    <table>
+      <thead>
+        <tr>
+          <th>日付</th>
+          <% @habits.each do |habit| %>
+            <th><%= habit.name %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @month_range.each do |date| %>
+          <tr>
+            <td>
+              <%= date.strftime("%m-%d") %>
+            </td>
+            <% @habits.each do |habit| %>
+              <% check_in = habit.check_ins.find_or_create_by(date: date, habit_id: habit.id) %>
+              <td>
+                <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
+                  <%= f.check_box :status, checked: check_in&.status %>
+                  <%= f.hidden_field :habit_id, value: habit.id %>
+                  <%= f.hidden_field :date, value: date %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 
 </div>
 
@@ -54,71 +132,7 @@
 <%= link_to "プロジェクトを編集", edit_project_path(@project) %>
 <%= link_to "プロジェクトを削除", project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete} %>
 
-<% if params[:range] == "three_days" %>
-  <h2>前後３日分の表示</h2>
-  <%= link_to "１か月分表示", project_path(@project, range: "month") %>
-  <table>
-    <thead>
-      <tr>
-        <th>日付</th>
-        <% @habits.each do |habit| %>
-          <th><%= habit.name %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% @three_day_range.each do |date| %>
-        <tr>
-          <td>
-            <%= date.strftime("%m-%d") %>
-          </td>
-          <% @habits.each do |habit| %>
-            <% check_in = habit.check_ins.find_or_create_by!(date: date) %>
-            <td>
-              <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
-                <%= f.check_box :status, checked: check_in&.status %>
-                <%= f.hidden_field :habit_id, value: habit.id %>
-                <%= f.hidden_field :date, value: date %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% elsif params[:range] == "month" %>
-  <h2>１か月分の表示</h2>
-  <%= link_to "前後３日表示", project_path(@project, range: "three_days") %>
-  <table>
-    <thead>
-      <tr>
-        <th>日付</th>
-        <% @habits.each do |habit| %>
-          <th><%= habit.name %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% @month_range.each do |date| %>
-        <tr>
-          <td>
-            <%= date.strftime("%m-%d") %>
-          </td>
-          <% @habits.each do |habit| %>
-            <% check_in = habit.check_ins.find_or_create_by(date: date, habit_id: habit.id) %>
-            <td>
-              <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
-                <%= f.check_box :status, checked: check_in&.status %>
-                <%= f.hidden_field :habit_id, value: habit.id %>
-                <%= f.hidden_field :date, value: date %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+
 
 <h2>習慣内容</h2>
 <%= link_to "習慣を作成する", new_project_habit_path(@project) %>
