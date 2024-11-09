@@ -1,25 +1,25 @@
 .tagsIndex{
   width: 100%;
 }
-.tagsIndex_heading1{
-  margin-bottom: 10px;
+.heading1{
+  margin: 10px 0;
   border-bottom: 1px solid #f3f3f3;
 }
-.tagsIndex_heading1_text{
+.heading1_text{
   font-size: 24px;
   font-weight: bold;
 }
-.tagsIndex_search_box{
+.search_box{
   width: 100%;
 }
-.tagsIndex_search_form{
+.search_form{
   display: flex;
 }
-.tagsIndex_search_searchField{
+.search_searchField{
   border-radius: 10px;
   width: 60%;
 }
-.tagsIndex_search_commit{
+.search_commit{
   padding: 5px;
   margin-left: 10px;
 }
