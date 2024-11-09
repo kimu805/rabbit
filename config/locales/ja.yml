@@ -19,4 +19,6 @@ ja:
       check_in:
         date: 日付
         status: 実行状況
-        
+  time:
+    formats:
+      default: "%Y/%m/%d"
