@@ -1,8 +1,8 @@
 <% breadcrumb :project, [@tag, @project] %>
 
 <div class= "projectShow">
-  <div class= "heading1_box projectShow_heading1_box">
-    <div class= "projectShow_heading1_left">
+  <div class= "heading1_box projectShow_heading_box">
+    <div class= "projectShow_heading_left">
       <div class= "heading1"><%= @project.title %></div>
       <div class= "projectShow_projectTags">
         <% @project.tags.each do |tag| %>
@@ -12,13 +12,12 @@
         <% end %>
       </div>
     </div>
-    <div class= "projectShow_heading1_right">
+    <div class= "projectShow_heading_right">
       <div class= "projectShow_overall_achievement">
         達成率：<span class= "projectShow_overall_achievement_rate"><%= @project.overall_achievement_rate %>%</span>
       </div>
     </div>
   </div>
-
   <div class= "projectShow_projectInfo">
     <div class= "projectShow_projectDescription_box">
       <div class= "heading2">概要</div>
@@ -81,7 +80,7 @@
         </tr>
       </thead>
       <tbody class= "projectShow_checkIns_table_body">
-        <% date_range.each do |date| %>
+        <% @date_range.each do |date| %>
           <tr class= "projectShow_checkIns_table_row">
             <td class= "projectShow_checkIns_table_data">
               <%= date.strftime("%m-%d") %>
@@ -102,33 +101,32 @@
     </table>
   </div>
   
-
-
+  <div class= "projectShow_habits">
+    <div class= "projectShow_habits_heading_box">
+      <div class= "heading2">習慣内容</div>
+      <%= link_to "習慣を作成", new_project_habit_path(@project), class: "link projectShow_habits_create_button" %>
+    </div>
+    <table class= "projectShow_habits_table">
+      <thead class= "projectShow_habits_table_head">
+        <tr class= "projectShow_habits_table_row">
+          <th class= "projectShow_habits_table_header">No</th>
+          <th class= "projectShow_habits_table_header">内容</th>
+          <th class= "projectShow_habits_table_header">頻度</th>
+          <th class= "projectShow_habits_table_header">達成率</th>
+        </tr>
+      </thead>
+      <tbody class= "projectShow_habits_table_body">
+        <% @habits.each_with_index do |habit, index| %>
+          <% start_date = habit.start_date || habit.created_at.to_date %>
+          <% end_date = habit.end_date || Date.today %>
+          <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days', tag: @tag) %>'" style= "cursor: pointer;" class= "projectShow_habits_table_row">
+            <td class= "projectShow_habits_table_data">（<%= index + 1 %>）</td>
+            <td class= "projectShow_habits_table_data"><%= habit.content %></td>
+            <td class= "projectShow_habits_table_data"><%= habit.frequency %></td>
+            <td class= "projectShow_habits_table_data"><%= habit.achievement_rate(start_date, end_date) %>%</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-
-<h2>習慣内容</h2>
-<%= link_to "習慣を作成する", new_project_habit_path(@project) %>
-<table>
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>内容</th>
-      <th>頻度</th>
-      <th>達成率</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @habits.each_with_index do |habit, index| %>
-      <% start_date = habit.start_date || habit.created_at.to_date %>
-      <% end_date = habit.end_date || Date.today %>
-      <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days', tag: @tag) %>'" style= "cursor: pointer;">
-        <td>（<%= index + 1 %>）</td>
-        <td><%= habit.content %></td>
-        <td><%= habit.frequency %></td>
-        <td><%= habit.achievement_rate(start_date, end_date) %>%</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
