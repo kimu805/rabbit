@@ -1,28 +1,6 @@
 .tagsIndex{
   width: 100%;
 }
-.heading1{
-  margin: 10px 0;
-  border-bottom: 1px solid #f3f3f3;
-}
-.heading1_text{
-  font-size: 24px;
-  font-weight: bold;
-}
-.search_box{
-  width: 100%;
-}
-.search_form{
-  display: flex;
-}
-.search_searchField{
-  border-radius: 10px;
-  width: 60%;
-}
-.search_commit{
-  padding: 5px;
-  margin-left: 10px;
-}
 .tagsIndex_tags{
   margin-top: 10px;
 }
