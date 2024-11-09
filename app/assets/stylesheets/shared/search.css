@@ -1,0 +1,14 @@
+.search_box{
+  width: 100%;
+}
+.search_form{
+  display: flex;
+}
+.search_searchField{
+  border-radius: 10px;
+  width: 60%;
+}
+.search_commit{
+  padding: 5px;
+  margin-left: 10px;
+}
