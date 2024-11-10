@@ -166,6 +166,9 @@
   background-color: #a0d8ef;
   color: black;
 }
+.projectShow_habits_create_button:hover{
+  background-color: #89c3eb;
+}
 .projectShow_habits_table{
   width: 100%;
   border-collapse: collapse;
@@ -189,4 +192,10 @@
 .projectShow_habits_table_data{
   padding: 8px;
   text-align: center;
+}
+@media screen and (max-width: 600px) {
+  /* 600px以下の画面幅に対するスタイル */
+  td, th {
+    font-size: 12px;
+  }
 }
