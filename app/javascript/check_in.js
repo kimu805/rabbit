@@ -1,5 +1,5 @@
 function check_in() {
-  const checkIns = document.querySelectorAll(".check_in")
+  const checkIns = document.querySelectorAll(".projectShow_checkIns_table_checkInForm")
 
   checkIns.forEach((checkIn) => {
     checkIn.addEventListener("change", (e) => {
