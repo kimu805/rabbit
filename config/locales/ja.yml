@@ -22,3 +22,13 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+  enums:
+    habit:
+      frequency:
+          daily: 毎日
+          every_2_days: 2日に1回
+          every_3_days: 3日に1回
+          every_4_days: 4日に1回
+          every_5_days: 5日に1回
+          every_6_days: 6日に1回
+          weekly: 週に1回
