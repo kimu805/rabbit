@@ -4,7 +4,7 @@
 .projectShow_heading_box{
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
+  padding: 15px 0 10px 0;
   border-bottom: 1px solid #c0c6c9;
 }
 .projectShow_heading_left{}
@@ -13,12 +13,17 @@
   display: flex;
 }
 .projectShow_projectTag{
-  padding: 2px;
+  font-size: 12px;
+  padding: 7px;
   background-color: #c0c6c9;
-  color: gray;
+  color: black;
   margin-right: 10px;
+  border-radius: 5px;
 }
-.projectShow_heading_right{}
+.projectShow_heading_right{
+  display: flex;
+  align-items: end;
+}
 .projectShow_overall_achievement{
   font-size: 12px;
 }
@@ -30,63 +35,132 @@
   margin: 10px 0;
 }
 .projectShow_projectDescription{
-  
+  margin-top: 15px;
 }
 .projectShow_project_info{
   display: flex;
   width: 100%;
+  height: 80px;
 }
 .projectShow_projectOwner_box{
   width: 50%;
-  padding: 10px;
+  padding: 10px 0;
 }
 .projectShow_projectOwner{
-  font-size: 12px;
+  line-height: 40px;
 }
 .projectShow_projectCreated_at_box{
   width: 50%;
   padding: 10px;
 }
 .projectShow_projectCreated_at{
-  font-size: 12px;
+  line-height: 40px;
 }
 .projectShow_projectManagement_box{
   display: flex;
 }
 .projectShow_projectEdit{
-  padding: 10px 5px;
+  padding: 10px;
   background-color: #a0d8ef;
   margin-right: 20px;
 }
+.projectShow_projectEdit:hover{
+  background-color: #89c3eb;
+}
 .projectShow_projectDelete{
-  padding: 10px 5px;
+  padding: 10px;
   background-color: #f5b1aa;
 }
-
-.projectShow_checkIns_dateRange{}
-.projectShow_checkIns_dateRange_form{}
-.projectShow_checkIns_dateRange_startDate{}
+.projectShow_projectDelete:hover{
+  background-color: #f2a0a1;
+}
+.projectShow_checkIns_dateRange{
+  width: 100%;
+  margin: 10px 0;
+  background-color: #f3f3f3;
+  padding: 15px;
+}
+.projectShow_checkIns_dateRange_form{
+  border-top: 1px solid #dcdddd;
+}
+.projectShow_checkIns_dateRange_startDate{
+  margin: 10px 0;
+  width: 100%;
+}
 .projectShow_checkIns_dateRange_startDateField_label{}
 .projectShow_checkIns_dateRange_startDateField{}
-.projectShow_checkIns_dateRange_endDate{}
+.projectShow_checkIns_dateRange_endDate{
+  width: 100%;
+}
 .projectShow_checkIns_dateRange_endDate_label{}
 .projectShow_checkIns_dateRange_endDateField{}
-.projectShow_checkIns_dateRange_commit{}
-.projectShow_checkIns_table_box{}
-.projectShow_checkIns_table_navigation_box{}
-.projectShow_checkIns_table_navigation_back{}
-.projectShow_checkIns_table_navigation_next{}
-.projectShow_checkIns_table{}
-.projectShow_checkIns_table_head{}
-.projectShow_checkIns_table_row{}
-.projectShow_checkIns_table_header{}
+.projectShow_checkIns_dateRange_commit{
+  margin-top: 10px;
+}
+.projectShow_checkIns_table_box{
+  background-color: #f9f9f9;
+}
+.projectShow_checkIns_table_navigation_box{
+  padding: 10px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.projectShow_checkIns_table_navigation_back,
+.projectShow_checkIns_table_navigation_next{
+  width: 50%;
+  text-align: center;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+.projectShow_checkIns_table_navigation_back:hover,
+.projectShow_checkIns_table_navigation_next:hover{
+  text-decoration: underline;
+}
+.projectShow_checkIns_table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.projectShow_checkIns_table_head{
+  background-color: #007bff;
+  color: #fff;
+}
+.projectShow_checkIns_table_row{
+  border-bottom: 1px solid #ddd;
+}
+.projectShow_checkIns_table_row:hover{
+  background-color: #f0f0f0;
+}
+.projectShow_checkIns_table_header{
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
 .projectShow_checkIns_table_body{}
-.projectShow_checkIns_table_data{}
-.projectShow_checkIns_table_checkInForm{}
-.projectShow_checkIns_table_checkbox{}
-.projectShow_habits{}
-.projectShow_habits_heading_box{}
-.projectShow_habits_create_button{}
+.projectShow_checkIns_table_data{
+  padding: 8px;
+  text-align: center;
+}
+.projectShow_checkIns_table_checkInForm{
+  display: inline-block;
+}
+.projectShow_checkIns_table_checkbox{
+  width: 18px;
+  height: 18px;
+}
+.projectShow_habits{
+  width: 100%;
+  margin: 10px 0;
+}
+.projectShow_habits_heading_box{
+  display: flex;
+  justify-content: space-between;
+}
+.projectShow_habits_create_button{
+  padding: 5px;
+  background-color: #a0d8ef;
+}
 .projectShow_habits_table{}
 .projectShow_habits_table_head{}
 .projectShow_habits_table_row{}
