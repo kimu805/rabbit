@@ -66,8 +66,8 @@
 
   <div class= "projectShow_checkIns_table_box">
     <div class= "projectShow_checkIns_table_navigation_box">
-      <%= link_to "戻る", project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "link projectShow_checkIns_table_navigation_back" %>|
-      <%= link_to "進む", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next" %>
+      <%= link_to "←戻る", project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "link projectShow_checkIns_table_navigation_back" %>|
+      <%= link_to "進む→", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next" %>
     </div>
     <table class= "projectShow_checkIns_table">
       <thead class= "projectShow_checkIns_table_head">
@@ -107,8 +107,8 @@
     </div>
     <table class= "projectShow_habits_table">
       <thead class= "projectShow_habits_table_head">
-        <tr class= "projectShow_habits_table_row">
-          <th class= "projectShow_habits_table_header">No</th>
+        <tr class= "#">
+          <th class= "projectShow_habits_table_header">習慣名</th>
           <th class= "projectShow_habits_table_header">内容</th>
           <th class= "projectShow_habits_table_header">頻度</th>
           <th class= "projectShow_habits_table_header">達成率</th>
@@ -119,9 +119,9 @@
           <% start_date = habit.start_date || habit.created_at.to_date %>
           <% end_date = habit.end_date || Date.today %>
           <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days', tag: @tag) %>'" style= "cursor: pointer;" class= "projectShow_habits_table_row">
-            <td class= "projectShow_habits_table_data">（<%= index + 1 %>）</td>
-            <td class= "projectShow_habits_table_data"><%= habit.content %></td>
-            <td class= "projectShow_habits_table_data"><%= habit.frequency %></td>
+            <td class= "projectShow_habits_table_data"><%= habit.name %></td>
+            <td class= "projectShow_habits_table_data"><%= simple_format(h(habit.content), {}, sanitize: false, wrapper_tag: "div") %></td>
+            <td class= "projectShow_habits_table_data"><%= I18n.t("enums.habit.frequency.#{ habit.frequency }") %></td>
             <td class= "projectShow_habits_table_data"><%= habit.achievement_rate(start_date, end_date) %>%</td>
           </tr>
         <% end %>
