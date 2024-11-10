@@ -1,7 +1,7 @@
 <% breadcrumb :project, [@tag, @project] %>
 
 <div class= "projectShow">
-  <div class= "heading1_box projectShow_heading_box">
+  <div class= "projectShow_heading_box">
     <div class= "projectShow_heading_left">
       <div class= "heading1"><%= @project.title %></div>
       <div class= "projectShow_projectTags">
@@ -18,36 +18,35 @@
       </div>
     </div>
   </div>
-  <div class= "projectShow_projectInfo">
-    <div class= "projectShow_projectDescription_box">
-      <div class= "heading2">概要</div>
-      <div class= "projectShow_projectDescription">
-        <%= simple_format(h(@project.description), {}, sanitize: false, wrapper_tag: "div") %>
-      </div>
+  <div class= "projectShow_projectDescription_box">
+    <div class= "heading2">概要</div>
+    <div class= "projectShow_projectDescription">
+      <%= simple_format(h(@project.description), {}, sanitize: false, wrapper_tag: "div") %>
     </div>
-    <div class= "projectShow_project_info">
-      <div class= "projectShow_projectOwner_box">
-        <div class= "heading2">作成者</div>
-        <%= link_to(user_path(@project.owner, project: @project, tag: @tag), class: "link", style: "color: black;") do %>
-          <div class= "projectShow_projectOwner">
-            <div class= "projectShow_projectOwner_text"><%= @project.owner.nickname %></div>
-            <div class= "projectShow_projectOwner_linkMessage">マイページはこちら➡</div>
-          </div>
-        <% end %>
-      </div>
-      <div class= "projectShow_projectCreated_at_box">
-        <div class= "heading2">作成日</div>
+  </div>
+  <div class= "projectShow_project_info">
+    <div class= "projectShow_projectOwner_box">
+      <div class= "heading2">作成者</div>
+      <%= link_to(user_path(@project.owner, project: @project, tag: @tag), class: "link", style: "color: black;") do %>
+        <div class= "projectShow_projectOwner">
+          <%= @project.owner.nickname %>
+        </div>
+      <% end %>
+    </div>
+    <div class= "projectShow_projectCreated_at_box">
+      <div class= "heading2">作成日</div>
+      <div class= "projectShow_projectCreated_at">
         <%= l @project.created_at %>
       </div>
     </div>
-    <div class= "projectShow_projectManagement_box">
-      <%= link_to(edit_project_path(@project), class: "link", style: "color: black;") do %>
-        <div class= "projectShow_projectEdit">編集する</div>
-      <% end %>
-      <%= link_to(project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete}, class: "link", style: "color: black;") do %>
-        <div class= "projectShow_projectDelete">削除する</div>
-      <% end %>
-    </div>
+  </div>
+  <div class= "projectShow_projectManagement_box">
+    <%= link_to(edit_project_path(@project), class: "link", style: "color: black;") do %>
+      <div class= "projectShow_projectEdit">編集する</div>
+    <% end %>
+    <%= link_to(project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete}, class: "link", style: "color: black;") do %>
+      <div class= "projectShow_projectDelete">削除する</div>
+    <% end %>
   </div>
 
   <div class= "projectShow_checkIns_dateRange">
@@ -67,8 +66,8 @@
 
   <div class= "projectShow_checkIns_table_box">
     <div class= "projectShow_checkIns_table_navigation_box">
-      < <%= link_to "戻る", project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "projectShow_checkIns_table_navigation_back" %> ||
-      <%= link_to "進む", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "projectShow_checkIns_table_navigation_next" %> >
+      < <%= link_to "戻る", project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "link projectShow_checkIns_table_navigation_back" %> ||
+      <%= link_to "進む", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next" %> >
     </div>
     <table class= "projectShow_checkIns_table">
       <thead class= "projectShow_checkIns_table_head">
@@ -104,7 +103,7 @@
   <div class= "projectShow_habits">
     <div class= "projectShow_habits_heading_box">
       <div class= "heading2">習慣内容</div>
-      <%= link_to "習慣を作成", new_project_habit_path(@project), class: "projectShow_habits_create_button" %>
+      <%= link_to "習慣を作成", new_project_habit_path(@project), class: "link projectShow_habits_create_button" %>
     </div>
     <table class= "projectShow_habits_table">
       <thead class= "projectShow_habits_table_head">
