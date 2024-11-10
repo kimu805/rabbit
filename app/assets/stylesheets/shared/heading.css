@@ -6,5 +6,10 @@
   font-size: 24px;
   font-weight: bold;
 }
-.heading2{}
+.heading2{
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #c0c6c9;
+}
 .heading3{}
