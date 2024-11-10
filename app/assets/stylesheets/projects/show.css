@@ -61,6 +61,7 @@
 }
 .projectShow_projectEdit{
   padding: 10px;
+  border-radius: 3px;
   background-color: #a0d8ef;
   margin-right: 20px;
 }
@@ -69,6 +70,7 @@
 }
 .projectShow_projectDelete{
   padding: 10px;
+  border-radius: 3px;
   background-color: #f5b1aa;
 }
 .projectShow_projectDelete:hover{
@@ -96,6 +98,7 @@
 .projectShow_checkIns_dateRange_endDateField{}
 .projectShow_checkIns_dateRange_commit{
   margin-top: 10px;
+  padding: 0 20px;
 }
 .projectShow_checkIns_table_box{
   background-color: #f9f9f9;
@@ -111,7 +114,7 @@
   width: 50%;
   text-align: center;
   font-size: 14px;
-  color: #007bff;
+  color: black;
   text-decoration: none;
 }
 .projectShow_checkIns_table_navigation_back:hover,
@@ -123,7 +126,7 @@
   border-collapse: collapse;
 }
 .projectShow_checkIns_table_head{
-  background-color: #007bff;
+  background-color: #727171;
   color: #fff;
 }
 .projectShow_checkIns_table_row{
@@ -151,19 +154,39 @@
 }
 .projectShow_habits{
   width: 100%;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .projectShow_habits_heading_box{
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
 }
 .projectShow_habits_create_button{
-  padding: 5px;
+  padding: 10px;
   background-color: #a0d8ef;
+  color: black;
 }
-.projectShow_habits_table{}
-.projectShow_habits_table_head{}
-.projectShow_habits_table_row{}
-.projectShow_habits_table_header{}
+.projectShow_habits_table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.projectShow_habits_table_head{
+  background-color: #727171;
+  color: #fff;
+}
+.projectShow_habits_table_row{
+  border-bottom: 1px solid #ddd;
+}
+.projectShow_habits_table_row:hover{
+  background-color: #f0f0f0;
+}
+.projectShow_habits_table_header{
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
 .projectShow_habits_table_body{}
-.projectShow_habits_table_data{}
+.projectShow_habits_table_data{
+  padding: 8px;
+  text-align: center;
+}
