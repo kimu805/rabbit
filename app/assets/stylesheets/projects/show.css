@@ -128,6 +128,7 @@
 .projectShow_checkIns_table_head{
   background-color: #727171;
   color: #fff;
+  min-width: 60px;
 }
 .projectShow_checkIns_table_row{
   border-bottom: 1px solid #ddd;
@@ -142,6 +143,7 @@
 }
 /* .projectShow_checkIns_table_body{} */
 .projectShow_checkIns_table_data{
+  min-width: 60px;
   padding: 8px;
   text-align: center;
 }
