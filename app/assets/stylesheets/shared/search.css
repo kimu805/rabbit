@@ -5,6 +5,7 @@
   display: flex;
 }
 .search_searchField{
+  padding: 10px 15px;
   border-radius: 10px;
   width: 60%;
 }
