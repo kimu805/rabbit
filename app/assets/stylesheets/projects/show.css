@@ -7,7 +7,7 @@
   padding: 15px 0 10px 0;
   border-bottom: 1px solid #c0c6c9;
 }
-.projectShow_heading_left{}
+/* .projectShow_heading_left{} */
 .projectShow_projectTags{
   margin-top: 10px;
   display: flex;
@@ -89,13 +89,13 @@
   margin: 10px 0;
   width: 100%;
 }
-.projectShow_checkIns_dateRange_startDateField_label{}
-.projectShow_checkIns_dateRange_startDateField{}
+/* .projectShow_checkIns_dateRange_startDateField_label{}
+.projectShow_checkIns_dateRange_startDateField{} */
 .projectShow_checkIns_dateRange_endDate{
   width: 100%;
 }
-.projectShow_checkIns_dateRange_endDate_label{}
-.projectShow_checkIns_dateRange_endDateField{}
+/* .projectShow_checkIns_dateRange_endDate_label{}
+.projectShow_checkIns_dateRange_endDateField{} */
 .projectShow_checkIns_dateRange_commit{
   margin-top: 10px;
   padding: 0 20px;
@@ -140,7 +140,7 @@
   text-align: center;
   font-weight: bold;
 }
-.projectShow_checkIns_table_body{}
+/* .projectShow_checkIns_table_body{} */
 .projectShow_checkIns_table_data{
   padding: 8px;
   text-align: center;
@@ -188,7 +188,7 @@
   text-align: center;
   font-weight: bold;
 }
-.projectShow_habits_table_body{}
+/* .projectShow_habits_table_body{} */
 .projectShow_habits_table_data{
   padding: 8px;
   text-align: center;
