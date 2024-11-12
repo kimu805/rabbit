@@ -1,15 +1,49 @@
 <% breadcrumb :habit, [@tag, @project, @habit] %>
-<h1><%= @habit.name %></h1>
 
-<%= @habit.content %>
-<%= @habit.frequency %>
-<%= @habit.start_date || @habit.created_at %>
-<%= @habit.end_date %>
+<div class= "habitShow">
+  <div class= "habitShow_info_box">
+    <div class= "habitShow_heading_box">
+      <div class= "heading1"><%= @habit.name %></div>
+      <div class= "habitShow_owner">作成者：<%= @project.owner.nickname %></div>
+    </div>
+    <div class= "habitShow_content_box">
+      <div class= "heading2">内容</div>
+      <div class= "habitShow_content">
+        <%= @habit.content %>
+      </div>
+    </div>
+    <div class= "habitShow_time_box">
+      <div class= "habitShow_frequency_box">
+        <div class= "heading2">頻度</div>
+        <div class= "habitShow_frequency">
+          <%= I18n.t("enums.habit.frequency.#{ @habit.frequency }") %>
+        </div>
+      </div>
+      <div class= "habitShow_date_range_box">
+        <div class= "heading2">実施期間</div>
+        <div class= "habitShow_date_range">
+          <% if @habit.start_date && @habit.end_date %>
+            <%= l @habit.start_date %> ~ <%= l @habit.end_date %>  （<%= (@habit.end_date - @habit.start_date) + 1 %>日間
+          <% elsif @habit.start_date %>
+            <%= l @habit.start_date %> ~
+          <% elsif @habit.end_date %>
+            <%= l @habit.created_at %> ~ <%= @habit.end_date %>  （<%= (@habit.end_date - @habit.start_date) + 1 %>日間
+          <% else %>
+            未定
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <%= link_to "編集する", edit_project_habit_path(project_id: @project.id, id: @habit.id) %>
-  <%= link_to "削除する", project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "#{@habit.name}を削除します", turbo_method: :delete} %>
-</div>
+  <div class= "habitShow_habitManagement_box">
+    <%= link_to(edit_project_habit_path(project_id: @project.id, id: @habit.id), class: "link", style: "color: black;") do %>
+      <div class= "habitShow_habitEdit">編集する</div>
+    <% end %>
+    <%= link_to(project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "#{@habit.name}を削除します", turbo_method: :delete}, class: "link", style: "color: black;") do %>
+      <div class= "habitShow_habitDelete">削除する</div>
+    <% end %>
+  </div>
 
   <div class= "projectShow_checkIns_dateRange">
     <div class= "heading3">日付の表示範囲を選択</div>
@@ -57,3 +91,7 @@
       </tbody>
     </table>
   </div>
+
+</div>
+
+
