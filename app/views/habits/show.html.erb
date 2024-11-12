@@ -9,7 +9,7 @@
     <div class= "habitShow_content_box">
       <div class= "heading2">内容</div>
       <div class= "habitShow_content">
-        <%= @habit.content %>
+        <%= simple_format(h(@habit.content), {}, sanitize: false, wrapper_tag: "div") %>
       </div>
     </div>
     <div class= "habitShow_time_box">
@@ -23,11 +23,11 @@
         <div class= "heading2">実施期間</div>
         <div class= "habitShow_date_range">
           <% if @habit.start_date && @habit.end_date %>
-            <%= l @habit.start_date %> ~ <%= l @habit.end_date %>  （<%= (@habit.end_date - @habit.start_date) + 1 %>日間
+            <%= l @habit.start_date %> ~ <%= l @habit.end_date %>  （<%= (@habit.end_date - @habit.start_date).to_i + 1 %>日間）
           <% elsif @habit.start_date %>
             <%= l @habit.start_date %> ~
           <% elsif @habit.end_date %>
-            <%= l @habit.created_at %> ~ <%= @habit.end_date %>  （<%= (@habit.end_date - @habit.start_date) + 1 %>日間
+            <%= l @habit.created_at %> ~ <%= @habit.end_date %>  （<%= (@habit.end_date - @habit.start_date).to_i + 1 %>日間）
           <% else %>
             未定
           <% end %>
@@ -38,10 +38,10 @@
 
   <div class= "habitShow_habitManagement_box">
     <%= link_to(edit_project_habit_path(project_id: @project.id, id: @habit.id), class: "link", style: "color: black;") do %>
-      <div class= "habitShow_habitEdit">編集する</div>
+      <div class= "edit_btn">編集する</div>
     <% end %>
     <%= link_to(project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "#{@habit.name}を削除します", turbo_method: :delete}, class: "link", style: "color: black;") do %>
-      <div class= "habitShow_habitDelete">削除する</div>
+      <div class= "delete_btn">削除する</div>
     <% end %>
   </div>
 
