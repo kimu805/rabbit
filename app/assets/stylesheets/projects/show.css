@@ -118,6 +118,11 @@
 .projectShow_checkIns_table_navigation_next:hover{
   text-decoration: underline;
 }
+.projectShow_checkIns_table_box{
+  background-color: #f9f9f9;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
 .projectShow_checkIns_table{
   width: 100%;
   border-collapse: collapse;
