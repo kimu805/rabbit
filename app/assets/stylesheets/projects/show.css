@@ -181,6 +181,7 @@
 .projectShow_habits_table{
   width: 100%;
   border-collapse: collapse;
+  scroll-snap-align: start;
 }
 .projectShow_habits_table_head{
   background-color: #727171;
