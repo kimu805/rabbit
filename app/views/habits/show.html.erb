@@ -11,57 +11,31 @@
   <%= link_to "削除する", project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "#{@habit.name}を削除します", turbo_method: :delete} %>
 </div>
 
-<% if params[:range] == "three_days" %>
-  <h2>前後３日の表示</h2>
-  <%= link_to "全部表示", project_habit_path(project_id: @project.id, id: @habit.id, range: "all") %>
-  <table>
-    <thead>
-      <tr>
-        <th>日付</th>
-        <th><%= @habit.name %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @three_day_range.each do |date| %>
-        <tr>
-          <td>
-            <%= date.strftime("%m-%d") %>
-          </td>
-          <% check_in = @habit.check_ins.find_or_create_by(date: date, habit_id: @habit.id) %>
-          <td>
-            <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: @habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: @habit.id, id: check_in.id} do |f| %>
-              <%= f.check_box :status, checked: check_in&.status %>
-              <%= f.hidden_field :habit_id, value: @habit.id %>
-              <%= f.hidden_field :date, value: date %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% elsif params[:range] == "all" %>
-  <h2>全表示</h2>
-  <%= link_to "前後３日表示", project_habit_path(project_id: @project.id, id: @habit.id, range: "three_days") %>
-  <table>
-    <thead>
-      <tr>
-        <th>日付</th>
-        <th><%= @habit.name %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @habit.check_ins.each do |check_in| %>
-        <tr>
-          <td>
-            <%= check_in.date.strftime("%m-%d") %>
-          </td>
-          <td>
-            <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: @habit.id, id: check_in.id), method: :patch, class: "check_in", data: {project_id: @project.id, habit_id: @habit.id, id: check_in.id} do |f| %>
-              <%= f.check_box :status, checked: check_in&.status %>
-              <%= f.hidden_field :habit_id, value: @habit.id %>
-              <%= f.hidden_field :date, value: check_in.date %>
-            <% end %>
-          </td>
+  <div class= "projectShow_checkIns_dateRange">
+    <div class= "heading3">日付の表示範囲を選択</div>
+    <%= form_with url: project_habit_path(project_id: @project.id, id: @habit.id, tag: @tag), method: :get, local: true, class: "projectShow_checkIns_dateRange_form" do |f| %>
+      <div class= "projectShow_checkIns_dateRange_startDate">
+        <label class= "projectShow_checkIns_dateRange_startDateField_label">開始日：</label>
+        <%= f.date_field :start_date, value: @date_range.first, class: "projectShow_checkIns_dateRange_startDateField" %>
+      </div>
+      <div class= "projectShow_checkIns_dateRange_endDate">
+        <label class= "projectShow_checkIns_dateRange_endDate_label">終了日：</label>
+        <%= f.date_field :end_date, value: @date_range.last, class: "projectShow_checkIns_dateRange_endDateField" %>
+      </div>
+      <%= f.submit "表示", class: "projectShow_checkIns_dateRange_commit" %>
+    <% end %>
+  </div>
+
+  <div class= "projectShow_checkIns_table_navigation_box">
+    <%= link_to "←戻る", project_habit_path(project_id: @project.id, id: @habit.id, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "link projectShow_checkIns_table_navigation_back" %>|
+    <%= link_to "進む→", project_habit_path(project_id: @project.id, id: @habit.id, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next" %>
+  </div>
+  <div class= "projectShow_checkIns_table_box">
+    <table class= "projectShow_checkIns_table">
+      <thead class= "projectShow_checkIns_table_head">
+        <tr class= "#">
+          <th class= "projectShow_checkIns_table_header">日付</th>
+          <th class= "projectShow_checkIns_table_header"><%= @habit.name %></th>
         </tr>
       <% end %>
     </tbody>
