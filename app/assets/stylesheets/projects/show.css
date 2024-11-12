@@ -126,6 +126,7 @@
 .projectShow_checkIns_table{
   width: 100%;
   border-collapse: collapse;
+  scroll-snap-align: start;
 }
 .projectShow_checkIns_table_head{
   background-color: #727171;
