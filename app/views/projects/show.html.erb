@@ -69,10 +69,6 @@
     <%= link_to "進む→", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next" %>
   </div>
   <div class= "projectShow_checkIns_table_box">
-    <div class= "projectShow_checkIns_table_navigation_box">
-      <%= link_to "←戻る", project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "link projectShow_checkIns_table_navigation_back" %>|
-      <%= link_to "進む→", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next" %>
-    </div>
     <table class= "projectShow_checkIns_table">
       <thead class= "projectShow_checkIns_table_head">
         <tr class= "#">
