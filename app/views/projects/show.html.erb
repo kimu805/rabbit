@@ -114,8 +114,20 @@
             <th class= "projectShow_habits_table_header">頻度</th>
             <th class= "projectShow_habits_table_header">達成率</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody class= "projectShow_habits_table_body">
+          <% @habits.each_with_index do |habit, index| %>
+            <% start_date = habit.start_date || habit.created_at.to_date %>
+            <% end_date = habit.end_date || Date.today %>
+            <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days', tag: @tag) %>'" style= "cursor: pointer;" class= "projectShow_habits_table_row">
+              <td class= "projectShow_habits_table_data"><%= habit.name %></td>
+              <td class= "projectShow_habits_table_data"><%= simple_format(h(habit.content), {}, sanitize: false, wrapper_tag: "div") %></td>
+              <td class= "projectShow_habits_table_data"><%= I18n.t("enums.habit.frequency.#{ habit.frequency }") %></td>
+              <td class= "projectShow_habits_table_data"><%= habit.achievement_rate(start_date, end_date) %>%</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
