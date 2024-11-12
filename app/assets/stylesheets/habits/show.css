@@ -1,0 +1,42 @@
+.habitShow{}
+.habitShow_info_box{
+  margin: 15px 0;
+}
+.habitShow_heading_box{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #c0c6c9;
+}
+.habitShow_owner{
+  font-size: 18px;
+  color: gray;
+}
+.habitShow_content_box{
+  margin: 10px 0;
+}
+.habitShow_content{
+  margin-top: 15px;
+}
+.habitShow_time_box{
+  width: 100%;
+  display: flex;
+}
+.habitShow_frequency_box{
+  width: 50%;
+  padding: 10px 0;
+}
+.habitShow_frequency{
+  margin-top: 15px;
+}
+.habitShow_date_range_box{
+  width: 50%;
+  padding: 10px;
+}
+.habitShow_date_range{
+  margin-top: 15px;
+}
+.habitShow_habitManagement_box{
+  display: flex;
+}
+
