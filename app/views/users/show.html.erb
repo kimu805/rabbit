@@ -2,25 +2,29 @@
   <% breadcrumb :user, [@tag, @project, @user] %>
 <% end %>
 
-<div class="userShow">
+<div class= "userShow">
   <div class= "userShow_heading_container">
     <div class= "userShow_userNickname_box">
       <div class= "heading1"><%= @user.nickname %></div>
       <div class= "userShow_userEmail"><%= @user.email %></div>
     </div>
     <div class= "userShow_follow_container">
-      <div class= "userShow_follower_box">
-        <div class= "userShow_follower_heading">フォロワー</div>
-        <div class= "userShow_follower_count">
-          <%= @user.active_relationships.count %>
+      <%= link_to(follow_list_user_path(@user, target: "follower")) do %>
+        <div class= "userShow_follower_box">
+          <div class= "userShow_follower_heading">フォロワー</div>
+          <div class= "userShow_follower_count">
+            <%= @user.active_relationships.count %>
+          </div>
         </div>
-      </div>
-      <div class= "userShow_following_box">
-        <div class= "userShow_following_heading">フォロー中</div>
-        <div class= "userShow_following_count">
-          <%= @user.passive_relationships.count %>
+      <% end %>
+      <%= link_to(follow_list_user_path(@user, target: "following")) do %>
+        <div class= "userShow_following_box">
+          <div class= "userShow_following_heading">フォロー中</div>
+          <div class= "userShow_following_count">
+            <%= @user.passive_relationships.count %>
+            </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 
@@ -63,13 +67,3 @@
     </div>
   </div>
 </div>
-
-
-
-<h1><%= @user.nickname %>のプロジェクト</h1>
-
-<% @projects.each do |project| %>
-  <%= project.title %>
-  <%= project.description %>
-  <%= project.display %>
-<% end %> 
