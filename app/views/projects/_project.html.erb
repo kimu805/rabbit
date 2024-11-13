@@ -2,7 +2,7 @@
   <div class= "project_header_container">
     <div class= "project_user_box">
       <div class= "project_userNickname"><%= project.owner.nickname %></div>
-      <% if current_user && current_user != project.owner %>
+      <% if current_user && current_user != project.owner && request.path != user_path(project.owner)  %>
         <div class= "project_userFollow">
           <% if project.owner.followed_by?(current_user) %>
             <%= link_to(user_relationships_path(user_id: project.owner.id), data: {turbo_confirm: "「#{project.owner.nickname}」へのフォローを解除します。よろしいですか？", turbo_method: :delete }, class: "link", style: "color: black;") do %>
@@ -43,7 +43,7 @@
         </div>
       </div>
       <% if project.none_display? %>
-        <div class= "project_noneDisplay">このプロジェクトは非公開のプロジェクトです</div>
+        <div class= "project_noneDisplay">非公開</div>
       <% end %>
     </div>
   <% end %>
