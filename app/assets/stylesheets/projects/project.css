@@ -1,38 +1,17 @@
 .project{
   width: 100%;
-  margin: 5px 0;
-  padding: 5px 0;
-  border-bottom: 1px solid gray;
-  display: flex;
-  justify-content: space-between;
-}
-/* .project_left_box{
   
-} */
-.project_title{
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
 }
-.project_reaction_box{
-  display: flex;
-  gap: 10px;
-}
-/* .project_like{}
-.project_read{} */
-.project_right_box{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.project_created_at{
-  font-size: 12px;
-  color: gray;
-  font-weight: bold;
-  text-align: right;
-}
-.project_owner{
-  font-size: 14px;
-  color: gray;
-  font-weight: bold;
-}
+.project_header_container{}
+.project_user_box{}
+.project_userNickname{}
+.project_userFollow{}
+.project_userFollow_btn{}
+.project_created_at{}
+.project_title{}
+.project_tags_box{}
+.project_tag{}
+.project_reaction_container{}
+.project_comment{}
+.project_like{}
+.project_read{}
