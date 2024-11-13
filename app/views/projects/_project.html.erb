@@ -1,23 +1,43 @@
 <div class= "project">
-  <div class= "project_left_box">
-    <div class= "project_title">
-      <%= project.title %>
+  <div class= "project_header_container">
+    <div class= "project_user_box">
+      <div class= "project_userNickname"><%= project.owner.nickname %></div>
+      <% if current_user != project.owner %>
+        <div class= "project_userFollow">
+          <% if project.owner.followed_by(current_user) %>
+            <%= link_to(user_relationships_path(user_id: project.owner.id), data: {turbo_confirm: "「#{project.owner.nickname}」へのフォローを解除します。よろしいですか？", turbo_method: :delete }, class: "link", style: "color: black;") do %>
+              <div class= "project_userFollow_btn">フォロー解除</div>
+            <% end %>
+          <% else %>
+            <%= link_to(user_relationships_path(user_id: project.owner.id), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
+              <div class= "project_userFollow_btn">フォローする</div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
-    <div class= "project_reaction_box">
-      <div class= "project_like">
-        ☆：０
-      </div>
-      <div class= "project_read">
-        👁：０
-      </div>
-    </div>
+    <div class= "project_created_at"><%= l project.created_at %></div>
   </div>
-  <div class= "project_right_box">
-    <div class= "project_created_at">
-      <%= l project.created_at %>
+
+  <div class= "project_title"><%= project.title %></div>
+
+  <div class= "project_tags_box">
+    <% project.tags.each do |tag| %>
+      <div class= "project_tag">
+        <%= tag.tag_name %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class= "project_reaction_container">
+    <div class= "project_comment">
+      💬：15
     </div>
-    <div class= "project_owner">
-      作成者：<%= project.owner.nickname %>
+    <div class= "project_like">
+      💖：500
+    </div>
+    <div class= "project_read">
+      5回表示
     </div>
   </div>
 </div>
