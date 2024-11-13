@@ -53,6 +53,15 @@
       <% end %>
     </div>
   <% end %>
+
+  <div class= "userShow_userProjects_container">
+    <div class= "userShow_userProjects_heading">プロジェクト</div>
+    <div class= "userShow_userProjects_box">
+      <% @projects.each do |project| %>
+        <%= render "projects/project", { project: project } %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
