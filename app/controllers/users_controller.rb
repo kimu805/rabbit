@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       @project = @user.projects.find(params[:project])
       @tag = @project.tags.find(params[:tag]) 
     end
+    @projects = @user.projects
   end
 
   def destroy
