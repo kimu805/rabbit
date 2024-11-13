@@ -27,9 +27,7 @@
         <% end %>
         <div class= "tagsIndex_tag_projects">
           <% tag.projects.limit(3).each do |project| %>
-            <%= link_to(project_path(project, tag: tag), class: "link", style: "color: black;") do %>
-              <%= render "projects/project", { project: project } %>
-            <% end %>
+              <%= render "projects/project", { project: project, tag: tag } %>
           <% end %>
         </div>
         <%= link_to(tag_path(tag), class: "link", style: "color: black; ") do %>
