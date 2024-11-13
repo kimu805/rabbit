@@ -10,25 +10,28 @@
 }
 .project_user_box{
   display: flex;
+  align-items: center;
 }
 .project_userNickname{
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   margin-right: 10px;
 }
 .project_userFollow{}
 .project_userFollowed_btn{
-  padding: 2px;
+  padding: 5px;
   background-color: #f5b1aa;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 12px;
 }
 .project_userFollowed_btn:hover{
   background-color: #f2a0a1;
 }
 .project_userFollowing_btn{
-  padding: 2px;
+  padding: 5px;
   background-color: #a0d8ef;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 12px;
 }
 .project_userFollowing_btn:hover{
   background-color: #89c3eb;
@@ -53,18 +56,30 @@
   margin-right: 10px;
   border-radius: 5px;
 }
-.project_reaction_container{
+.project_footer_container{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.project_reaction_box{
   display: flex;
 }
 .project_comment{
-  margin-right: 10px;
+  margin-right: 15px;
   font-size: 12px;
 }
 .project_like{
-  margin-right: 10px;
+  margin-right: 15px;
   font-size: 12px;
 }
 .project_read{
-  margin-right: 10px;
+  margin-right: 15px;
   font-size: 12px;
+}
+.project_noneDisplay{
+  background-color: gray;
+  color: white;
+  font-size: 12px;
+  border-radius: 8px;
+  padding: 5px;
 }
