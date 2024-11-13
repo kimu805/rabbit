@@ -14,9 +14,7 @@
 
   <div class= "tagsShow_projects">
     <% @projects.each do |project| %>
-      <%= link_to(project_path(project, range: "three_days", tag: @tag), class: "link", style: "color: black;" ) do %>
-        <%= render "projects/project", { project: project } %>
-      <% end %>
+      <%= render "projects/project", { project: project } %>
     <% end %>
   </div>
 </div>
