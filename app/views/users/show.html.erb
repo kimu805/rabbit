@@ -4,25 +4,40 @@
 
 <div class= "userShow">
   <div class= "userShow_heading_container">
-    <div class= "userShow_userNickname_box">
-      <div class= "heading1"><%= @user.nickname %></div>
-      <div class= "userShow_userEmail"><%= @user.email %></div>
+    <div class= "userShow_user_info_box">
+      <div class= "userShow_user_box">
+        <div class= "heading1"><%= @user.nickname %></div>
+        <div class= "userShow_userEmail"><%= @user.email %></div>
+      </div>
+      <% if current_user && current_user != @user %>
+        <div class= "userShow_userFollow">
+          <% if @user.followed_by?(current_user) %>
+            <%= link_to(user_relationships_path(user_id: @user.id), data: {turbo_confirm: "「#{@user.nickname}」へのフォローを解除します。よろしいですか？", turbo_method: :delete }, class: "link", style: "color: black;") do %>
+              <div class= "project_userFollowed_btn">フォローを解除する</div>
+            <% end %>
+          <% else %>
+            <%= link_to(user_relationships_path(user_id: @user.id), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
+              <div class= "project_userFollowing_btn">フォローする</div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class= "userShow_follow_container">
       <%= link_to(follow_list_user_path(@user, target: "follower")) do %>
         <div class= "userShow_follower_box">
-          <div class= "userShow_follower_heading">フォロワー</div>
-          <div class= "userShow_follower_count">
-            <%= @user.active_relationships.count %>
+          <div class= "userShow_follow_heading">フォロワー</div>
+          <div class= "userShow_follow_count">
+            <%= @user.passive_relationships.count %>
           </div>
         </div>
       <% end %>
       <%= link_to(follow_list_user_path(@user, target: "following")) do %>
         <div class= "userShow_following_box">
-          <div class= "userShow_following_heading">フォロー中</div>
-          <div class= "userShow_following_count">
-            <%= @user.passive_relationships.count %>
-            </div>
+          <div class= "userShow_follow_heading">フォロー中</div>
+          <div class= "userShow_follow_count">
+            <%= @user.active_relationships.count %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -35,25 +50,13 @@
     </div>
   </div>
 
-  <% if user_signed_in? %>
-    <div class= "userShow_account_container">
-      <% if current_user == @user %>
-        <div class= "userShow_userManagement_box">
-          <%= link_to(edit_user_path(@user), class: "link", style: "color: black;") do %>
-            <div class= "edit_btn userShow_userEdit_btn">アカウント編集</div>
-          <% end %>
-          <%= link_to(user_path(@user), data: {turbo_confirm: "プロジェクトや習慣情報も全て削除されます", turbo_method: :delete}, class: "link", style: "color: black;") do %>
-            <div class= "delete_btn userShow_userDelete_btn">アカウント削除</div>
-          <% end %>
-        </div>
-      <% elsif @user.followed_by?(current_user) %>
-        <%= link_to(user_relationships_path(user_id: @user.id), data: {turbo_confirm: "「#{@user.nickname}」へのフォローを解除します。よろしいですか？", turbo_method: :delete }, class: "link", style: "color: black;") do %>
-          <div class= "userShow_follow_btn">フォローを解除する</div>
-        <% end %>
-      <% else %>
-        <%= link_to(user_relationships_path(user_id: @user.id), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
-          <div class= "userShow_follow_btn">フォローする</div>
-        <% end %>
+  <% if user_signed_in? && current_user == @user %>
+    <div class= "userShow_userManagement_box">
+      <%= link_to(edit_user_path(@user), class: "link", style: "color: black;") do %>
+        <div class= "edit_btn">アカウント編集</div>
+      <% end %>
+      <%= link_to(user_path(@user), data: {turbo_confirm: "プロジェクトや習慣情報も全て削除されます", turbo_method: :delete}, class: "link", style: "color: black;") do %>
+        <div class= "delete_btn">アカウント削除</div>
       <% end %>
     </div>
   <% end %>
