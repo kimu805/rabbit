@@ -2,25 +2,61 @@
   width: 100%;
 }
 .userShow_heading_container{
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
 }
-.userShow_userNickname_box{}
-.userShow_userEmail{}
-.userShow_follow_container{}
-.userShow_follower_box{}
-.userShow_follower_heading{}
-.userShow_follower_count{}
-.userShow_following_box{}
-.userShow_following_heading{}
-.userShow_following_count{}
-.userShow_userProfile_box{}
-.userShow_userProfile{}
-.userShow_account_container{}
-.userShow_userManagement_box{}
-.userShow_userEdit_btn{}
-.userShow_userDelete_btn{}
-.userShow_follow_btn{}
-.userShow_userProjects_container{}
-.userShow_userProjects_heading{}
-.userShow_userProjects_box{}
+.userShow_user_info_box{
+  display: flex;
+}
+.userShow_user_box{}
+.userShow_userEmail{
+  margin-top: 5px;
+}
+.userShow_userFollow{
+
+}
+.userShow_follow_container{
+  display: flex;
+}
+.userShow_follower_box{
+  margin-right: 30px;
+  text-align: center;
+}
+.userShow_follow_heading{
+  font-size: 14px;
+  font-weight: bold;
+}
+.userShow_follow_count{
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.userShow_following_box{
+  text-align: center;
+}
+.userShow_userProfile_box{
+  margin-top: 20px;
+}
+.userShow_userProfile{
+  margin-top: 15px;
+  min-height: 100px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c0c6c9;
+}
+.userShow_userManagement_box{
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+}
+.userShow_userProjects_container{
+  margin-top: 20px;
+}
+.userShow_userProjects_heading{
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.userShow_userProjects_box{
+  margin-top: 15px;
+}
