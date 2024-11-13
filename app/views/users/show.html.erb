@@ -1,4 +1,6 @@
-<% breadcrumb :user, [@tag, @project, @user] %>
+<% if @project %>
+  <% breadcrumb :user, [@tag, @project, @user] %>
+<% end %>
 <h1><%= @user.nickname %></h1>
 
 <div>
