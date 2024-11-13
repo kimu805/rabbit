@@ -19,25 +19,32 @@
     <div class= "project_created_at"><%= l project.created_at %></div>
   </div>
 
-  <div class= "project_title"><%= project.title %></div>
+  <%= link_to(project_path(project, tag: tag), class: "link", style: "color: black;") do %>
+    <div class= "project_title"><%= project.title %></div>
 
-  <div class= "project_tags_box">
-    <% project.tags.each do |tag| %>
-      <div class= "project_tag">
-        <%= tag.tag_name %>
+    <div class= "project_tags_box">
+      <% project.tags.each do |tag| %>
+        <div class= "project_tag">
+          <%= tag.tag_name %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class= "project_footer_container">
+      <div class= "project_reaction_box">
+        <div class= "project_comment">
+          💬 15
+        </div>
+        <div class= "project_like">
+          ❤️ 250
+        </div>
+        <div class= "project_read">
+          5回表示
+        </div>
       </div>
-    <% end %>
-  </div>
-
-  <div class= "project_reaction_container">
-    <div class= "project_comment">
-      💬：15
+      <% if project.none_display? %>
+        <div class= "project_noneDisplay">このプロジェクトは非公開のプロジェクトです</div>
+      <% end %>
     </div>
-    <div class= "project_like">
-      💖：500
-    </div>
-    <div class= "project_read">
-      5回表示
-    </div>
-  </div>
+  <% end %>
 </div>
