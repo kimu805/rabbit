@@ -14,8 +14,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @project = @user.projects.find(params[:project])
-    @tag = @project.tags.find(params[:tag]) 
+    if params[:project]
+      @project = @user.projects.find(params[:project])
+      @tag = @project.tags.find(params[:tag]) 
+    end
   end
 
   def destroy
