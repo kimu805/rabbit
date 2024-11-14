@@ -1,0 +1,26 @@
+.userFollowList{
+  width: 100%;
+}
+.userFollowList_switchBtn_box{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.userFollowList_switchBtn{
+  width: 50%;
+  text-align: center;
+}
+.userFollowList_users{}
+.userFollowList_user{
+  padding: 10px 0;
+  border-bottom: 1px solid #c0c6c9;
+}
+.userFollowList_user_info_box{
+  display: flex;
+  justify-content: space-between;
+}
+.userFollowList_userNickname_box{}
+.userFollowList_userNickname{}
+.userFollowList_userEmail{}
+.userFollowList_followBtn{}
+.userFollowList_profile{}
