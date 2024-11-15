@@ -27,8 +27,14 @@
               <div class= "userFollowList_userEmail"><%= user.email %></div>
             </div>
           <% end %>
-          <%= link_to(user_relationships_path(user_id: user.id), data: {turbo_confirm: "「#{user.nickname}」へのフォローを解除します。よろしいですか？", turbo_method: :delete }, class: "link", style: "color: black;") do %>
-            <div class= "project_userFollowed_btn">フォロー解除</div>
+          <% if user.followed_by?(current_user) %>
+            <%= link_to(user_relationships_path(user_id: user.id), data: {turbo_confirm: "「#{user.nickname}」へのフォローを解除します。よろしいですか？", turbo_method: :delete }, class: "link", style: "color: black;") do %>
+              <div class= "project_userFollowed_btn">フォロー解除</div>
+            <% end %>
+          <% else %>
+            <%= link_to(user_relationships_path(user_id: user.id), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
+              <div class= "project_userFollowing_btn">フォローする</div>
+            <% end %>
           <% end %>
         </div>
         <%= link_to(user_path(user), class: "link", style: "color: black;") do %>
