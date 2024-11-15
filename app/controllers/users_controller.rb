@@ -27,6 +27,13 @@ class UsersController < ApplicationController
   end
 
   def follow_list
+    if params[:target] == "follower"
+      @title = "フォロワー"
+      @users = @user.followers
+    elsif params[:target] == "following"
+      @title = "フォロー中"
+      @users = @users.followings
+    end
   end
 
   private
