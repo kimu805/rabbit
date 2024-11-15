@@ -11,6 +11,9 @@
   width: 50%;
   text-align: center;
 }
+.active{
+  color: black;
+}
 .userFollowList_users{}
 .userFollowList_user{
   padding: 10px 0;
