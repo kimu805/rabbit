@@ -4,7 +4,8 @@
 .userFollowList_switchBtn_box{
   display: flex;
   justify-content: space-around;
-  width: 100%;
+  width: 80%;
+  margin: 10px auto;
 }
 .userFollowList_switchBtn{
   width: 50%;
