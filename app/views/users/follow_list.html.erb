@@ -1,7 +1,7 @@
 <div class= "userFollowList">
   <div class= "userFollowList_switchBtn_box">
-    <%= link_to "フォロー中", follow_list_user_path(@user, target: "following"), class: "link userFollowList_switchBtn", style: "color: black;" %>|
-    <%= link_to "フォロワー", follow_list_user_path(@user, target: "follower"), class: "link userFollowList_switchBtn", style: "color: black;" %>
+    <%= link_to "フォロー中", follow_list_user_path(@user, target: "following"), class: "link userFollowList_switchBtn", style: "color: black;", id: "following_switch" %>|
+    <%= link_to "フォロワー", follow_list_user_path(@user, target: "follower"), class: "link userFollowList_switchBtn", style: "color: black;", id: "follower_switch" %>
   </div>
 
   <div class= "userFollowList_users">
