@@ -24,7 +24,7 @@
       <% end %>
     </div>
     <div class= "userShow_follow_container">
-      <%= link_to(follow_list_user_path(@user, target: "follower")) do %>
+      <%= link_to(follow_list_user_path(@user, target: "follower"), class: "link", style: "color: black;") do %>
         <div class= "userShow_follower_box">
           <div class= "userShow_follow_heading">フォロワー</div>
           <div class= "userShow_follow_count">
@@ -32,7 +32,7 @@
           </div>
         </div>
       <% end %>
-      <%= link_to(follow_list_user_path(@user, target: "following")) do %>
+      <%= link_to(follow_list_user_path(@user, target: "following"), class: "link", style: "color: black;") do %>
         <div class= "userShow_following_box">
           <div class= "userShow_follow_heading">フォロー中</div>
           <div class= "userShow_follow_count">
