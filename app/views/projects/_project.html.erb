@@ -4,15 +4,7 @@
       <div class= "project_userNickname"><%= project.owner.nickname %></div>
       <% if current_user && current_user != project.owner && request.path != user_path(project.owner)  %>
         <div class= "project_userFollow">
-          <% if project.owner.followed_by?(current_user) %>
-            <%= link_to(user_relationships_path(user_id: project.owner.id), data: {turbo_confirm: "「#{project.owner.nickname}」へのフォローを解除します。よろしいですか？", turbo_method: :delete }, class: "link", style: "color: black;") do %>
-              <div class= "project_userFollowed_btn">フォロー解除</div>
-            <% end %>
-          <% else %>
-            <%= link_to(user_relationships_path(user_id: project.owner.id), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
-              <div class= "project_userFollowing_btn">フォローする</div>
-            <% end %>
-          <% end %>
+          <%= render "relationships/follow_btn", { user: project.owner } %>
         </div>
       <% end %>
     </div>
