@@ -1,19 +1,61 @@
 .userFollowList{
   width: 100%;
 }
-.userFollowList_switchBtn_box{
+
+.userFollowList_myUserNickname{
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.userFollowList_btn_box{
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  height: 50px;
+  margin: 10px auto;
+}
+.userFollowList_follow_btn{
+  width: 50%; height: 100%;
+  text-decoration: none;
+  color: gray;
+}
+.userFollowList_follow_btn_box{
+  width: 100%; height: 100%;
+}
+.userFollowList_follow_btn_box:hover{
+  background-color: #c0c6c9;
+}
+.userFollowList_follow_btn_text{
+  height: 100%;
+  text-align: center;
+  line-height: 50px;
+  padding-bottom: 5px;
+}
+.active{
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+}
+
+
+
+
+/* .userFollowList_switchBtn_box{
   display: flex;
   justify-content: space-around;
   width: 80%;
   margin: 10px auto;
+  height: 30px;
 }
 .userFollowList_switchBtn{
   width: 50%;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
-}
-.active{
-  color: black;
-}
+  text-decoration: none;
+  color: gray;
+} */
 .userFollowList_users{}
 .userFollowList_user{
   padding: 10px 0;
