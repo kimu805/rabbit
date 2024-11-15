@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       @users = @user.followers
     elsif params[:target] == "following"
       @title = "フォロー中"
-      @users = @users.followings
+      @users = @user.followings
     end
   end
 
