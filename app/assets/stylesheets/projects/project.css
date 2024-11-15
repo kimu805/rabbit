@@ -46,7 +46,7 @@
   font-weight: bold;
 }
 .project_tags_box{
-  margin-top: 5px;
+  margin: 10px 0;
   display: flex;
 }
 .project_tag{
