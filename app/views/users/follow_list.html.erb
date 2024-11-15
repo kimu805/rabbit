@@ -21,15 +21,19 @@
     <% @users.each do |user| %>
       <div class= "userFollowList_user">
         <div class= "userFollowList_user_info_box">
-          <div class= "userFollowList_userNickname_box">
-            <div class= "userFollowList_userNickname"><%= user.nickname %></div>
-            <div class= "userFollowList_userEmail"><%= user.email %></div>
-          </div>
+          <%= link_to(user_path(user), class: "link", style: "color: black;") do %>
+            <div class= "userFollowList_userNickname_box">
+              <div class= "userFollowList_userNickname"><%= user.nickname %></div>
+              <div class= "userFollowList_userEmail"><%= user.email %></div>
+            </div>
+          <% end %>
           <%= link_to(user_relationships_path(user_id: user.id), data: {turbo_confirm: "「#{user.nickname}」へのフォローを解除します。よろしいですか？", turbo_method: :delete }, class: "link", style: "color: black;") do %>
             <div class= "project_userFollowed_btn">フォロー解除</div>
           <% end %>
         </div>
-        <div class= "userFollowList_profile"><%= user.profile %></div>
+        <%= link_to(user_path(user), class: "link", style: "color: black;") do %>
+          <div class= "userFollowList_profile"><%= user.profile %></div>
+        <% end %>
       </div>
     <% end %>
   </div>
