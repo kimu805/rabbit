@@ -132,4 +132,14 @@
       </table>
     </div>
   </div>
+
+  <%= form_with model: [@project, @comment], url: project_comment_path(@project) do |f| %>
+    <%= f.text_field :text %>
+    <%= f.submit "commit" %>
+  <% end %>
+
+  <% @comments.each do |comment|%>
+    <%= comment.text %>
+    <%= comment.user.nickname %><br><br>
+  <% end %>
 </div>
