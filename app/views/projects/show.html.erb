@@ -1,4 +1,6 @@
-<% breadcrumb :project, [@tag, @project] %>
+<% if @tag %>
+  <% breadcrumb :project, [@tag, @project] %>
+<% end %>
 
 <div class= "projectShow">
   <div class= "projectShow_heading_box">
