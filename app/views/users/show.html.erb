@@ -55,10 +55,17 @@
 
   <div class= "userShow_userProjects_container">
     <div class= "userShow_userProjects_heading">プロジェクト</div>
-    <div class= "userShow_userProjects_box">
-      <% @projects.each do |project| %>
-        <%= render "projects/project", { project: project } %>
-      <% end %>
-    </div>
+    <% if @projects.length != 0 %>
+      <div class= "userShow_userProjects_box">
+        <% @projects.each do |project| %>
+          <%= render "projects/project", { project: project } %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class= "userShow_projectNew_box">
+        <span class= "userShow_projectNew_message">プロジェクトを作成して、新たな習慣を始めよう！</span>
+        <%= link_to "プロジェクトを作成する", new_project_path, class: "userShow_projectNew_link" %>
+      </div>
+    <% end %>
   </div>
 </div>
