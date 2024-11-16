@@ -1,3 +1,4 @@
+/* tag *******************************************************************************************************/
 #search-result{
   width: 30%;
 }
@@ -9,3 +10,17 @@
   padding: 5px;
   font-size: 12px;
 }
+/* /tag *******************************************************************************************************/
+.form_wrapper{
+  width: 90%;
+  margin: 15px auto;
+}
+.form_title_box{
+  padding: 15px 0;
+}
+.form_title{
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+}
+.form_container{}
