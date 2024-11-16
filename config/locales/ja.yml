@@ -7,7 +7,7 @@ ja:
       project:
         title: タイトル
         description: 概要
-        display: "公開/非公開"
+        display: 公開/非公開
       tag:
         tag_name: タグ
       habit:
