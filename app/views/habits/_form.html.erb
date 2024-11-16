@@ -1,4 +1,7 @@
 <%= form_with model: @habit, url: url, local: true, class: "form" do |f| %>
+
+  <%= render "error", { model: @habit } %>
+
   <div class= "form_group">
     <div class= "form_label_box">
       <div class= "form_label"><%= f.label :name %></div>
@@ -19,7 +22,7 @@
       <div class= "form_label"><%= f.label :frequency %></div>
       <div class= "form_required">必須</div>
     </div>
-    <%= f.select :frequency, Habit.frequencies.keys.map { |key| [t("frequency.#{key}"), key] }, {}, class: "form_textfield" %>
+    <%= f.select :frequency, Habit.frequencies.keys.map { |key| [I18n.t("enums.habit.frequency.#{key}"), key] }, {}, class: "form_textfield" %>
   </div>
 
   <div class= "form_group">
