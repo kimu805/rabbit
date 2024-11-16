@@ -32,11 +32,11 @@
     </div>
     <div class= "form_radio_button_box">
       <%= f.radio_button :display, :none_display %>
-      <%= f.label :display, I18n.t("activerecord.attributes.project.display.none_display") %>
+      <%= f.label :display, I18n.t("activerecord.attributes.project.display.none_display"), for: "project_tag_display_none_display" %>
     </div>
     <div class= "form_radio_button_box">
       <%= f.radio_button :display, :all_display %>
-      <%= f.label :display, I18n.t("activerecord.attributes.project.display.all_display") %>
+      <%= f.label :display, I18n.t("activerecord.attributes.project.display.all_display"), for: "project_tag_display_all_display" %>
     </div>
   </div>
 
