@@ -14,9 +14,12 @@
     <%= f.text_area :description, class: "form_textarea", placeholder: "例）リスニング・ライティングの２つの観点を重点的に強化していくものである。" %>
   </div>
 
-  <div class= "field">
-    <%= f.label :tag_name %>
-    <%= f.text_field :tag_name, placeholder: "add tags" %>
+  <div class= "form_group">
+    <div class= "form_label_box">
+      <div class= "form_label"><%= f.label :tag_name %></div>
+      <div class= "form_required">必須</div>
+    </div>
+    <%= f.text_field :tag_name, class: "form_textfield", placeholder: "入力し、既存のタグを選択、または作成してください。" %>
     <div id= "search_result"></div>
   </div>
 
