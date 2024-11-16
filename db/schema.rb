@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_08_074254) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_16_101509) do
   create_table "check_ins", charset: "utf8", force: :cascade do |t|
     t.date "date", null: false
     t.boolean "status", default: false, null: false
@@ -18,6 +18,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_08_074254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["habit_id"], name: "index_check_ins_on_habit_id"
+  end
+
+  create_table "comments", charset: "utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_comments_on_project_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "habits", charset: "utf8", force: :cascade do |t|
@@ -82,6 +92,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_08_074254) do
   end
 
   add_foreign_key "check_ins", "habits"
+  add_foreign_key "comments", "projects"
+  add_foreign_key "comments", "users"
   add_foreign_key "habits", "projects"
   add_foreign_key "project_tag_relations", "projects"
   add_foreign_key "project_tag_relations", "tags"
