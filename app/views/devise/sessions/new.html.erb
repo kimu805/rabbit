@@ -5,6 +5,9 @@
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form") do |f| %>
+
+    <%= render "error", { model: resource } %>
+
     <div class= "form_group">
       <div class= "form_label_box">
         <div class= "form_label"><%= f.label :email %></div>
