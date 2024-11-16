@@ -5,23 +5,31 @@
   </div>
 
   <%= form_with model: current_user, url: user_path(current_user), local: true, class: "form" do |f| %>
-    <div class= "field">
-      <%= f.label :nickname %><br />
-      <%= f.text_field :nickname, autofocus: true %>
+    <div class= "form_group">
+      <div class= "form_label_box">
+        <div class= "form_label"><%= f.label :nickname %></div>
+        <div class= "form_required">必須</div>
+      </div>
+      <%= f.text_field :nickname, autofocut: true, class: "form_textfield" %>
     </div>
 
-    <div class= "field">
-      <%= f.label :profile %><br />
-      <%= f.text_area :profile %>
+    <div class= "form_group">
+      <div class= "form_label_box">
+        <div class= "form_label"><%= f.label :profile %></div>
+      </div>
+      <%= f.text_area :profile, class: "form_textarea", placeholder: "例）私はプログラマーとしてIT企業に勤めています。より良い習慣を続けて、健康的な人生にしていきたいです。" %>
     </div>
 
-    <div class= "field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email %>
+    <div class= "form_group">
+      <div class= "form_label_box">
+        <div class= "form_label"><%= f.label :email %></div>
+        <div class= "form_required">必須</div>
+      </div>
+      <%= f.email_field :email, class: "form_textfield" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "update" %>
+    <div class= "form_commit_box">
+      <%= f.submit "更新", class: "form_commit" %>
     </div>
   <% end %>
 
