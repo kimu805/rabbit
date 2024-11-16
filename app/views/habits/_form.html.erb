@@ -1,31 +1,49 @@
-<%= form_with model: @habit, url: url, local: true do |f| %>
-  <div class= "field">
-    <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true %>
+<%= form_with model: @habit, url: url, local: true, class: "form" do |f| %>
+  <div class= "form_group">
+    <div class= "form_label_box">
+      <div class= "form_label"><%= f.label :name %></div>
+      <div class= "form_required">必須</div>
+    </div>
+    <%= f.text_field :name, autofocut: true, class: "form_textfield", placeholder: "例）運動" %>
   </div>
 
-  <div class= "field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+  <div class= "form_group">
+    <div class= "form_label_box">
+      <div class= "form_label"><%= f.label :content %></div>
+    </div>
+    <%= f.text_area :content, class: "form_textarea", placeholder: "例）腹筋を３分。そのあとランニングを１０分。最後にスクワット１００回" %>
   </div>
 
-  <div class= "field">
-    <%= f.label :frequency %>
-    <%= f.select :frequency, Habit.frequencies.keys.map { |key| [t("frequency.#{key}"), key] }, {}, class: "#" %>
+  <div class= "form_group">
+    <div class= "form_label_box">
+      <div class= "form_label"><%= f.label :frequency %></div>
+      <div class= "form_required">必須</div>
+    </div>
+    <%= f.select :frequency, Habit.frequencies.keys.map { |key| [t("frequency.#{key}"), key] }, {}, class: "form_textfield" %>
   </div>
 
-  <div class= "field">
-    <%= f.label :start_date %>
-    <%= f.date_field :start_date %>
+  <div class= "form_group">
+    <div class= "form_label_box">
+      <div class= "form_label"><%= f.label :start_date %></div>
+    </div>
+    <%= f.date_field :start_date, class: "form_textfield" %>
   </div>
 
-  <div class= "field">
-    <%= f.label :end_date %>
-    <%= f.date_field :end_date %>
+  <div class= "form_group">
+    <div class= "form_label_box">
+      <div class= "form_label"><%= f.label :end_date %></div>
+    </div>
+    <%= f.date_field :end_date, class: "form_textfield" %>
   </div>
 
-  <div class= "action">
-    <%= f.submit "commit" %>
-  </div>
+  <% if @habit.persisted? %>
+    <div class= "form_commit_box">
+      <%= f.submit "更新", class: "form_commit" %>
+    </div>
+  <% else %>
+    <div class= "form_commit_box">
+      <%= f.submit "作成", class: "form_commit" %>
+    </div>
+  <% end %>
 
 <% end %>
