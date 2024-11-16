@@ -1,4 +1,4 @@
-document.addEventListener("turbo:load", () => {
+function menu() {
   const toggle = document.getElementById("toggle")
   const menuList = document.getElementById("menu_list")
 
@@ -11,4 +11,7 @@ document.addEventListener("turbo:load", () => {
       menuList.classList.remove("active")
     }
   })
-})
+}
+
+window.addEventListener("turbo:load", menu)
+window.addEventListener("turbo:render", menu)
