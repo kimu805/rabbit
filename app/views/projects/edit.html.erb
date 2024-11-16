@@ -1,3 +1,11 @@
-<h1>プロジェクト編集</h1>
+<div class= "form_wrapper">
 
-<%= render "form", { url: project_path(@project.id), method: :patch } %>
+  <div class= "form_title_box">
+    <span class= "form_title">プロジェクト編集</span>
+  </div>
+
+  <div class= "form_container">
+    <%= render "form", { url: project_path(@project.id), method: :patch } %>
+  </div>
+
+</div>
