@@ -5,11 +5,9 @@ ja:
         nickname: 名前
         profile: プロフィール
       project:
-        title: タイトル
-        description: 概要
-        display: 公開/非公開
-      tag:
-        tag_name: タグ
+        display:
+          none_display: 非公開
+          all_display: 公開
       habit:
         name: 習慣名
         content: 内容
@@ -19,6 +17,16 @@ ja:
       check_in:
         date: 日付
         status: 実行状況
+  activemodel:
+    attributes: 
+      project_tag:
+        title: タイトル・目標
+        description: 概要
+        display: 公開設定
+        tag_name: タグ
+      project/display:
+        none_display: 非公開
+        all_display: 公開
   time:
     formats:
       default: "%Y/%m/%d"
