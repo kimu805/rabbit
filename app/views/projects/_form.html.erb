@@ -1,7 +1,10 @@
-<%= form_with model: @project_tag, url: url, method: method, local: true do |f| %>
-  <div class= "field">
-    <%= f.label :title %>
-    <%= f.text_field :title, autofocut: true %>
+<%= form_with model: @project_tag, url: url, method: method, local: true, class: "form" do |f| %>
+  <div class= "form_group">
+    <div class= "form_label_box">
+      <div class= "form_label"><%= f.label :title %></div>
+      <div class= "form_required">必須</div>
+    </div>
+    <%= f.text_field :title, autofocut: true, class: "form_textfield", placeholder: "例）3か月後にTOEIC700点を目指す！" %>
   </div>
 
   <div class= "field">
