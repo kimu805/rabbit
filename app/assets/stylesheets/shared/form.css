@@ -19,7 +19,7 @@
   padding: 15px 0;
 }
 .form_title{
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   border-bottom: 2px solid black;
 }
@@ -27,8 +27,8 @@
 
 /* _form.html.erb ************************************************************************************************/
 .form{
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 5px;
+  padding-top: 5px;
   border-top: 1px solid #f3f3f3;
 }
 .form_group{
