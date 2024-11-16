@@ -1,3 +1,9 @@
-<h1>習慣編集</h1>
+<div class= "form_wrapper">
 
-<%= render "form", { url: project_habit_path(project_id: @project.id, id: @habit.id)} %>
+  <div class= "form_title_box">
+    <span class= "form_title">習慣編集</span>
+  </div>
+
+  <%= render "form", { url: project_habit_path(project_id: @project.id, id: @habit.id)} %>
+
+</div>
