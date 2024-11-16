@@ -7,12 +7,12 @@
   <div class= "userFollowList_btn_box">
     <%= link_to(follow_list_user_path(@user, target: "following"), class: "userFollowList_follow_btn") do %>
       <div class= "userFollowList_follow_btn_box">
-        <div class= "userFollowList_follow_btn_text <%= 'active' if @title == 'フォロー中' %>">フォロー中</div>
+        <span class= "userFollowList_follow_btn_text <%= 'active' if @title == 'フォロー中' %>">フォロー中</span>
       </div>
     <% end %>
     <%= link_to(follow_list_user_path(@user, target: "follower"), class: "userFollowList_follow_btn") do %>
       <div class= "userFollowList_follow_btn_box">
-        <div class= "userFollowList_follow_btn_text <%= 'active' if @title == "フォロワー" %>">フォロワー</div>
+        <span class= "userFollowList_follow_btn_text <%= 'active' if @title == "フォロワー" %>">フォロワー</span>
       </div>
     <% end %>
   </div>
