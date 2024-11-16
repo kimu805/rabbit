@@ -43,7 +43,8 @@ class UsersController < ApplicationController
   end
 
   def only_myself
-    unless user_signed_in? && current_user.id == params[:id]
+    set_user
+    unless user_signed_in? && current_user == @user
       redirect_to root_path, alert: "自分の情報以外は更新・削除はできません"
     end
   end
