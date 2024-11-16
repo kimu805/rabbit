@@ -20,7 +20,6 @@
   <div class= "form_group">
     <div class= "form_label_box">
       <div class= "form_label"><%= f.label :tag_name %></div>
-      <div class= "form_required">必須</div>
     </div>
     <%= f.text_field :tag_name, class: "form_textfield", placeholder: "入力し、既存のタグを選択、または作成してください。" %>
     <div id= "search_result"></div>
@@ -41,13 +40,13 @@
     </div>
   </div>
 
-  <% if current_page?(new_project_path) %>
+  <% if @project_tag.persisted? %>
     <div class= "form_commit_box">
-      <%= f.submit "作成", class: "form_commit" %>
+      <%= f.submit "更新", class: "form_commit" %>
     </div>
   <% else %>
     <div class= "form_commit_box">
-      <%= f.submit "更新", class: "form_commit" %>
+      <%= f.submit "作成", class: "form_commit" %>
     </div>
   <% end %>
 <% end %>
