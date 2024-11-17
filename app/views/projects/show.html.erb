@@ -133,13 +133,14 @@
     </div>
   </div>
 
-  <%= form_with model: [@project, @comment], url: project_comment_path(@project) do |f| %>
+  <%= form_with model: [@project, @comment], url: project_comments_path(@project) do |f| %>
     <%= f.text_field :text %>
     <%= f.submit "commit" %>
   <% end %>
 
   <% @comments.each do |comment|%>
     <%= comment.text %>
-    <%= comment.user.nickname %><br><br>
+    <%= comment.user.nickname %>
+    <%= link_to "削除", project_comment_path(project_id: @project.id, id: comment.id), data: { turbo_method: :delete }, class: "delete_btn" %>
   <% end %>
 </div>
