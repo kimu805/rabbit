@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-      redirect_to @project, notice: "コメントを投稿しました"
+      ActionCable.server.broadcast "comment_channel", { comment: @comment, user: @comment.user }
     else
       redirect_to @project, alert: "このコメントは投稿できません"
     end
