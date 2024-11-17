@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @project, notice: "コメントを投稿しました"
     else
-      render "projects/show", alert: "このコメントは投稿できません"
+      redirect_to @project, alert: "このコメントは投稿できません"
     end
   end
 
