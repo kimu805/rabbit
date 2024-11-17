@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = current_user.comments.find(project_id: @project.id, id: params[:id])
+    @comment = @project.comments.find(params[:id])
     @comment.destroy
     redirect_to @project, notice: "コメントを削除しました"
   end
