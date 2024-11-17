@@ -1,5 +1,9 @@
 import consumer from "channels/consumer"
 
+if (location.pathname.match(/\/projects\/\d/)) {
+  
+}
+
 consumer.subscriptions.create("CommentChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
