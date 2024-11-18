@@ -6,6 +6,7 @@ class Project < ApplicationRecord
   has_many :habits, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :view_counts
   
   # enum
   enum display: {
