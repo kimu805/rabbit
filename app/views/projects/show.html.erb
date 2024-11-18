@@ -3,9 +3,23 @@
 <% end %>
 
 <div class= "projectShow">
-  <div class= "projectShow_heading_box">
+  <div class= "projectShow_heading_container">
     <div class= "projectShow_heading_left">
-      <div class= "heading1"><%= @project.title %></div>
+      <div class= "projectShow_heading_box">
+        <div class= "heading1"><%= @project.title %></div>
+        <div class= "projectShow_reaction_box">
+          <div class= "projectShow_comment_count">
+            💬 <%= @project.comments.count %>
+          </div>
+          <div class= "projectShow_like">
+            <% if @project.liked_by?(current_user) %>
+              💖 <%= @project.likes.count %>
+            <% else %>
+              ❤️ <%= @project.likes.count %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class= "projectShow_projectTags">
         <% @project.tags.each do |tag| %>
           <div class= "projectShow_projectTag">
