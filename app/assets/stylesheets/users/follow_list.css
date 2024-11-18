@@ -48,8 +48,10 @@
 }
 /* .userFollowList_userNickname_box{} */
 .userFollowList_userNickname{
-  margin-bottom: 5px;
+  font-weight: bold;
 }
 /* .userFollowList_userEmail{} */
 /* .userFollowList_followBtn{} */
-/* .userFollowList_profile{} */
+.userFollowList_profile{
+  margin-top: 5px;
+}
