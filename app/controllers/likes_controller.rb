@@ -4,13 +4,13 @@ class LikesController < ApplicationController
   def create
     like = current_user.likes.build(project_id: @project.id)
     like.save
-    redirect_to @project
+    render partial: "likes/like", locals: { project: @project }
   end
 
   def destroy
     like = Like.find_by(user_id: current_user.id, project_id: @project.id)
     like.destroy
-    redirect_to @project
+    render partial: "likes/like", locals: { project: @project }
   end
 
   private
