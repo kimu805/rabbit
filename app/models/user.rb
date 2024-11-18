@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes
+  has_many :view_counts
   ## follow
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
   has_many :followings, through: :active_relationships, source: :follower
