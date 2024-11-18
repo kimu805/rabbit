@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_18_052457) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_18_070022) do
   create_table "check_ins", charset: "utf8", force: :cascade do |t|
     t.date "date", null: false
     t.boolean "status", default: false, null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_18_052457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "display"
+    t.integer "view_count", default: 0, null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
