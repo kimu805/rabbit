@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
     end
     @comments = @project.comments.includes(:user)
     
-    ViewCount.create!(user_id: current_user.id, project_id: @project.id)
+    ViewCount.create!(project_id: @project.id)
   end
 
   def destroy
