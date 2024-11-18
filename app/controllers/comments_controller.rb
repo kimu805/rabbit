@@ -5,8 +5,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       @created_at = l(@comment.created_at)
-      binding.pry
-      ActionCable.server.broadcast "comment_channel", { comment: @comment, user: @comment.user, created_at: @created_at }
+      CommentChannel.broadcast_to @project, { comment: @comment, user: @comment.user, created_at: @created_at }
     else
       redirect_to @project, alert: "このコメントは投稿できません"
     end
