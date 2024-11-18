@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_18_091820) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_18_092008) do
   create_table "check_ins", charset: "utf8", force: :cascade do |t|
     t.date "date", null: false
     t.boolean "status", default: false, null: false
@@ -100,6 +100,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_18_091820) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "view_counts", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_view_counts_on_project_id"
+    t.index ["user_id"], name: "index_view_counts_on_user_id"
+  end
+
   add_foreign_key "check_ins", "habits"
   add_foreign_key "comments", "projects"
   add_foreign_key "comments", "users"
@@ -109,4 +118,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_18_091820) do
   add_foreign_key "project_tag_relations", "projects"
   add_foreign_key "project_tag_relations", "tags"
   add_foreign_key "projects", "users"
+  add_foreign_key "view_counts", "projects"
+  add_foreign_key "view_counts", "users"
 end
