@@ -44,14 +44,12 @@ class ProjectsController < ApplicationController
     if current_user
       @comment = current_user.comments.build
     end
-    
     @comments = @project.comments.includes(:user)
     
     increment_view_count(@project)
   end
 
   def destroy
-    binding.pry
     @project.destroy
     redirect_to user_path(current_user)
   end
