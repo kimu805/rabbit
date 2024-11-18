@@ -1,7 +1,7 @@
 import consumer from "channels/consumer"
 
 if (location.pathname.match(/\/projects\/\d/)) {
-  console.log("読み込み完了")
+  console.log(location.pathname.match(/\d+/)[0])
 
   consumer.subscriptions.create({
     channel: "CommentChannel",
