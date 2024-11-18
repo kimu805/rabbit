@@ -28,7 +28,11 @@
           💬 <%= project.comments.count %>
         </div>
         <div class= "project_like">
-          ❤️ 250
+          <% if project.liked_by?(current_user) %>
+            💖 <%= project.likes.count %>
+          <% else %>
+            ❤️ <%= project.likes.count %>
+          <% end %>
         </div>
         <div class= "project_read">
           5回表示
