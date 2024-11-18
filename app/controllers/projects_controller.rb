@@ -41,8 +41,13 @@ class ProjectsController < ApplicationController
 
     @check_ins = find_or_create_check_ins(@habits, @date_range)
 
-    @comment = current_user.comments.build
+    if current_user
+      @comment = current_user.comments.build
+    end
+    
     @comments = @project.comments.includes(:user)
+    
+    increment_view_count(@project)
   end
 
   def destroy
@@ -73,6 +78,14 @@ class ProjectsController < ApplicationController
       habits.map do |habit|
         existing_check_ins[[habit.id, date]] || CheckIn.create(habit_id: habit.id, date: date)
       end
+    end
+  end
+
+  def increment_view_count(project)
+    session_key = "project_#{project.id}_viewed"
+    unless session[session_key]
+      project.increment!(:view_count)
+      session[session_key] = true
     end
   end
 end
