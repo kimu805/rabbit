@@ -12,13 +12,17 @@
             💬 <%= @project.comments.count %>
           </div>
           <% if user_signed_in? && @project.liked_by?(current_user) %>
-            <div class= "projectShow_like">
-              💖 <%= @project.likes.count %>
-            </div>
+            <%= link_to(project_likes_path(@project), data: {turbo_method: :delete}, class: "link", style: "color: black;") do %>
+              <div class= "projectShow_like">
+                💖 <%= @project.likes.count %>
+              </div>
+            <% end %>
           <% else %>
-            <div class= "projectShow_like">
-              ❤️ <%= @project.likes.count %>
-            </div>
+            <%= link_to(project_likes_path(@project), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
+              <div class= "projectShow_like">
+                ❤️ <%= @project.likes.count %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
