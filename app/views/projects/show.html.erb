@@ -137,11 +137,11 @@
     <div class= "projectShow_comments_heading">
       コメント
     </div>
-    <%= form_with model: [@project, @comment], url: project_comments_path(@project), class: "projectShow_comment_form" do |f| %>
+    <%= form_with model: [@project, @comment], url: project_comments_path(@project), class: "projectShow_comment_form", id: "comment_form" do |f| %>
       <%= f.text_area :text, class: "projectShow_comment_textarea" %>
       <%= f.submit "送信", class: "projectShow_comment_commit" %>
     <% end %>
-    <div class= "projectShow_comments_box">
+    <div class= "projectShow_comments_box" id= "comments">
       <% @comments.each do |comment| %>
         <div class= "projectShow_comment">
           <div class= "projectShow_comment_header_box">
