@@ -15,7 +15,7 @@
           <% end %>
           <%= render "likes/like", { project: @project }%>
           <div class= "projectShow_read">
-            <%= @project.view_count %>回表示
+            <%= @project.view_counts.count %>回表示
           </div>
         </div>
       </div>
