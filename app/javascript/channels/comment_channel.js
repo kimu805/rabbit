@@ -3,7 +3,10 @@ import consumer from "channels/consumer"
 if (location.pathname.match(/\/projects\/\d/)) {
   console.log("読み込み完了")
 
-  consumer.subscriptions.create("CommentChannel", {
+  consumer.subscriptions.create({
+    channel: "CommentChannel",
+    project_id: location.pathname.match(/\d+/)[0]
+  }, {
     connected() {
       // Called when the subscription is ready for use on the server
     },
@@ -32,5 +35,3 @@ if (location.pathname.match(/\/projects\/\d/)) {
     }
   });
 }
-
-
