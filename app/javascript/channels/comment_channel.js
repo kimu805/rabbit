@@ -31,6 +31,8 @@ if (location.pathname.match(/\/projects\/\d/)) {
       comments.insertAdjacentHTML("beforeend", html)
       const commentForm = document.getElementById("comment_form")
       commentForm.reset()
+      const commentCount = document.getElementById("comment_count")
+      commentCount.innerHTML = `💬 ${data.comment_count}` 
     }
   });
 }
