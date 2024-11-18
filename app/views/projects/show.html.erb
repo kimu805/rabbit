@@ -13,13 +13,13 @@
           </div>
           <% if user_signed_in? && @project.liked_by?(current_user) %>
             <%= link_to(project_likes_path(@project), data: {turbo_method: :delete}, class: "link", style: "color: black;") do %>
-              <div class= "projectShow_like">
+              <div class= "project_like">
                 💖 <%= @project.likes.count %>
               </div>
             <% end %>
           <% else %>
             <%= link_to(project_likes_path(@project), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
-              <div class= "projectShow_like">
+              <div class= "project_like">
                 ❤️ <%= @project.likes.count %>
               </div>
             <% end %>
