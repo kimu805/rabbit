@@ -11,13 +11,15 @@
           <div class= "projectShow_comment_count">
             💬 <%= @project.comments.count %>
           </div>
-          <div class= "projectShow_like">
-            <% if @project.liked_by?(current_user) %>
+          <% if user_signed_in? && @project.liked_by?(current_user) %>
+            <div class= "projectShow_like">
               💖 <%= @project.likes.count %>
-            <% else %>
+            </div>
+          <% else %>
+            <div class= "projectShow_like">
               ❤️ <%= @project.likes.count %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class= "projectShow_projectTags">
