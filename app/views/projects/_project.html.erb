@@ -25,22 +25,12 @@
 
   <div class= "project_footer_container">
     <div class= "project_reaction_box">
-      <div class= "project_comment">
-        💬 <%= project.comments.count %>
-      </div>
-        <% if project.liked_by?(current_user) %>
-          <%= link_to(project_likes_path(project), data: {turbo_method: :delete}, class: "link", style: "color: black;") do %>
-            <div class= "project_like">
-              💖 <%= project.likes.count %>
-            </div>
-          <% end %>
-        <% else %>
-          <%= link_to(project_likes_path(project), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
-            <div class= "project_like">
-              ❤️ <%= project.likes.count %>
-            </div>
-          <% end %>
-        <% end %>
+      <%= link_to(project_path(project, anchor: "comments"), class: "link", style: "color: black;") do %>
+        <div class= "project_comment">
+          💬 <%= project.comments.count %>
+        </div>
+      <% end %>
+      <%= render "likes/like", { project: project } %>
       <div class= "project_read">
         5回表示
       </div>
@@ -49,5 +39,5 @@
       <div class= "project_noneDisplay">非公開</div>
     <% end %>
   </div>
-  
+
 </div>
