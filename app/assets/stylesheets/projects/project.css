@@ -17,7 +17,7 @@
   font-weight: bold;
   margin-right: 10px;
 }
-.project_userFollow{}
+/* .project_userFollow{} */
 .project_userFollowed_btn{
   padding: 5px;
   background-color: #f5b1aa;
@@ -65,21 +65,18 @@
   display: flex;
 }
 .project_comment{
-  margin-right: 15px;
-  font-size: 12px;
+  margin-right: 10px;
 }
 .project_like{
-  margin-right: 15px;
-  font-size: 12px;
+  margin-right: 10px;
+  padding: 0 10px;
 }
 .project_read{
-  margin-right: 15px;
-  font-size: 12px;
+  margin-right: 10px;
 }
 .project_noneDisplay{
   background-color: gray;
   color: white;
-  font-size: 12px;
   border-radius: 8px;
   padding: 5px;
 }

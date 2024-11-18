@@ -1,13 +1,24 @@
 .projectShow{
   width: 100%;
 }
-.projectShow_heading_box{
+.projectShow_heading_container{
   display: flex;
   justify-content: space-between;
   padding: 15px 0 10px 0;
   border-bottom: 1px solid #c0c6c9;
 }
 /* .projectShow_heading_left{} */
+.projectShow_heading_box{
+  display: flex;
+  align-items: center;
+}
+.projectShow_reaction_box{
+  margin-left: 20px;
+  display: flex;
+}
+.projectShow_comment_count{
+  margin-right: 10px;
+}
 .projectShow_projectTags{
   margin-top: 10px;
   display: flex;
