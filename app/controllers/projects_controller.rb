@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
     end
     @comments = @project.comments.includes(:user)
     
-    increment_view_count(@project)
+    
   end
 
   def destroy
@@ -79,11 +79,4 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def increment_view_count(project)
-    session_key = "project_#{project.id}_viewed"
-    unless session[session_key]
-      project.increment!(:view_count)
-      session[session_key] = true
-    end
-  end
 end
