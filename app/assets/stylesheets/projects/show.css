@@ -209,3 +209,62 @@
     font-size: 12px;
   }
 }
+/* comment *****************************************************************************/
+.projectShow_comments_container{
+  margin: 20px 0;
+}
+.projectShow_comments_heading{
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #c0c6c9;
+}
+.projectShow_comment_form{
+  display: flex;
+  width: 100%;
+}
+.projectShow_comment_textarea{
+  width: 90%;
+  line-height: 20px;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 10px 0 0 10px ;
+}
+.projectShow_comment_commit{
+  width: 10%;
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 0 10px 10px 0;
+}
+.projectShow_comments_box{
+  margin: 10px 0;
+}
+.projectShow_comment{
+  border-radius: 5px;
+  padding: 10px;
+}
+.projectShow_comment:hover{
+  background-color: #c0c6c9;
+}
+.projectShow_comment_header_box{
+  display: flex;
+  justify-content: space-between;
+}
+/* .projectShow_comment_user{} */
+.projectShow_comment_createdAt{
+  color: gray;
+}
+.projectShow_comment_text{
+  padding: 10px;
+  line-height: 20px;
+}
+.projectShow_comment_management_box{
+  text-align: right;
+}
+.projectShow_comment_deleteBtn{
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+}
+/* /comment *****************************************************************************/

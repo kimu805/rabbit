@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   has_many :tags, through: :project_tag_relations
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
   has_many :habits, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   # enum
   enum display: {

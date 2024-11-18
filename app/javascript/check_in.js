@@ -15,7 +15,13 @@ function check_in() {
       XHR.send(formData)
 
       XHR.onload = () => {
+        const achievement_rate = XHR.response.achievement_rate
+        const achievementField = document.getElementById(`habit${habitId}achievement`)
+        achievementField.innerHTML = `${achievement_rate}%`
 
+        const overall_achievement_rate = XHR.response.overall_achievement_rate
+        const overallAchievementField = document.getElementById(`project${projectId}achievement`)
+        overallAchievementField.innerHTML = `${overall_achievement_rate}%`
       }
     })
   })

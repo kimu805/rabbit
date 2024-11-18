@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
   resources :projects, except: :index do
+    resources :comments, only: [:create, :destroy]
     resources :habits, except: :index do
       resources :check_ins, only: :update
     end

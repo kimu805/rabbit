@@ -40,6 +40,9 @@ class ProjectsController < ApplicationController
     @date_range = (@start_date..@end_date)
 
     @check_ins = find_or_create_check_ins(@habits, @date_range)
+
+    @comment = current_user.comments.build
+    @comments = @project.comments.includes(:user)
   end
 
   def destroy

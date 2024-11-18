@@ -16,7 +16,7 @@
     </div>
     <div class= "projectShow_heading_right">
       <div class= "projectShow_overall_achievement">
-        達成率：<span class= "projectShow_overall_achievement_rate"><%= @project.overall_achievement_rate %>%</span>
+        達成率：<span class= "projectShow_overall_achievement_rate" id= "project<%= @project.id %>achievement"><%= @project.overall_achievement_rate %>%</span>
       </div>
     </div>
   </div>
@@ -125,11 +125,38 @@
               <td class= "projectShow_habits_table_data"><%= habit.name %></td>
               <td class= "projectShow_habits_table_data"><%= simple_format(h(habit.content), {}, sanitize: false, wrapper_tag: "div") %></td>
               <td class= "projectShow_habits_table_data"><%= I18n.t("enums.habit.frequency.#{ habit.frequency }") %></td>
-              <td class= "projectShow_habits_table_data"><%= habit.achievement_rate(start_date, end_date) %>%</td>
+              <td class= "projectShow_habits_table_data" id= "habit<%= habit.id %>achievement"><%= habit.achievement_rate(start_date, end_date) %>%</td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
+
+  <div class= "projectShow_comments_container">
+    <div class= "projectShow_comments_heading">
+      コメント
+    </div>
+    <%= form_with model: [@project, @comment], url: project_comments_path(@project), class: "projectShow_comment_form", id: "comment_form" do |f| %>
+      <%= f.text_area :text, class: "projectShow_comment_textarea" %>
+      <%= f.submit "送信", class: "projectShow_comment_commit" %>
+    <% end %>
+    <div class= "projectShow_comments_box" id= "comments">
+      <% @comments.each do |comment| %>
+        <div class= "projectShow_comment">
+          <div class= "projectShow_comment_header_box">
+            <div class= "projectShow_comment_user"><%= comment.user.nickname %></div>
+            <div class= "projectShow_comment_createdAt"><%= l comment.created_at %></div>
+          </div>
+          <div class= "projectShow_comment_text"><%= comment.text %></div>
+          <% if current_user == comment.user %>
+            <div class= "projectShow_comment_management_box">
+              <%= link_to "削除", project_comment_path(project_id: @project.id, id: comment.id), data: { turbo_method: :delete }, class: "projectShow_comment_deleteBtn" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
