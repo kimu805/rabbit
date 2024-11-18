@@ -57,6 +57,10 @@ class Project < ApplicationRecord
     end
   end
 
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
+
   # ransack
   def self.ransackable_attributes(auth_object = nil)
     ["title"]
