@@ -21,28 +21,33 @@
         </div>
       <% end %>
     </div>
+  <% end %>
 
-    <div class= "project_footer_container">
-      <div class= "project_reaction_box">
-        <div class= "project_comment">
-          💬 <%= project.comments.count %>
-        </div>
-          <% if project.liked_by?(current_user) %>
+  <div class= "project_footer_container">
+    <div class= "project_reaction_box">
+      <div class= "project_comment">
+        💬 <%= project.comments.count %>
+      </div>
+        <% if project.liked_by?(current_user) %>
+          <%= link_to(project_likes_path(project), data: {turbo_method: :delete}, class: "link", style: "color: black;") do %>
             <div class= "project_like">
               💖 <%= project.likes.count %>
             </div>
-          <% else %>
+          <% end %>
+        <% else %>
+          <%= link_to(project_likes_path(project), data: {turbo_method: :post}, class: "link", style: "color: black;") do %>
             <div class= "project_like">
               ❤️ <%= project.likes.count %>
             </div>
           <% end %>
-        <div class= "project_read">
-          5回表示
-        </div>
+        <% end %>
+      <div class= "project_read">
+        5回表示
       </div>
-      <% if project.none_display? %>
-        <div class= "project_noneDisplay">非公開</div>
-      <% end %>
     </div>
-  <% end %>
+    <% if project.none_display? %>
+      <div class= "project_noneDisplay">非公開</div>
+    <% end %>
+  </div>
+  
 </div>
