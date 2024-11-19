@@ -8,9 +8,13 @@
   padding-bottom: 5px;
   border-bottom: 1px solid #c0c6c9;
 }
-.habitShow_owner{
+.habitShow_achievement{
+  font-size: 14px;
+  color: black;
+}
+.habitShow_achievement_rate{
   font-size: 18px;
-  color: gray;
+  font-weight: bold;
 }
 .habitShow_content_box{
   margin: 10px 0;
