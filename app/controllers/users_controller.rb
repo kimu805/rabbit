@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       @tag = @project.tags.find(params[:tag]) 
     end
     @my_projects = @user.projects
-    @liked_projects = @user.likes.projects
+    @liked_projects = @user.liked_projects
   end
 
   def destroy
