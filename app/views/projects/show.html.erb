@@ -9,11 +9,14 @@
         <div class= "heading1"><%= @project.title %></div>
         <div class= "projectShow_reaction_box">
           <%= link_to("#comments", class: "link", style: "color: black;") do %>
-            <div class= "projectShow_comment_count">
+            <div class= "projectShow_comment_count" id= "comment_count">
               💬 <%= @project.comments.count %>
             </div>
           <% end %>
           <%= render "likes/like", { project: @project }%>
+          <div class= "projectShow_read">
+            <%= @project.view_counts.count %>回表示
+          </div>
         </div>
       </div>
       <div class= "projectShow_projectTags">
@@ -147,9 +150,11 @@
     <div class= "projectShow_comments_heading">
       コメント
     </div>
-    <%= form_with model: [@project, @comment], url: project_comments_path(@project), class: "projectShow_comment_form", id: "comment_form" do |f| %>
-      <%= f.text_area :text, class: "projectShow_comment_textarea" %>
-      <%= f.submit "送信", class: "projectShow_comment_commit" %>
+    <% if current_user %>
+      <%= form_with model: [@project, @comment], url: project_comments_path(@project), class: "projectShow_comment_form", id: "comment_form" do |f| %>
+        <%= f.text_area :text, class: "projectShow_comment_textarea" %>
+        <%= f.submit "送信", class: "projectShow_comment_commit" %>
+      <% end %>
     <% end %>
     <div class= "projectShow_comments_box" id= "comments">
       <% @comments.each do |comment| %>

@@ -6,7 +6,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @q = @tag.projects.includes(:owner).ransack(params[:q])
+    @q = @tag.projects.where(display: 1).includes(:owner).ransack(params[:q])
     @projects = @q.result(distinct: true)
   end
 end

@@ -21,12 +21,12 @@
               #<%= tag.tag_name %>
             </div>
             <div class= "tagsIndex_tag_projectCount">
-              投稿数：<%= tag.projects.count %> 件
+              投稿数：<%= tag.projects.where(display: 1).count %> 件
             </div>
           </div>
         <% end %>
         <div class= "tagsIndex_tag_projects">
-          <% tag.projects.limit(3).each do |project| %>
+          <% tag.projects.where(display: 1).limit(3).each do |project| %>
               <%= render "projects/project", { project: project, tag: tag } %>
           <% end %>
         </div>

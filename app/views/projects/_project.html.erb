@@ -32,7 +32,7 @@
       <% end %>
       <%= render "likes/like", { project: project } %>
       <div class= "project_read">
-        5回表示
+        <%= project.view_counts.count %>回表示
       </div>
     </div>
     <% if project.none_display? %>

@@ -1,7 +1,12 @@
 <div class= "userFollowList">
 
-  <div class= "userFollowList_myUserNickname">
+  <div class= "userFollowList_header_container">
+    <div class= "userFollowList_backBtn">
+      <%= link_to "⇦", request.referer || root_path, class: "link", style: "color: black;" %>
+    </div>
+    <div class= "userFollowList_myUserNickname">
     <%= @user.nickname %>
+    </div>
   </div>
 
   <div class= "userFollowList_btn_box">

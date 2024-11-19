@@ -50,13 +50,45 @@
 .userShow_userProjects_container{
   margin-top: 20px;
 }
-.userShow_userProjects_heading{
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
+.userShow_userProjects_tab_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto 20px;
 }
-.userShow_userProjects_box{
-  margin-top: 15px;
+.userShow_myProject_tab{
+  width: 50%;
+  height: 50px;
+  line-height: 30px;
+  padding: 10px;
+  text-align: center;
+  color: gray;
+  cursor: pointer;
+}
+.userShow_myProject_tab:hover{
+  background-color: #c0c6c9;
+}
+.userShow_myProject_tab_text{
+  font-size: 16px;
+}
+.userShow_likedProject_tab{
+  width: 50%;
+  height: 50px;
+  line-height: 30px;
+  padding: 10px;
+  text-align: center;
+  color: gray;
+  cursor: pointer;
+}
+.userShow_likedProject_tab:hover{
+  background-color: #c0c6c9;
+}
+.userShow_likedProject_tab_text{
+  font-size: 16px;
+}
+.userShow_myProjects_container{
+  margin-top: 20px;
 }
 .userShow_projectNew_box{
   margin: 30px 0;
@@ -79,4 +111,7 @@
 }
 .userShow_projectNew_link:hover{
   opacity: 0.8;
+}
+.userShow_likedProjects_container{
+  margin-top: 20px;
 }

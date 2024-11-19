@@ -1,7 +1,21 @@
 .userFollowList{
   width: 100%;
 }
+.userFollowList_header_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+.userFollowList_backBtn{
+  margin-right: auto;
+  font-size: 20px;
+}
 .userFollowList_myUserNickname{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 18px;
   font-weight: bold;
   margin-top: 15px;
@@ -48,8 +62,10 @@
 }
 /* .userFollowList_userNickname_box{} */
 .userFollowList_userNickname{
-  margin-bottom: 5px;
+  font-weight: bold;
 }
 /* .userFollowList_userEmail{} */
 /* .userFollowList_followBtn{} */
-/* .userFollowList_profile{} */
+.userFollowList_profile{
+  margin-top: 5px;
+}
