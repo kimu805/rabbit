@@ -1,10 +1,12 @@
-<% breadcrumb :habit, [@tag, @project, @habit] %>
+<% if @tag %>
+  <% breadcrumb :habit, [@tag, @project, @habit] %>
+<% end %>
 
 <div class= "habitShow">
   <div class= "habitShow_info_box">
     <div class= "habitShow_heading_box">
       <div class= "heading1"><%= @habit.name %></div>
-      <div class= "habitShow_owner">作成者：<%= @project.owner.nickname %></div>
+      <div class= "habitShow_achievement">達成率：<span class= "habitShow_achievement_rate"><%= @habit.achievement_rate(@start_date, @end_date) %>%</span></div>
     </div>
     <div class= "habitShow_content_box">
       <div class= "heading2">内容</div>
