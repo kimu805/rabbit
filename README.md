@@ -1,24 +1,13 @@
-# README
+# アプリケーション名
+rabbit(ラビット)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アカウント
+## Basic認証
+・Basic認証ID： admin  
+・Basic認証Password： 2222  
+## テストアカウント
+・名前： ユーザー１  
+・メールアドレス： user1@user.com  
+・パスワード： 111111  
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 概要
