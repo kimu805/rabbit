@@ -28,10 +28,12 @@ class HabitsController < ApplicationController
   end
 
   def show
-    @tag = @project.tags.find(params[:tag])
+    if params[:tag]
+      @tag = @project.tags.find(params[:tag])
+    end
 
     @end_date = params[:end_date].present? ? Date.parse(params[:end_date]) : Date.today
-    @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : [ @end_date - 3].min
+    @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : @habit.created_at.to_date
     @date_range = (@start_date..@end_date)
 
     @check_ins = @habit.check_ins
