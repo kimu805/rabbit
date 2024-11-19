@@ -53,23 +53,40 @@
 .userShow_userProjects_tab_box{
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 80%;
   margin: 0 auto 20px;
 }
 .userShow_myProject_tab{
   width: 50%;
+  height: 50px;
+  line-height: 30px;
   padding: 10px;
   text-align: center;
   color: gray;
+  cursor: pointer;
 }
-.userShow_myProject_tab_text{}
+.userShow_myProject_tab:hover{
+  background-color: #c0c6c9;
+}
+.userShow_myProject_tab_text{
+  font-size: 16px;
+}
 .userShow_likedProject_tab{
   width: 50%;
+  height: 50px;
+  line-height: 30px;
   padding: 10px;
   text-align: center;
   color: gray;
+  cursor: pointer;
 }
-.userShow_likedProject_tab_text{}
+.userShow_likedProject_tab:hover{
+  background-color: #c0c6c9;
+}
+.userShow_likedProject_tab_text{
+  font-size: 16px;
+}
 .userShow_myProjects_container{
   margin-top: 20px;
 }
