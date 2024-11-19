@@ -64,56 +64,7 @@
     <% end %>
   </div>
 
-  <div class= "projectShow_checkIns_dateRange">
-    <div class= "heading3">日付の表示範囲を選択</div>
-    <%= form_with url: project_path(@project, tag: @tag), method: :get, local: true, class: "projectShow_checkIns_dateRange_form" do |f| %>
-      <div class= "projectShow_checkIns_dateRange_startDate">
-        <label class= "projectShow_checkIns_dateRange_startDateField_label">開始日：</label>
-        <%= f.date_field :start_date, value: @date_range.first, class: "projectShow_checkIns_dateRange_startDateField" %>
-      </div>
-      <div class= "projectShow_checkIns_dateRange_endDate">
-        <label class= "projectShow_checkIns_dateRange_endDate_label">終了日：</label>
-        <%= f.date_field :end_date, value: @date_range.last, class: "projectShow_checkIns_dateRange_endDateField" %>
-      </div>
-      <%= f.submit "表示", class: "projectShow_checkIns_dateRange_commit" %>
-    <% end %>
-  </div>
-
-  <div class= "projectShow_checkIns_table_navigation_box">
-    <%= link_to "←戻る", project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "link projectShow_checkIns_table_navigation_back" %>|
-    <%= link_to "進む→", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next" %>
-  </div>
-  <div class= "projectShow_checkIns_table_box">
-    <table class= "projectShow_checkIns_table">
-      <thead class= "projectShow_checkIns_table_head">
-        <tr class= "#">
-          <th class= "projectShow_checkIns_table_header">日付</th>
-          <% @habits.each do |habit| %>
-            <th class= "projectShow_checkIns_table_header"><%= habit.name %></th>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody class= "projectShow_checkIns_table_body">
-        <% @date_range.each do |date| %>
-          <tr class= "projectShow_checkIns_table_row">
-            <td class= "projectShow_checkIns_table_data">
-              <%= date.strftime("%m-%d") %>
-            </td>
-            <% @habits.each do |habit| %>
-              <% check_in = @check_ins.find { |ci| ci.habit_id == habit.id && ci.date == date } %>
-              <td class= "projectShow_checkIns_table_data">
-                <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "projectShow_checkIns_table_checkInForm", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
-                  <%= f.check_box :status, checked: check_in&.status, class: "projectShow_checkIns_table_checkbox" %>
-                  <%= f.hidden_field :habit_id, value: habit.id %>
-                  <%= f.hidden_field :date, value: date %>
-                <% end %>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  <%= render "daterange" %>
   
   <div class= "projectShow_habits">
     <div class= "projectShow_habits_heading_box">
