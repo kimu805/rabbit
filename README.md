@@ -49,3 +49,4 @@ rabbit(ラビット)
 ・達成率計算  
 
 # データベース設計
+[![Image from Gyazo](https://i.gyazo.com/16a6090537ed0ea95a43bfb71588f7dd.png)](https://gyazo.com/16a6090537ed0ea95a43bfb71588f7dd)
