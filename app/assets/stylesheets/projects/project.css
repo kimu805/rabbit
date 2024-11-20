@@ -8,6 +8,10 @@
   display: flex;
   justify-content: space-between;
 }
+.project_user_container{
+  display: flex;
+  align-items: center;
+}
 .project_user_box{
   display: flex;
   align-items: center;
