@@ -5,8 +5,13 @@
 <div class= "userShow">
   <div class= "userShow_heading_container">
     <div class= "userShow_user_info_box">
-      <div class= "userShow_user_box">
-        <div class= "heading1"><%= @user.nickname %></div>
+      <div class= "userShow_user_container">
+        <div class= "userShow_user_box">
+          <% if @user.icon.attached?%>
+            <%= image_tag @user.icon, alt: "User Icon", class: "user_icon"%>
+          <% end %>
+          <div class= "heading1"><%= @user.nickname %></div>
+        </div>
         <div class= "userShow_userEmail"><%= @user.email %></div>
       </div>
       <% if current_user && current_user != @user %>
