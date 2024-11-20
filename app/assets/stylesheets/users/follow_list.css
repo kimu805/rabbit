@@ -55,12 +55,16 @@
   padding: 10px 0;
   border-bottom: 1px solid #c0c6c9;
 }
-.userFollowList_user_info_box{
+.userFollowList_user_info_container{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-/* .userFollowList_userNickname_box{} */
+/* .userFollowList_info_box{} */
+.userFollowList_nickname_box{
+  display: flex;
+  align-items: center;
+}
 .userFollowList_userNickname{
   font-weight: bold;
 }
