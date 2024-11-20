@@ -9,8 +9,11 @@
     <% render "error", model: current_user %>
 
     <div class= "form_group">
-      <%= f.label :icon %>
-      <%= f.file_field :icon %>
+      <div class= "form_label_box">
+        <div class= "form_label"><%= f.label :icon %></div>
+      </div>
+      <div class= "form_icon_previews"></div>
+      <%= f.file_field :icon, class: "form_filefield", id: "icon_filefield" %>
     </div>
 
     <div class= "form_group">
