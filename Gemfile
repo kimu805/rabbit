@@ -79,3 +79,5 @@ gem "pry-rails"
 gem "rails-i18n"
 gem "gretel"
 gem "ransack"
+gem "mini_magick"
+gem 'image_processing', '~> 1.2'

@@ -7,6 +7,13 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form" ) do |f| %>
     <%= render "error", { model: resource } %>
 
+    <div class= "form_group">
+      <div class= "form_label_box">
+        <div class= "form_label"><%= f.label :icon %></div>
+      </div>
+      <div class= "form_icon_previews"></div>
+      <%= f.file_field :icon, class: "form_filefield", id: "icon_filefield" %>
+    </div>
 
     <div class= "form_group">
       <div class= "form_label_box">
@@ -28,10 +35,11 @@
       <div class= "form_label_box">
         <div class= "form_label"><%= f.label :password %></div>
         <div class= "form_required">必須</div>
+        <% if @minimum_password_length %>
+          <em style= "margin-left: 5px;">(<%= @minimum_password_length %> 文字以上)</em>
+        <% end %>
       </div>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
+
       <%= f.password_field :password, autocomplete: "new-password", class: "form_textfield" %>
     </div>
 
@@ -49,4 +57,3 @@
   <% end %>
 
 </div>
-

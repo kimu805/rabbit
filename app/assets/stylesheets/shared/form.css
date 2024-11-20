@@ -77,3 +77,10 @@
 .form_commit:hover{
   opacity: 0.8;
 }
+
+/* preview */
+.form_filefield{
+  margin-top: 5px;
+}
+.form_icon_previews{}
+/* /preview */

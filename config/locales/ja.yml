@@ -4,6 +4,7 @@ ja:
       user:
         nickname: 名前
         profile: プロフィール
+        icon: アイコン画像
       project:
         display:
           none_display: 非公開
