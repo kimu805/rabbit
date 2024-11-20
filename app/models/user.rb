@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
+  ## active_storage
+  has_one_attached :icon
 
   # validation
   validates :nickname, presence: true, length: { maximum: 20 }
