@@ -47,6 +47,7 @@
 }
 .projectShow_projectDescription{
   margin-top: 15px;
+  line-height: 18px;
 }
 .projectShow_project_info{
   display: flex;
@@ -270,7 +271,7 @@
 }
 .projectShow_comment_text{
   padding: 10px;
-  line-height: 20px;
+  line-height: 18px;
 }
 .projectShow_comment_management_box{
   text-align: right;

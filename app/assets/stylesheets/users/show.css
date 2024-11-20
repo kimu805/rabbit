@@ -42,6 +42,7 @@
 .userShow_userProfile{
   margin-top: 15px;
   min-height: 100px;
+  line-height: 18px;
   padding-bottom: 10px;
   border-bottom: 1px solid #c0c6c9;
 }
