@@ -59,6 +59,8 @@
 }
 .projectShow_projectOwner{
   line-height: 40px;
+  display: flex;
+  align-items: center;
 }
 .projectShow_projectCreated_at_box{
   width: 50%;
