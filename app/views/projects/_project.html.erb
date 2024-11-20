@@ -1,10 +1,14 @@
 <div class= "project">
   <div class= "project_header_container">
-    <div class= "project_user_box">
-      <% if project.owner.icon.attached?%>
-        <%= link_to image_tag(url_for(project.owner.icon), class: "user_icon", alt: "User Icon"), url_for(project.owner.icon), target: "_blank" %>
+    <div class= "project_user_container">
+      <%= link_to(user_path(project.owner), class: "link", style: "color: black;") do %>
+        <div class= "project_user_box">
+          <% if project.owner.icon.attached?%>
+            <%= image_tag project.owner.icon, class: "user_icon", alt: "User Icon" %>
+          <% end %>
+          <div class= "project_userNickname"><%= project.owner.nickname %></div>
+        </div>
       <% end %>
-      <div class= "project_userNickname"><%= project.owner.nickname %></div>
       <% if current_user && current_user != project.owner && request.path != user_path(project.owner)  %>
         <div class= "project_userFollow">
           <%= render "relationships/follow_btn", { user: project.owner } %>
