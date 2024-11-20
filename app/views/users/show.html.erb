@@ -8,7 +8,7 @@
       <div class= "userShow_user_container">
         <div class= "userShow_user_box">
           <% if @user.icon.attached?%>
-            <%= image_tag @user.icon, alt: "User Icon", class: "user_icon"%>
+            <%= link_to image_tag(url_for(@user.icon), size: "40x40", class: "user_icon", alt: "User Icon"), url_for(@user.icon), target: "_blank" %>
           <% end %>
           <div class= "heading1"><%= @user.nickname %></div>
         </div>
