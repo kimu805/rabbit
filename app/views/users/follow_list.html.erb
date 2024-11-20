@@ -25,10 +25,15 @@
   <div class= "userFollowList_users">
     <% @users.each do |user| %>
       <div class= "userFollowList_user">
-        <div class= "userFollowList_user_info_box">
+        <div class= "userFollowList_user_info_container">
           <%= link_to(user_path(user), class: "link", style: "color: black;") do %>
-            <div class= "userFollowList_userNickname_box">
-              <div class= "userFollowList_userNickname"><%= user.nickname %></div>
+            <div class= "userFollowList_info_box">
+              <div class= "userFollowList_nickname_box">
+                <% if user.icon.attached?%>
+                  <%= image_tag user.icon, class: "user_icon", alt: "User Icon" %>
+                <% end %>
+                <div class= "userFollowList_userNickname"><%= user.nickname %></div>
+              </div>
               <div class= "userFollowList_userEmail"><%= user.email %></div>
             </div>
           <% end %>
