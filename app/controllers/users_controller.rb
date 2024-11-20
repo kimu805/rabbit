@@ -18,7 +18,11 @@ class UsersController < ApplicationController
       @project = @user.projects.find(params[:project])
       @tag = @project.tags.find(params[:tag]) 
     end
-    @my_projects = @user.projects
+    if current_user == @user
+      @my_projects = @user.projects
+    else
+      @my_projects = @user.projects.where.not(display: 0)
+    end
     @liked_projects = @user.liked_projects
   end
 
