@@ -1,6 +1,9 @@
 <div class= "project">
   <div class= "project_header_container">
     <div class= "project_user_box">
+      <% if project.owner.icon.attached?%>
+        <%= link_to image_tag(url_for(project.owner.icon), class: "user_icon", alt: "User Icon"), url_for(project.owner.icon), target: "_blank" %>
+      <% end %>
       <div class= "project_userNickname"><%= project.owner.nickname %></div>
       <% if current_user && current_user != project.owner && request.path != user_path(project.owner)  %>
         <div class= "project_userFollow">
