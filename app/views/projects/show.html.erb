@@ -44,6 +44,9 @@
       <div class= "heading2">作成者</div>
       <%= link_to(user_path(@project.owner, project: @project, tag: @tag), class: "link", style: "color: black;") do %>
         <div class= "projectShow_projectOwner">
+          <% if @project.owner.icon.attached?%>
+            <%= image_tag @project.owner.icon, class: "user_icon", alt: "User Icon" %>
+          <% end %>
           <%= @project.owner.nickname %>
         </div>
       <% end %>
