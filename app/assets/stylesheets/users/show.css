@@ -1,42 +1,30 @@
 .userShow{
   width: 100%;
 }
-.userShow_heading_container{
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
+.userShow_userInfo_container{
+  margin: 10px 0;
 }
-.userShow_user_info_box{
-  display: flex;
-}
-.userShow_user_box{
+.userShow_userInfo_box{
   display: flex;
   align-items: center;
 }
-.userShow_userEmail{
+.userShow_userFollow_btn{
+  margin-left: 5px;
+}
+.userShow_userInfo_email{
   margin-top: 5px;
 }
-.userShow_userFollow{
-  margin-top: 5px;
-}
-.userShow_follow_container{
+.userShow_userFollow_container{
   display: flex;
+  gap: 20px;
 }
-.userShow_follower_box{
-  margin-right: 30px;
-  text-align: center;
+.userShow_userFollow_box{
+  display: flex;
+  gap: 5px;
 }
-.userShow_follow_heading{
-  font-size: 14px;
-  font-weight: bold;
-}
-.userShow_follow_count{
-  font-size: 14px;
-  font-weight: bold;
-  margin-top: 5px;
-}
-.userShow_following_box{
-  text-align: center;
+/* .userShow_userFollow_count{} */
+.userShow_userFollow_text{
+  color: gray;
 }
 .userShow_userProfile_box{
   margin-top: 20px;
