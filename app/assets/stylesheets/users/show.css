@@ -16,7 +16,9 @@
 .userShow_userEmail{
   margin-top: 5px;
 }
-/* .userShow_userFollow{} */
+.userShow_userFollow{
+  margin-top: 5px;
+}
 .userShow_follow_container{
   display: flex;
 }
