@@ -3,51 +3,30 @@
 <% end %>
 
 <div class= "userShow">
-
-
-
-
-
-  <div class= "userShow_heading_container">
-    <div class= "userShow_user_info_box">
-      <div class= "userShow_user_container">
-        <div class= "userShow_user_box">
-          <% if @user.icon.attached?%>
-            <%= link_to image_tag(url_for(@user.icon), size: "40x40", class: "user_icon", alt: "User Icon"), url_for(@user.icon), target: "_blank" %>
-          <% end %>
-          <div class= "heading1"><%= @user.nickname %></div>
-        </div>
-        <div class= "userShow_userEmail"><%= @user.email %></div>
-      </div>
-      <% if current_user && current_user != @user %>
-        <div class= "userShow_userFollow">
-          <%= render "relationships/follow_btn", { user: @user } %>
+  <div class= "userShow_userInfo_container">
+    <div class= "userShow_userInfo_box">
+      <% if @user.icon.attached?%>
+        <%= link_to image_tag(url_for(@user.icon), size: "40x40", class: "user_icon", alt: "User Icon"), url_for(@user.icon), target: "_blank" %>
+      <% end %>
+      <div class= "heading1"><%= @user.nickname %></div>
+      <% if user_signed_in? && current_user != @user %>
+        <div class= "userShow_userFollow_btn">
+          <%= render "relationships/follow_btn", { user: @user} %>
         </div>
       <% end %>
     </div>
-    <div class= "userShow_follow_container">
-      <%= link_to(follow_list_user_path(@user, target: "follower"), class: "link", style: "color: black;") do %>
-        <div class= "userShow_follower_box">
-          <div class= "userShow_follow_heading">フォロワー</div>
-          <div class= "userShow_follow_count">
-            <%= @user.passive_relationships.count %>
-          </div>
-        </div>
-      <% end %>
-      <%= link_to(follow_list_user_path(@user, target: "following"), class: "link", style: "color: black;") do %>
-        <div class= "userShow_following_box">
-          <div class= "userShow_follow_heading">フォロー中</div>
-          <div class= "userShow_follow_count">
-            <%= @user.active_relationships.count %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <div class= "userShow_userInfo_email"><%= @user.email %></div>
   </div>
-
-
-  
-
+  <div class= "userShow_userFollow_container">
+    <%= link_to(follow_list_user_path(@user, target: "follower"), class: "link userShow_userFollow_box", style: "color: black;") do %>
+      <div class= "userShow_userFollow_count"><%= @user.followers.count %></div>
+      <div class= "userShow_userFollow_text">フォロワー</div>
+    <% end %>
+    <%= link_to(follow_list_user_path(@user, target: "following"), class: "link userShow_userFollow_box", style: "color: black;") do %>
+      <div class= "userShow_userFollow_count"><%= @user.followings.count %></div>
+      <div class= "userShow_userFollow_text">フォロー中</div>
+    <% end %>
+  </div>
   <div class= "userShow_userProfile_box">
     <div class= "heading2">プロフィール</div>
     <div class= "userShow_userProfile">
