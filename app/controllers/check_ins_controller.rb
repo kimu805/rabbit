@@ -1,4 +1,5 @@
 class CheckInsController < ApplicationController
+  before_action :only_myself
   before_action :before_set
 
   def update
@@ -19,5 +20,12 @@ class CheckInsController < ApplicationController
   def before_set
     @project = Project.find(params[:project_id])
     @habit = Habit.find(params[:habit_id])
+  end
+
+  def only_myself
+    before_set
+    unless user_signed_in? && @project.owner == current_user
+      redirect_back(fallback_location: root_path)
+    end
   end
 end
