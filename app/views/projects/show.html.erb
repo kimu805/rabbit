@@ -67,7 +67,9 @@
     <% end %>
   </div>
 
-  <%= render "daterange" %>
+  <% if user_signed_in? && current_user == @project.owner %>
+    <%= render "daterange" %>
+  <% end %>
   
   <div class= "projectShow_habits">
     <div class= "projectShow_habits_heading_box">
