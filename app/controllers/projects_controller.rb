@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
     if @project_tag.valid?
       @project_tag.save
       project = @project_tag.project
-      redirect_to project_path(project)
+      redirect_to project_path(project), notice: "「#{project.title}」を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
     @project_tag = ProjectTag.new(project_tag_params)
     if @project_tag.valid?
       @project_tag.update(project_tag_params, @project)
-      redirect_to project_path(@project)
+      redirect_to project_path(@project), notice: "「#{@project.title}」を更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: "「#{@project.title}」を削除しました"
   end
 
   def search
