@@ -74,7 +74,9 @@
   <div class= "projectShow_habits">
     <div class= "projectShow_habits_heading_box">
       <div class= "heading2">習慣内容</div>
-      <%= link_to "習慣を作成", new_project_habit_path(@project), class: "link projectShow_habits_create_button" %>
+      <% if user_signed_in? && current_user == @project.owner %>
+        <%= link_to "習慣を作成", new_project_habit_path(@project), class: "link projectShow_habits_create_button" %>
+      <% end %>
     </div>
     <div class= "projectShow_habits_table_box">
       <table class= "projectShow_habits_table">
