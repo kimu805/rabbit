@@ -107,10 +107,12 @@
       </div>
     </div>
   <% else %>
-    <div class= "projectShow_noneHabits_box">
-      <span class= "projectShow_noneHabits_message">習慣を作成して、目標を達成しよう！</span>
-      <%= link_to "習慣を作成", new_project_habit_path(@project), class: "projectShow_noneHabits_projectNew_link" %>
-    </div>
+    <% if user_signed_in? && current_user == @project.owner %>
+      <div class= "projectShow_noneHabits_box">
+        <span class= "projectShow_noneHabits_message">習慣を作成して、目標を達成しよう！</span>
+        <%= link_to "習慣を作成", new_project_habit_path(@project), class: "projectShow_noneHabits_projectNew_link" %>
+      </div>
+    <% end %>
   <% end %>
 
   <div class= "projectShow_comments_container">
