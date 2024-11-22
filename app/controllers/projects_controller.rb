@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!, except: [:show]
+  before_action :only_myself, only: [:edit, :update, :destroy]
 
   def new
     @project_tag = ProjectTag.new
@@ -84,6 +86,13 @@ class ProjectsController < ApplicationController
     unless session[session_key]
       ViewCount.create!(project_id: @project.id)
       session[session_key] = true
+    end
+  end
+
+  def only_myself
+    set_project
+    unless current_user == @project.owner
+      redirect_to @project, alert: "他のユーザーのプロジェクトは編集・削除できません"
     end
   end
 end
