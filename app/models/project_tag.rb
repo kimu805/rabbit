@@ -8,6 +8,7 @@ class ProjectTag
   with_options presence: true do 
     validates :title, length: { maximum: 50 }
     validates :display
+    validates :tag_name
   end
   validates :description, length: { maximum: 500 }
 
