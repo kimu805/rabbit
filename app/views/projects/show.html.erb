@@ -58,14 +58,16 @@
       </div>
     </div>
   </div>
-  <div class= "projectShow_projectManagement_box">
-    <%= link_to(edit_project_path(@project), class: "link", style: "color: black;") do %>
-      <div class= "edit_btn">編集する</div>
-    <% end %>
-    <%= link_to(project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete}, class: "link", style: "color: black;") do %>
-      <div class= "delete_btn">削除する</div>
-    <% end %>
-  </div>
+  <% if user_signed_in? && current_user == @project.owner %>
+    <div class= "projectShow_projectManagement_box">
+      <%= link_to(edit_project_path(@project), class: "link", style: "color: black;") do %>
+        <div class= "edit_btn">編集する</div>
+      <% end %>
+      <%= link_to(project_path(@project), data: {turbo_confirm: "付随するすべての習慣も削除されます。よろしいですか？", turbo_method: :delete}, class: "link", style: "color: black;") do %>
+        <div class= "delete_btn">削除する</div>
+      <% end %>
+    </div>
+  <% end %>
 
   <% if user_signed_in? && current_user == @project.owner %>
     <%= render "daterange" %>
@@ -108,7 +110,7 @@
     <div class= "projectShow_comments_heading">
       コメント
     </div>
-    <% if current_user %>
+    <% if user_signed_in? %>
       <%= form_with model: [@project, @comment], url: project_comments_path(@project), class: "projectShow_comment_form", id: "comment_form" do |f| %>
         <%= f.text_area :text, class: "projectShow_comment_textarea" %>
         <%= f.submit "送信", class: "projectShow_comment_commit" %>
