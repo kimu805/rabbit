@@ -11,7 +11,9 @@ class ProjectsController < ApplicationController
     @project_tag = ProjectTag.new(project_tag_params)
     if @project_tag.valid?
       @project_tag.save
-      redirect_to user_path(current_user)
+      project = @project_tag.project
+      binding.pry
+      redirect_to project_path(project)
     else
       render :new, status: :unprocessable_entity
     end
