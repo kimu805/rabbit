@@ -69,42 +69,49 @@
     </div>
   <% end %>
 
-  <% if user_signed_in? && current_user == @project.owner %>
-    <%= render "daterange" %>
-  <% end %>
-  
-  <div class= "projectShow_habits">
-    <div class= "projectShow_habits_heading_box">
-      <div class= "heading2">習慣内容</div>
-      <% if user_signed_in? && current_user == @project.owner %>
-        <%= link_to "習慣を作成", new_project_habit_path(@project), class: "link projectShow_habits_create_button" %>
-      <% end %>
-    </div>
-    <div class= "projectShow_habits_table_box">
-      <table class= "projectShow_habits_table">
-        <thead class= "projectShow_habits_table_head">
-          <tr class= "#">
-            <th class= "projectShow_habits_table_header">習慣名</th>
-            <th class= "projectShow_habits_table_header">内容</th>
-            <th class= "projectShow_habits_table_header">頻度</th>
-            <th class= "projectShow_habits_table_header">達成率</th>
-          </tr>
-        </thead>
-        <tbody class= "projectShow_habits_table_body">
-          <% @habits.each_with_index do |habit, index| %>
-            <% start_date = habit.start_date || habit.created_at.to_date %>
-            <% end_date = habit.end_date || Date.today %>
-            <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days', tag: @tag) %>'" style= "cursor: pointer;" class= "projectShow_habits_table_row">
-              <td class= "projectShow_habits_table_data"><%= habit.name %></td>
-              <td class= "projectShow_habits_table_data"><%= simple_format(h(habit.content), {}, sanitize: false, wrapper_tag: "div") %></td>
-              <td class= "projectShow_habits_table_data"><%= I18n.t("enums.habit.frequency.#{ habit.frequency }") %></td>
-              <td class= "projectShow_habits_table_data" id= "habit<%= habit.id %>achievement"><%= habit.achievement_rate(start_date, end_date) %>%</td>
+  <% if @project.habits.count != 0 %>
+    <% if user_signed_in? && current_user == @project.owner %>
+      <%= render "daterange" %>
+    <% end %>
+    
+    <div class= "projectShow_habits">
+      <div class= "projectShow_habits_heading_box">
+        <div class= "heading2">習慣内容</div>
+        <% if user_signed_in? && current_user == @project.owner %>
+          <%= link_to "習慣を作成", new_project_habit_path(@project), class: "link projectShow_habits_create_button" %>
+        <% end %>
+      </div>
+      <div class= "projectShow_habits_table_box">
+        <table class= "projectShow_habits_table">
+          <thead class= "projectShow_habits_table_head">
+            <tr class= "#">
+              <th class= "projectShow_habits_table_header">習慣名</th>
+              <th class= "projectShow_habits_table_header">内容</th>
+              <th class= "projectShow_habits_table_header">頻度</th>
+              <th class= "projectShow_habits_table_header">達成率</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody class= "projectShow_habits_table_body">
+            <% @habits.each_with_index do |habit, index| %>
+              <% start_date = habit.start_date || habit.created_at.to_date %>
+              <% end_date = habit.end_date || Date.today %>
+              <tr onclick="window.location='<%= project_habit_path(project_id: @project.id, id: habit.id, range: 'three_days', tag: @tag) %>'" style= "cursor: pointer;" class= "projectShow_habits_table_row">
+                <td class= "projectShow_habits_table_data"><%= habit.name %></td>
+                <td class= "projectShow_habits_table_data"><%= simple_format(h(habit.content), {}, sanitize: false, wrapper_tag: "div") %></td>
+                <td class= "projectShow_habits_table_data"><%= I18n.t("enums.habit.frequency.#{ habit.frequency }") %></td>
+                <td class= "projectShow_habits_table_data" id= "habit<%= habit.id %>achievement"><%= habit.achievement_rate(start_date, end_date) %>%</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class= "projectShow_noneHabits_box">
+      <span class= "projectShow_noneHabits_message">習慣を作成して、目標を達成しよう！</span>
+      <%= link_to "習慣を作成", new_project_habit_path(@project), class: "projectShow_noneHabits_projectNew_link" %>
+    </div>
+  <% end %>
 
   <div class= "projectShow_comments_container">
     <div class= "projectShow_comments_heading">
