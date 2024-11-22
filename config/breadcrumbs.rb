@@ -1,5 +1,5 @@
 crumb :root do
-  link "タグ一覧", root_path
+  link "Home", root_path
 end
 
 crumb :tag do |tag|
