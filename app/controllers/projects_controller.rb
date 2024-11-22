@@ -12,7 +12,6 @@ class ProjectsController < ApplicationController
     if @project_tag.valid?
       @project_tag.save
       project = @project_tag.project
-      binding.pry
       redirect_to project_path(project)
     else
       render :new, status: :unprocessable_entity
