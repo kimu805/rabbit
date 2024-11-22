@@ -1,7 +1,8 @@
 class HabitsController < ApplicationController
   before_action :set_project
   before_action :set_habit, only: [:edit, :update, :show, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :show
+  before_action :only_myself, except: :show
 
   def new
     @habit = @project.habits.build
@@ -61,6 +62,15 @@ class HabitsController < ApplicationController
   def create_check_ins(habit)
     (Date.today..(Date.today + 30)).each do |date|
       habit.check_ins.create(date: date, status: false)
+    end
+  end
+
+  def only_myself
+    set_project
+    set_habit
+    
+    unless user_signed_in? && @project.owner == current_user
+      redirect_to project_habit_path(project_id: @project.id, id: @habit.id), alert: "他のユーザーの習慣にチェックはつけれません"
     end
   end
 end
