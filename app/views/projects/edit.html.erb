@@ -5,7 +5,7 @@
   </div>
 
   <div class= "form_container">
-    <%= render "form", { url: project_path(@project.id), method: :patch } %>
+    <%= render "form", { url: project_path(@project.id), method: :patch, commit_text: "更新" } %>
   </div>
 
 </div>
