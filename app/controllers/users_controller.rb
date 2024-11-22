@@ -14,15 +14,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:project]
+    if params[:project] && params[:tag]
       @project = @user.projects.find(params[:project])
       @tag = @project.tags.find(params[:tag]) 
     end
+
     if current_user == @user
       @my_projects = @user.projects
     else
       @my_projects = @user.projects.where.not(display: 0)
     end
+    
     @liked_projects = @user.liked_projects
   end
 
