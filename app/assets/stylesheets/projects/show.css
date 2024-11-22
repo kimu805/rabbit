@@ -223,6 +223,30 @@
     font-size: 12px;
   }
 }
+
+.projectShow_noneHabits_box{
+  margin: 50px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.projectShow_noneHabits_message{
+  font-size: 16px;
+  font-weight: bold;
+}
+.projectShow_noneHabits_projectNew_link{
+  width: 60%;
+  text-decoration: none;
+  margin: 5px auto;
+  padding: 20px;
+  background-color: #595857;
+  color: white;
+  font-weight: bold;
+}
+.projectShow_noneHabits_projectNew_link:hover{
+  opacity: 0.8;
+}
+
 /* comment *****************************************************************************/
 .projectShow_comments_container{
   margin: 20px 0;
