@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe Project, type: :model do
   before do
     @user = FactoryBot.create(:user)
-    @project = FactoryBot.build(:project, user: @user)
+    @project = FactoryBot.build(:project, owner: @user)
   end
+
   describe "新規作成" do
     context "上手くいくとき" do
       it "全ての情報が適切に入力されていれば、作成できる" do
@@ -32,7 +33,7 @@ RSpec.describe Project, type: :model do
         expect(@project.errors.full_messages).to include("概要は500文字以内で入力してください")
       end
       it "userが紐づいていなければ作成できない" do
-        @project.user = nil
+        @project.owner = nil
         @project.valid?
         expect(@project.errors.full_messages).to include("Userを入力してください")
       end
