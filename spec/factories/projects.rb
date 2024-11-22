@@ -3,6 +3,6 @@ FactoryBot.define do
     title {"project"}
     description {Faker::Lorem.characters(number: rand(1..500))}
     display {0}
-    association :user
+    association :owner
   end
 end
