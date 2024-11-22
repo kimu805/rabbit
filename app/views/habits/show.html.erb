@@ -38,14 +38,16 @@
     </div>
   </div>
 
-  <div class= "habitShow_habitManagement_box">
-    <%= link_to(edit_project_habit_path(project_id: @project.id, id: @habit.id), class: "link", style: "color: black;") do %>
-      <div class= "edit_btn">編集する</div>
-    <% end %>
-    <%= link_to(project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "#{@habit.name}を削除します", turbo_method: :delete}, class: "link", style: "color: black;") do %>
-      <div class= "delete_btn">削除する</div>
-    <% end %>
-  </div>
+  <% if user_signed_in? && current_user == @project.owner %>
+    <div class= "habitShow_habitManagement_box">
+      <%= link_to(edit_project_habit_path(project_id: @project.id, id: @habit.id), class: "link", style: "color: black;") do %>
+        <div class= "edit_btn">編集する</div>
+      <% end %>
+      <%= link_to(project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "#{@habit.name}を削除します", turbo_method: :delete}, class: "link", style: "color: black;") do %>
+        <div class= "delete_btn">削除する</div>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class= "projectShow_checkIns_dateRange">
     <div class= "heading3">日付の表示範囲を選択</div>
