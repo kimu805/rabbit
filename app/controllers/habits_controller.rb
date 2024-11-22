@@ -1,6 +1,7 @@
 class HabitsController < ApplicationController
   before_action :set_project
   before_action :set_habit, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!
 
   def new
     @habit = @project.habits.build
