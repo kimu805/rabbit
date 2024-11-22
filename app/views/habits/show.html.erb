@@ -43,7 +43,7 @@
       <%= link_to(edit_project_habit_path(project_id: @project.id, id: @habit.id), class: "link", style: "color: black;") do %>
         <div class= "edit_btn">編集する</div>
       <% end %>
-      <%= link_to(project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "#{@habit.name}を削除します", turbo_method: :delete}, class: "link", style: "color: black;") do %>
+      <%= link_to(project_habit_path(project_id: @project.id, id: @habit.id), data: {turbo_confirm: "習慣「#{@habit.name}」を削除します", turbo_method: :delete}, class: "link", style: "color: black;") do %>
         <div class= "delete_btn">削除する</div>
       <% end %>
     </div>
