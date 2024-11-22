@@ -40,13 +40,8 @@
     </div>
   </div>
 
-  <% if @project_tag.persisted? %>
-    <div class= "form_commit_box">
-      <%= f.submit "更新", class: "form_commit" %>
-    </div>
-  <% else %>
-    <div class= "form_commit_box">
-      <%= f.submit "作成", class: "form_commit" %>
-    </div>
-  <% end %>
+  <div class= "form_commit_box">
+    <%= f.submit commit_text, class: "form_commit" %>
+  </div>
+
 <% end %>
