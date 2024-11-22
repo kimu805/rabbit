@@ -67,10 +67,9 @@ class HabitsController < ApplicationController
 
   def only_myself
     set_project
-    set_habit
     
     unless user_signed_in? && @project.owner == current_user
-      redirect_to project_habit_path(project_id: @project.id, id: @habit.id), alert: "他のユーザーの習慣にチェックはつけれません"
+      redirect_to project_path(@project), alert: "他のユーザーの習慣にチェックはつけれません"
     end
   end
 end
