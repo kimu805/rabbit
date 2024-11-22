@@ -1,6 +1,6 @@
 class CheckInsController < ApplicationController
-  before_action :only_myself
   before_action :before_set
+  before_action :only_myself
 
   def update
     check_in = CheckIn.find_by(id: params[:id])
@@ -24,8 +24,9 @@ class CheckInsController < ApplicationController
 
   def only_myself
     before_set
-    unless user_signed_in? && @project.owner == current_user
-      redirect_back(fallback_location: root_path)
+    unless user_signed_in? && current_user == @project.owner
+      redirect_to @project, alert: "他人の習慣にチェックはつけれません"
     end
   end
+
 end
