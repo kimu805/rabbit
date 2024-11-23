@@ -14,7 +14,8 @@ class Tag < ApplicationRecord
   # scope
   scope :popular, -> {
     select("tags.*, COUNT(project_tag_relations.project_id) AS projects_count")
-      .joins(:project_tag_relations)
+      .joins(:project_tag_relations => :project)
+      .where(projects: { display: 1 })
       .group("tags.id")
       .order("projects_count DESC")
   }
