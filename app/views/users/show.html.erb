@@ -68,7 +68,6 @@
     </div>
 
     <div class= "userShow_likedProjects_container hidden" id= "likedProjects_container">
-      <% @liked_projects.each do |project| %>
         <%= render "projects/project", { project: project } %>
       <% end %>
     </div>
