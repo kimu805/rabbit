@@ -13,7 +13,6 @@
   </div>
 
   <div class= "tagsShow_projects">
-    <% @projects.each do |project| %>
       <%= render "projects/project", { project: project, tag: @tag } %>
     <% end %>
   </div>
