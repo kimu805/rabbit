@@ -13,5 +13,6 @@
   </div>
 
   <div class= "tagsShow_projects">
+    <%= render partial: "projects/project", collection: @projects, locals: { tag: @tag } %>
   </div>
 </div>
