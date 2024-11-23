@@ -288,8 +288,12 @@
 .projectShow_comment_header_box{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-/* .projectShow_comment_user{} */
+.projectShow_comment_userInfo_box{
+  display: flex;
+  align-items: center;
+}
 .projectShow_comment_createdAt{
   color: gray;
 }
