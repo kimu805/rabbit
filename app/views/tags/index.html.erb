@@ -26,7 +26,7 @@
           </div>
         <% end %>
         <div class= "tagsIndex_tag_projects">
-          <% tag.projects.where(display: 1).limit(3).each do |project| %>
+          <% tag.projects.more_view(tag.id).limit(3).each do |project| %>
               <%= render "projects/project", { project: project, tag: tag } %>
           <% end %>
         </div>
