@@ -37,7 +37,9 @@
               <div class= "userFollowList_userEmail"><%= user.email %></div>
             </div>
           <% end %>
-          <%= render "relationships/follow_btn", { user: user } %>
+          <% if user_signed_in? %>
+            <%= render "relationships/follow_btn", { user: user } %>
+          <% end %>
         </div>
         <%= link_to(user_path(user), class: "link", style: "color: black;") do %>
           <div class= "userFollowList_profile"><%= user.profile %></div>
