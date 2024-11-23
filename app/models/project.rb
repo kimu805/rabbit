@@ -21,9 +21,9 @@ class Project < ApplicationRecord
 
   # scope
   scope :more_view, ->(tag_id) {
-    joins(:view_counts, :project_tag_relations)
+    select("projects.*, COUNT(view_counts.id) AS view_count")
+      .joins(:view_counts, :project_tag_relations)
       .where(project_tag_relations: { tag_id: tag_id })
-      .select("projects.*, COUNT(view_counts.id) AS view_count")
       .group("projects.id")
       .order("view_count DESC")
   }
