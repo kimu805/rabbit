@@ -58,6 +58,7 @@
 
     <div class= "userShow_myProjects_container" id= "myProjects_container">
       <% if @my_projects.length != 0 %>
+        <%= render partial: "projects/project", collection: @my_projects %>
       <% else %>
         <div class= "userShow_projectNew_box">
           <span class= "userShow_projectNew_message">プロジェクトを作成して、新たな習慣を始めよう！</span>
