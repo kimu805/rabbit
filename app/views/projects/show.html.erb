@@ -129,7 +129,14 @@
       <% @comments.each do |comment| %>
         <div class= "projectShow_comment">
           <div class= "projectShow_comment_header_box">
-            <div class= "projectShow_comment_user"><%= comment.user.nickname %></div>
+            <%= link_to(user_path(comment.user), class: "link", style: "color: black;") do %>
+              <div class= "projectShow_comment_userInfo_box">
+                <% if comment.user.icon.attached? %>
+                  <%= image_tag comment.user.icon , class: "user_icon", alt: "User Icon" %>
+                <% end %>
+                <%= comment.user.nickname %>
+              </div>
+            <% end %>
             <div class= "projectShow_comment_createdAt"><%= l comment.created_at %></div>
           </div>
           <div class= "projectShow_comment_text">
