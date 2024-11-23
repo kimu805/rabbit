@@ -34,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   def follow_list
-    binding.pry
     if params[:target] == "follower"
       @title = "フォロワー"
       @users = @user.followers
