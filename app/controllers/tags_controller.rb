@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   def index
     @q = Tag.ransack(params[:q])
-    @tags = @q.result(distinct: true)
+    @tags = @q.result(distinct: true).popular
   end
 
   def show
