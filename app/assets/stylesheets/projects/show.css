@@ -182,6 +182,7 @@
 }
 .projectShow_habits_create_button{
   padding: 10px;
+  font-weight: bold;
   background-color: #a0d8ef;
   color: black;
 }
