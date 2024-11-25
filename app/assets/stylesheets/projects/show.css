@@ -164,6 +164,9 @@
   padding: 8px;
   text-align: center;
 }
+.today{
+  color: red;
+}
 .projectShow_checkIns_table_checkInForm{
   display: inline-block;
 }
