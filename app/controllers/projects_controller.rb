@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
     @tag = @project.tags.find_by(id: params[:tag])
 
     @end_date = params[:end_date].present? ? Date.parse(params[:end_date]) : Date.today
-    @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : @project.created_at.to_date
+    @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : @end_date - 3
     @date_range = (@start_date..@end_date)
 
     @check_ins = find_or_create_check_ins(@habits, @date_range)
