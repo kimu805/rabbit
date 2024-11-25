@@ -35,14 +35,16 @@
               <%= date.strftime("%m-%d") %>
             </td>
             <% @habits.each do |habit| %>
-              <% check_in = @check_ins.find { |ci| ci.habit_id == habit.id && ci.date == date } %>
-              <td class= "projectShow_checkIns_table_data">
-                <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "projectShow_checkIns_table_checkInForm", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
-                  <%= f.check_box :status, checked: check_in&.status, class: "projectShow_checkIns_table_checkbox" %>
-                  <%= f.hidden_field :habit_id, value: habit.id %>
-                  <%= f.hidden_field :date, value: date %>
-                <% end %>
-              </td>
+              <% if date >= habit.created_at.to_date %>
+                <% check_in = @check_ins.find { |ci| ci.habit_id == habit.id && ci.date == date } %>
+                <td class= "projectShow_checkIns_table_data">
+                  <%= form_with model: check_in, url: project_habit_check_in_path(project_id: @project.id, habit_id: habit.id, id: check_in.id), method: :patch, class: "projectShow_checkIns_table_checkInForm", data: {project_id: @project.id, habit_id: habit.id, id: check_in.id} do |f| %>
+                    <%= f.check_box :status, checked: check_in&.status, class: "projectShow_checkIns_table_checkbox" %>
+                    <%= f.hidden_field :habit_id, value: habit.id %>
+                    <%= f.hidden_field :date, value: date %>
+                  <% end %>
+                </td>
+              <% end %>
             <% end %>
           </tr>
         <% end %>
