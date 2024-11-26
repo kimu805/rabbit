@@ -13,7 +13,6 @@ class CheckInsController < ApplicationController
       # プロジェクト全体の達成率を取得
       overall_achievement_rate = @project.overall_achievement_rate.to_f
 
-      # redirect_to project_path(params[:project_id])
       render json: { check_in: check_in, achievement_rate: achievement_rate, overall_achievement_rate: overall_achievement_rate }
     end
   end
