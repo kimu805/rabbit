@@ -10,6 +10,7 @@ class CheckInsController < ApplicationController
 
       # 各習慣の達成率を取得
       achievement_rate = @habit.achievement_rate(@habit.start_date || @habit.created_at.to_date, @habit.end_date || Date.today ).to_f
+      # プロジェクト全体の達成率を取得
       overall_achievement_rate = @project.overall_achievement_rate.to_f
 
       # redirect_to project_path(params[:project_id])
