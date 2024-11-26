@@ -8,6 +8,7 @@ class CheckInsController < ApplicationController
       check_in.status = params[:check_in][:status] == "1"
       check_in.save
 
+      # 各習慣の達成率を取得
       achievement_rate = @habit.achievement_rate(@habit.start_date || @habit.created_at.to_date, @habit.end_date || Date.today ).to_f
       overall_achievement_rate = @project.overall_achievement_rate.to_f
 
