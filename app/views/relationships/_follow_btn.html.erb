@@ -4,7 +4,7 @@
       <div class= "project_userFollowed_btn">フォロー解除</div>
     <% end %>
   <% else %>
-    <%= link_to(user_relationships_path(user_id: user.id), data: {turbo_method: :post, turbo_frame: "follow-button-#{user.id}" }, class: "link", style: "color: black;") do %>
+    <%= link_to(user_relationships_path(user_id: user.id), data: { turbo_method: :post, turbo_frame: "follow-button-#{user.id}" }, class: "link", style: "color: black;") do %>
       <div class= "project_userFollowing_btn">フォロー</div>
     <% end %>
   <% end %>
