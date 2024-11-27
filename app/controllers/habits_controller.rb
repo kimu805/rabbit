@@ -35,7 +35,7 @@ class HabitsController < ApplicationController
     end
 
     @end_date = params[:end_date].present? ? Date.parse(params[:end_date]) : Date.today
-    @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : @habit.created_at.to_date
+    @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : @end_date - 3
     @date_range = (@start_date..@end_date)
 
     @check_ins = @habit.check_ins
