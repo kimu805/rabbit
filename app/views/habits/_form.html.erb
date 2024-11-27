@@ -39,14 +39,8 @@
     <%= f.date_field :end_date, class: "form_textfield" %>
   </div>
 
-  <% if @habit.persisted? %>
-    <div class= "form_commit_box">
-      <%= f.submit "更新", class: "form_commit" %>
-    </div>
-  <% else %>
-    <div class= "form_commit_box">
-      <%= f.submit "作成", class: "form_commit" %>
-    </div>
-  <% end %>
+  <div class= "form_commit_box">
+    <%= f.submit commit_text, class: "form_commit" %>
+  </div>
 
 <% end %>
