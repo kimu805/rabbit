@@ -4,5 +4,6 @@
     <span class= "form_title">プロジェクト編集</span>
   </div>
 
+  <%= render "form", { url: project_path(@project.id), method: :patch, commit_text: "更新" } %>
 
 </div>
