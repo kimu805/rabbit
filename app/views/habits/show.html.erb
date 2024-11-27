@@ -79,7 +79,7 @@
         <tbody class= "projectShow_checkIns_table_body">
           <% @date_range.each do |date| %>
             <tr class= "projectShow_checkIns_table_row">
-              <td class= "projectShow_checkIns_table_data">
+              <td class= "projectShow_checkIns_table_data <%= "today" if date == Date.today %>">
                 <%= date.strftime("%m-%d") %>
               </td>
               <% check_in = @check_ins.find { |ci| ci.habit_id == @habit.id && ci.date == date } %>
