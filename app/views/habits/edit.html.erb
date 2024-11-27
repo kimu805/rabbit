@@ -4,6 +4,6 @@
     <span class= "form_title">習慣　編集</span>
   </div>
 
-  <%= render "form", { url: project_habit_path(project_id: @project.id, id: @habit.id)} %>
+  <%= render "form", { url: project_habit_path(project_id: @project.id, id: @habit.id), commit_text: "更新" } %>
 
 </div>
