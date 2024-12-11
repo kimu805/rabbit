@@ -71,7 +71,10 @@
 
   <% if @project.habits.count != 0 %>
     <% if user_signed_in? && current_user == @project.owner %>
-      <%= render "daterange" %>
+      <%= render "daterange", { url: project_path(@project, tag: @tag), 
+        back_path: project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1),
+        next_path: project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1) }
+      %>
     <% end %>
     
     <div class= "projectShow_habits">
