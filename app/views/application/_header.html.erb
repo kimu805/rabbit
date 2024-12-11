@@ -1,13 +1,8 @@
-<% if flash[:notice] %>
-  <div id="flash-message" class="flash-message <%= flash[:notice] ? 'notice' : flash[:alert] ? 'alert' : '' %>">
-    <span class="icon">
-      &#x2714; <%= flash[:notice] %> <!-- チェックマークアイコン -->
-    </span>
-  </div>
-<% elsif flash[:alert] %>
-  <div id="flash-message" class="flash-message <%= flash[:notice] ? 'notice' : flash[:alert] ? 'alert' : '' %>">
-    <span class="icon">
-      &#x26A0; <%= flash[:alert] %> <!-- 警告アイコン -->
+<% if flash[:notice] || flash[:alert] %>
+  <div id= "flash-message" class= "flash-message <%= flash[:notice] ? "notice" : "alert" %>">
+    <span class= "icon">
+      <%= (flash[:notice] ? "&#x2714;" : "&#x26A0;").html_safe %>
+      <%= flash[:notice] || flash[:alert] %>
     </span>
   </div>
 <% end %>
