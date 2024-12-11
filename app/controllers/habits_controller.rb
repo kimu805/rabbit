@@ -11,7 +11,6 @@ class HabitsController < ApplicationController
   def create
     @habit = @project.habits.build(habit_params)
     if @habit.save
-      create_check_ins(@habit)
       redirect_to @project, notice: "「#{@habit.name}」を作成しました"
     else
       render :new, status: :unprocessable_entity
@@ -38,7 +37,7 @@ class HabitsController < ApplicationController
     @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : @end_date - 3
     @date_range = (@start_date..@end_date)
 
-    @check_ins = @habit.check_ins
+    @check_ins = find_or_create_check_ins(@habit, @date_range)
   end
 
   def destroy
@@ -57,12 +56,6 @@ class HabitsController < ApplicationController
 
   def set_habit
     @habit = @project.habits.find(params[:id])
-  end
-
-  def create_check_ins(habit)
-    (Date.today..(Date.today + 30)).each do |date|
-      habit.check_ins.create(date: date, status: false)
-    end
   end
 
   def only_myself
