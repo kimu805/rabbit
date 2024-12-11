@@ -9,9 +9,7 @@ end
   project = Project.create!(title: "プロジェクト#{i+1}", description: "プロジェクト#{i+1}の概要です。", display: 1, user_id: user.id)
   5.times do |n|
     habit = Habit.create!(name: "習慣#{n+1}", content: "習慣#{n+1}の内容です。", frequency: 1, project_id: project.id)
-    (Date.today..(Date.today + 30)).each do |date| 
-      habit.check_ins.create!(date: date, status: false)
-    end
+    habit.check_ins.create!(date: Date.today, status: false)
   end
 end
 
@@ -19,9 +17,7 @@ end
   project = Project.create!(title: "プロジェクト#{i+11}", description: "プロジェクト#{i+11}の概要です。", display: 0, user_id: i+1)
   5.times do |n|
     habit = Habit.create!(name: "習慣#{n+1}", content: "習慣#{n+1}の内容です。", frequency: 1, project_id: project.id)
-    (Date.today..(Date.today + 30)).each do |date| 
-      habit.check_ins.create!(date: date, status: false)
-    end
+    habit.check_ins.create!(date: Date.today, status: false)
   end
 end
 
