@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "date_range_frame" do %>
   <div class= "projectShow_checkIns_dateRange">
     <div class= "heading3">日付の表示範囲を選択</div>
-    <%= form_with url: project_path(@project, tag: @tag), method: :get, local: true, class: "projectShow_checkIns_dateRange_form" do |f| %>
+    <%= form_with url: url, method: :get, local: true, class: "projectShow_checkIns_dateRange_form" do |f| %>
       <div class= "projectShow_checkIns_dateRange_startDate">
         <label class= "projectShow_checkIns_dateRange_startDateField_label">開始日：</label>
         <%= f.date_field :start_date, value: @date_range.first, class: "projectShow_checkIns_dateRange_startDateField" %>
@@ -15,15 +15,15 @@
   </div>
 
   <div class= "projectShow_checkIns_table_navigation_box">
-    <%= link_to "←戻る", project_path(@project, tag: @tag, start_date: @date_range.first - (@end_date - @start_date) - 1, end_date: @date_range.first - 1), class: "link projectShow_checkIns_table_navigation_back", data: { turbo_frame: "date_range_frame" } %>|
-    <%= link_to "進む→", project_path(@project, tag: @tag, start_date: @date_range.last + 1, end_date: @date_range.last + (@end_date - @start_date) + 1), class: "link projectShow_checkIns_table_navigation_next", data: { turbo_frame: "date_range_frame" } %>
+    <%= link_to "←戻る", back_path, class: "link projectShow_checkIns_table_navigation_back", data: { turbo_frame: "date_range_frame" } %>|
+    <%= link_to "進む→", next_path, class: "link projectShow_checkIns_table_navigation_next", data: { turbo_frame: "date_range_frame" } %>
   </div>
   <div class= "projectShow_checkIns_table_box">
     <table class= "projectShow_checkIns_table">
       <thead class= "projectShow_checkIns_table_head">
         <tr class= "#">
           <th class= "projectShow_checkIns_table_header">日付</th>
-          <% @habits.each do |habit| %>
+          <% Array(@habits || @habit).each do |habit| %>
             <th class= "projectShow_checkIns_table_header"><%= habit.name %></th>
           <% end %>
         </tr>
@@ -34,7 +34,7 @@
             <td class= "projectShow_checkIns_table_data <%= "today" if date == Date.today %>">
               <%= date.strftime("%m-%d") %>
             </td>
-            <% @habits.each do |habit| %>
+            <% Array(@habits || @habit).each do |habit| %>
               <% if date >= habit.created_at.to_date %>
                 <% check_in = @check_ins.find { |ci| ci.habit_id == habit.id && ci.date == date } %>
                 <td class= "projectShow_checkIns_table_data">

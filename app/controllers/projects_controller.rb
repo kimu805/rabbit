@@ -73,16 +73,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def find_or_create_check_ins(habits, date_range)
-    existing_check_ins = CheckIn.where(habit_id: habits.map(&:id), date: date_range).index_by { |ci| [ci.habit_id, ci.date] }
-
-    date_range.flat_map do |date|
-      habits.map do |habit|
-        existing_check_ins[[habit.id, date]] || CheckIn.create(habit_id: habit.id, date: date)
-      end
-    end
-  end
-
   def increment_view_count(project)
     session_key = "project_#{project.id}_viewed"
     unless session[session_key]
