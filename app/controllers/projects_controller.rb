@@ -57,6 +57,7 @@ class ProjectsController < ApplicationController
     redirect_to user_path(current_user), notice: "「#{@project.title}」を削除しました"
   end
 
+  # プロジェクト作成時にタグを検索するメソッド
   def search
     return nil if params[:keyword] == ""
     tag = Tag.where(["tag_name LIKE ?", "%#{params[:keyword]}%"])
